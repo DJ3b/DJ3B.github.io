@@ -191,37 +191,40 @@
       </div>
     </article>
 
-    <!-- Stereo-camera visual SLAM / mapping -->
+    <!-- AprilTag EKF Visual-SLAM (SLAM2) -->
     <article class="card">
-      <img src="assets/premier-mapping.png" alt="Environment mapping result">
+      <img src="assets/vslam-live-view.png" alt="EKF Visual-SLAM live view: map and camera frame">
       <div class="card-body">
         <h3>
-          <span class="fr">SLAM visuel par caméra stéréo — cartographie de l'environnement</span>
-          <span class="en">Stereo-camera visual SLAM — environment mapping</span>
+          <span class="fr">SLAM visuel EKF — amers AprilTag (caméra OAK-D)</span>
+          <span class="en">EKF Visual-SLAM — AprilTag landmarks (OAK-D camera)</span>
         </h3>
         <p>
           <span class="fr">
-            SLAM visuel par EKF à partir de la caméra stéréo OAK-D Pro du ROSbot : le modèle de
-            mesure projette les coins des tags dans le plan image (modèle sténopé, jacobiennes par
-            différences finies) et les amers sont initialisés à la volée dès leur première
-            observation. Implémentation des quatre briques du filtre (initialisation, modèle de
-            mouvement, prédiction, correction), rejeu de campagnes d'acquisition de plusieurs Go
-            (format mcap) et validation de la carte construite par comparaison avec la carte LiDAR
-            de référence de l'environnement.
+            SLAM complet à partir du seul flux RGB monoculaire de la caméra OAK-D Pro : le filtre
+            estime simultanément la pose de la caméra (état à 10 composantes) et la pose 6D de
+            chaque AprilTag, ajouté à la carte dès sa première observation. Le modèle de mesure
+            reprojette les quatre coins de chaque tag dans le plan image (modèle sténopé,
+            jacobienne numérique par différences finies) ; une carte d'occupation LiDAR à 5 cm est
+            construite de zéro en toile de fond, et la trajectoire est évaluée quantitativement
+            face à l'odométrie fusionnée du robot.
           </span>
           <span class="en">
-            EKF visual SLAM using the ROSbot's OAK-D Pro stereo camera: the measurement model
-            projects tag corners into the image plane (pinhole model, finite-difference Jacobians)
-            and landmarks are initialized on the fly at first observation. I implemented the four
-            core filter blocks (initialization, motion model, prediction, correction), replayed
-            multi-GB data campaigns (mcap format) and validated the resulting map against the
-            environment's reference LiDAR map.
+            Complete SLAM from the OAK-D Pro camera's monocular RGB stream alone: the filter
+            jointly estimates the camera pose (10-component state) and the 6-DoF pose of every
+            AprilTag, added to the map at first sighting. The measurement model reprojects each
+            tag's four corners into the image plane (pinhole model, finite-difference numerical
+            Jacobian); a 5 cm LiDAR occupancy grid is built from scratch as a backdrop, and the
+            trajectory is quantitatively evaluated against the robot's fused odometry.
           </span>
         </p>
         <div class="tags">
-          <span class="tag">Visual SLAM</span><span class="tag">OAK-D Pro</span><span class="tag">EKF</span>
-          <span class="tag">MATLAB</span><span class="tag">Vision</span><span class="tag">rosbag / mcap</span>
+          <span class="tag">Visual SLAM</span><span class="tag">EKF</span><span class="tag">AprilTag</span>
+          <span class="tag">OAK-D Pro</span><span class="tag">MATLAB</span><span class="tag">rosbag / mcap</span>
         </div>
+        <a class="more" href="projects/apriltag-visual-slam.html">
+          <span class="fr">Lire l'article détaillé →</span><span class="en">Read the full article →</span>
+        </a>
       </div>
     </article>
 
