@@ -43,9 +43,9 @@
   </p>
   <div class="btn-row">
     <a class="btn primary" href="#projets"><span class="fr">Voir mes projets</span><span class="en">See my projects</span></a>
-    <!-- TODO: remplacer par vos vrais liens -->
+    <!-- TODO: remplacer par votre vrai lien LinkedIn -->
     <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://github.com/DJ3B" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 
@@ -156,30 +156,71 @@
       </div>
     </article>
 
-    <!-- SLAM -->
+    <!-- EKF-SLAM visual-inertial with AprilTag ground truth -->
     <article class="card">
-      <img src="assets/premier-mapping.png" alt="First successful SLAM mapping">
+      <img src="assets/ekf-apriltag-summary.png" alt="AprilTag EKF-SLAM evaluation summary">
       <div class="card-body">
         <h3>
-          <span class="fr">SLAM — cartographie et localisation simultanées</span>
-          <span class="en">SLAM — simultaneous localization and mapping</span>
+          <span class="fr">EKF-SLAM visuel-inertiel — amers AprilTag &amp; vérité terrain</span>
+          <span class="en">Visual-inertial EKF-SLAM — AprilTag landmarks &amp; ground truth</span>
         </h3>
         <p>
           <span class="fr">
-            Expérimentations de SLAM par EKF sur robots réels : cartographie de l'environnement,
-            enregistrement et rejeu de campagnes de mesures (rosbags de plusieurs Go), détection
-            d'amers par AprilTag et évaluation de la cohérence carte/trajectoire sur plusieurs
-            itérations d'algorithme.
+            Pipeline complet d'EKF-SLAM sous MATLAB par rejeu de rosbags ROS&nbsp;2 : détection
+            d'AprilTags dans chaque image de la caméra OAK-D (résultats mis en cache sur disque),
+            calibration caméra (matrice K remise à l'échelle) et transformations de repères via
+            <code>tf_static</code>. Le filtre fusionne gyroscope, accéléromètre et observations de
+            tags dans un flux d'événements horodatés unique, estimant simultanément la pose 3D du
+            robot et la position des amers. La trajectoire estimée est ensuite évaluée
+            quantitativement face à l'odométrie filtrée du robot utilisée comme vérité terrain.
           </span>
           <span class="en">
-            EKF-SLAM experiments on real robots: environment mapping, recording and replay of
-            measurement campaigns (multi-GB rosbags), AprilTag landmark detection and evaluation
-            of map/trajectory consistency across several algorithm iterations.
+            Complete EKF-SLAM pipeline in MATLAB replaying ROS&nbsp;2 rosbags: AprilTag detection
+            in every OAK-D camera frame (disk-cached results), camera calibration (rescaled K
+            matrix) and frame transforms via <code>tf_static</code>. The filter fuses gyroscope,
+            accelerometer and tag observations into a single time-ordered event stream, jointly
+            estimating the robot's 3D pose and the landmark positions. The estimated trajectory
+            is then quantitatively evaluated against the robot's filtered odometry used as ground
+            truth.
           </span>
         </p>
         <div class="tags">
-          <span class="tag">SLAM</span><span class="tag">EKF</span><span class="tag">Python</span>
-          <span class="tag">MATLAB</span><span class="tag">ROS 2</span>
+          <span class="tag">EKF-SLAM</span><span class="tag">MATLAB</span><span class="tag">AprilTag</span>
+          <span class="tag">Fusion IMU</span><span class="tag">ROS 2</span><span class="tag">Calibration</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Stereo-camera visual SLAM / mapping -->
+    <article class="card">
+      <img src="assets/premier-mapping.png" alt="Environment mapping result">
+      <div class="card-body">
+        <h3>
+          <span class="fr">SLAM visuel par caméra stéréo — cartographie de l'environnement</span>
+          <span class="en">Stereo-camera visual SLAM — environment mapping</span>
+        </h3>
+        <p>
+          <span class="fr">
+            SLAM visuel par EKF à partir de la caméra stéréo OAK-D Pro du ROSbot : le modèle de
+            mesure projette les coins des tags dans le plan image (modèle sténopé, jacobiennes par
+            différences finies) et les amers sont initialisés à la volée dès leur première
+            observation. Implémentation des quatre briques du filtre (initialisation, modèle de
+            mouvement, prédiction, correction), rejeu de campagnes d'acquisition de plusieurs Go
+            (format mcap) et validation de la carte construite par comparaison avec la carte LiDAR
+            de référence de l'environnement.
+          </span>
+          <span class="en">
+            EKF visual SLAM using the ROSbot's OAK-D Pro stereo camera: the measurement model
+            projects tag corners into the image plane (pinhole model, finite-difference Jacobians)
+            and landmarks are initialized on the fly at first observation. I implemented the four
+            core filter blocks (initialization, motion model, prediction, correction), replayed
+            multi-GB data campaigns (mcap format) and validated the resulting map against the
+            environment's reference LiDAR map.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">Visual SLAM</span><span class="tag">OAK-D Pro</span><span class="tag">EKF</span>
+          <span class="tag">MATLAB</span><span class="tag">Vision</span><span class="tag">rosbag / mcap</span>
         </div>
       </div>
     </article>
@@ -297,9 +338,9 @@
       <span class="en">I am looking for my first permanent position — feel free to reach out!</span>
     </p>
     <div class="btn-row" style="justify-content:center;">
-      <!-- TODO: remplacer par vos vrais liens -->
+      <!-- TODO: remplacer par votre vrai lien LinkedIn -->
       <a class="btn primary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://github.com/DJ3B" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </section>
