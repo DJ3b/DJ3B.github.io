@@ -1,358 +1,682 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Said AFRITE — Portfolio Robotique &amp; Systèmes Embarqués</title>
   <meta name="description" content="Portfolio de Said AFRITE — Ingénieur aérospatial, systèmes embarqués et télécommunications. Projets de robotique mobile : EKF, SLAM, fusion de capteurs, ROS 2.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./assets/css/style.css?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body data-lang="fr">
 
-<nav>
-  <a class="brand" href="#top">Said AFRITE</a>
-  <div class="links">
-    <a href="#projets"><span class="fr">Projets</span><span class="en">Projects</span></a>
-    <a href="#competences"><span class="fr">Compétences</span><span class="en">Skills</span></a>
-    <a href="#contact">Contact</a>
-    <button class="lang-btn" id="lang-toggle" type="button">🇬🇧 English</button>
-  </div>
-</nav>
+  <main>
 
-<header class="hero" id="top">
-  <h1>Said AFRITE</h1>
-  <p class="headline">
-    <span class="fr">Ingénieur aérospatial — Systèmes embarqués &amp; Télécommunications</span>
-    <span class="en">Aerospace Engineer — Embedded Systems &amp; Telecommunications</span>
-  </p>
-  <p class="pitch">
-    <span class="fr">
-      Passionné par la robotique mobile et la fusion de capteurs, j'ai conçu et validé
-      expérimentalement des systèmes complets de localisation, de suivi de cible et de SLAM
-      sur robots réels (ROSbot&nbsp;3 Pro, mBot2) : filtres de Kalman étendus robustes,
-      LiDAR, vision par caméra (AprilTag), ROS&nbsp;2 et MATLAB.
-      Je recherche un premier poste en CDI en systèmes embarqués, robotique ou traitement du signal.
-    </span>
-    <span class="en">
-      Passionate about mobile robotics and sensor fusion, I designed and experimentally
-      validated complete localization, target-tracking and SLAM systems on real robots
-      (ROSbot&nbsp;3 Pro, mBot2): robust extended Kalman filters, LiDAR, camera vision
-      (AprilTag), ROS&nbsp;2 and MATLAB.
-      I am looking for a first permanent position in embedded systems, robotics or signal processing.
-    </span>
-  </p>
-  <div class="btn-row">
-    <a class="btn primary" href="#projets"><span class="fr">Voir mes projets</span><span class="en">See my projects</span></a>
-    <!-- TODO: remplacer par votre vrai lien LinkedIn -->
-    <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://github.com/DJ3B" target="_blank" rel="noopener">GitHub</a>
-  </div>
-</header>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" data-sidebar>
 
-<section id="projets">
-  <h2><span class="fr">Projets</span><span class="en">Projects</span></h2>
-  <p class="section-sub">
-    <span class="fr">Travaux réalisés lors de mon stage de fin d'études en robotique mobile — du capteur à l'algorithme, validés sur robots réels.</span>
-    <span class="en">Work carried out during my final-year internship in mobile robotics — from sensor to algorithm, validated on real robots.</span>
-  </p>
+      <div class="sidebar-info">
 
-  <div class="grid">
+        <figure class="avatar-box">
+          <img src="./assets/avatar.svg" alt="Said AFRITE" width="80">
+        </figure>
 
-    <!-- Featured: EKF LiDAR tracker -->
-    <article class="card featured">
-      <img src="assets/ekf-tracker-apriltag.png" alt="EKF tracker with AprilTag ground truth">
-      <div class="card-body">
-        <h3>
-          <span class="fr">Suivi de cible par EKF robuste — LiDAR + vérité terrain caméra</span>
-          <span class="en">Robust EKF target tracking — LiDAR + camera ground truth</span>
-        </h3>
-        <p>
-          <span class="fr">
-            Un ROSbot&nbsp;3 Pro suit un mBot2 mobile grâce à son LiDAR : clustering du nuage de points,
-            zone de détection, puis filtre de Kalman étendu (modèle à vitesse constante, gating chi-carré
-            à 99,5&nbsp;%). La vérité terrain est fournie en continu par une caméra OAK-D Pro via détection
-            d'AprilTag (Tag36h11) avec calibration et transformation de repères TF. J'ai également implémenté
-            une variante <strong>robuste (RI-EKF)</strong> issue d'un article de recherche (Belles et al., 2023) :
-            M-estimateur de Tukey avec itérations IRLS, testée sur des données volontairement bruitées.
-            Pipeline complet de rejeu hors-ligne de rosbags ROS&nbsp;2 (mcap) sous MATLAB, avec analyse
-            d'innovation et erreur de position de l'ordre de 2&nbsp;cm.
-          </span>
-          <span class="en">
-            A ROSbot&nbsp;3 Pro tracks a moving mBot2 with its LiDAR: point-cloud clustering, detection
-            zone, then an extended Kalman filter (constant-velocity model, 99.5&nbsp;% chi-square innovation
-            gating). Continuous ground truth comes from an OAK-D Pro camera via AprilTag detection (Tag36h11)
-            with calibration and TF frame transforms. I also implemented a <strong>robust variant (RI-EKF)</strong>
-            from a research paper (Belles et al., 2023): Tukey M-estimator with IRLS iterations, tested on
-            deliberately noisy data. Full offline replay pipeline of ROS&nbsp;2 rosbags (mcap) in MATLAB,
-            with innovation analysis and position error around 2&nbsp;cm.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">MATLAB</span><span class="tag">ROS 2</span><span class="tag">EKF</span>
-          <span class="tag">LiDAR</span><span class="tag">AprilTag</span><span class="tag">OAK-D Pro</span>
-          <span class="tag">Robust filtering</span><span class="tag">rosbag / mcap</span>
+        <div class="info-content">
+          <h1 class="name" title="Said AFRITE">Said AFRITE</h1>
+
+          <p class="title">
+            <span class="fr">Ingénieur aérospatial</span>
+            <span class="en">Aerospace engineer</span>
+          </p>
         </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span><span class="fr">Voir les contacts</span><span class="en">Show contacts</span></span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
       </div>
-    </article>
 
-    <!-- mBot2 localization -->
-    <article class="card">
-      <img src="assets/position-globale.png" alt="Estimated global position of the mBot2">
-      <div class="card-body">
-        <h3>
-          <span class="fr">Localisation globale d'un mBot2 — K-Means &amp; Procruste</span>
-          <span class="en">Global localization of an mBot2 — K-Means &amp; Procrustes</span>
-        </h3>
-        <p>
-          <span class="fr">
-            Le robot scanne son environnement à 360° (ultrason + gyroscope) et transmet les mesures
-            en temps réel à MATLAB via TCP/IP. Le nuage de points est segmenté par K-Means, puis une
-            analyse de Procruste teste les permutations d'amers pour estimer la pose complète (x, y, θ)
-            du robot, qui rejoint ensuite une cible de façon autonome.
-          </span>
-          <span class="en">
-            The robot performs a 360° scan of its surroundings (ultrasonic + gyroscope) and streams
-            measurements to MATLAB over TCP/IP. The point cloud is segmented with K-Means, then a
-            Procrustes analysis tests landmark permutations to estimate the robot's full pose (x, y, θ),
-            after which it drives autonomously to a target.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">K-Means</span>
-          <span class="tag">Procrustes</span><span class="tag">TCP/IP</span><span class="tag">CyberPi</span>
-        </div>
-        <a class="more" href="projects/mbot2-localisation.html">
-          <span class="fr">Lire l'article détaillé →</span><span class="en">Read the full article (FR) →</span>
-        </a>
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="logo-github"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">GitHub</p>
+              <a href="https://github.com/DJ3B" class="contact-link" target="_blank" rel="noopener">github.com/DJ3B</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">LinkedIn</p>
+              <!-- TODO: remplacer par votre vrai lien LinkedIn -->
+              <a href="https://www.linkedin.com/" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">
+                <span class="fr">Localisation</span><span class="en">Location</span>
+              </p>
+              <address>France</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="https://github.com/DJ3B" class="social-link" target="_blank" rel="noopener">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <!-- TODO: remplacer par votre vrai lien LinkedIn -->
+            <a href="https://www.linkedin.com/" class="social-link" target="_blank" rel="noopener">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+        </ul>
+
       </div>
-    </article>
 
-    <!-- Gauss-Newton localization -->
-    <article class="card">
-      <img src="assets/resultats-gn.png" alt="Gauss-Newton localization results">
-      <div class="card-body">
-        <h3>
-          <span class="fr">Localisation par optimisation de Gauss-Newton</span>
-          <span class="en">Localization via Gauss-Newton optimization</span>
-        </h3>
-        <p>
-          <span class="fr">
-            Estimation de la pose du robot par minimisation non linéaire des résidus de mesure
-            (distances aux amers) avec l'algorithme de Gauss-Newton : construction de la jacobienne,
-            itérations jusqu'à convergence et validation expérimentale sur le mBot2, en comparaison
-            avec l'approche Procruste.
-          </span>
-          <span class="en">
-            Robot pose estimation by nonlinear least-squares minimization of measurement residuals
-            (ranges to landmarks) using the Gauss-Newton algorithm: Jacobian construction, iteration
-            to convergence and experimental validation on the mBot2, compared against the Procrustes
-            approach.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">MATLAB</span><span class="tag">Gauss-Newton</span>
-          <span class="tag">Least squares</span><span class="tag">Estimation</span>
-        </div>
-      </div>
-    </article>
+    </aside>
 
-    <!-- EKF-SLAM visual-inertial with AprilTag ground truth -->
-    <article class="card">
-      <img src="assets/ekf-apriltag-summary.png" alt="AprilTag EKF-SLAM evaluation summary">
-      <div class="card-body">
-        <h3>
-          <span class="fr">EKF-SLAM visuel-inertiel — amers AprilTag &amp; vérité terrain</span>
-          <span class="en">Visual-inertial EKF-SLAM — AprilTag landmarks &amp; ground truth</span>
-        </h3>
-        <p>
-          <span class="fr">
-            Pipeline complet d'EKF-SLAM sous MATLAB par rejeu de rosbags ROS&nbsp;2 : détection
-            d'AprilTags dans chaque image de la caméra OAK-D (résultats mis en cache sur disque),
-            calibration caméra (matrice K remise à l'échelle) et transformations de repères via
-            <code>tf_static</code>. Le filtre fusionne gyroscope, accéléromètre et observations de
-            tags dans un flux d'événements horodatés unique, estimant simultanément la pose 3D du
-            robot et la position des amers. La trajectoire estimée est ensuite évaluée
-            quantitativement face à l'odométrie filtrée du robot utilisée comme vérité terrain.
-          </span>
-          <span class="en">
-            Complete EKF-SLAM pipeline in MATLAB replaying ROS&nbsp;2 rosbags: AprilTag detection
-            in every OAK-D camera frame (disk-cached results), camera calibration (rescaled K
-            matrix) and frame transforms via <code>tf_static</code>. The filter fuses gyroscope,
-            accelerometer and tag observations into a single time-ordered event stream, jointly
-            estimating the robot's 3D pose and the landmark positions. The estimated trajectory
-            is then quantitatively evaluated against the robot's filtered odometry used as ground
-            truth.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">EKF-SLAM</span><span class="tag">MATLAB</span><span class="tag">AprilTag</span>
-          <span class="tag">Fusion IMU</span><span class="tag">ROS 2</span><span class="tag">Calibration</span>
-        </div>
-      </div>
-    </article>
 
-    <!-- AprilTag EKF Visual-SLAM (SLAM2) -->
-    <article class="card">
-      <img src="assets/vslam-live-view.png" alt="EKF Visual-SLAM live view: map and camera frame">
-      <div class="card-body">
-        <h3>
-          <span class="fr">SLAM visuel EKF — amers AprilTag (caméra OAK-D)</span>
-          <span class="en">EKF Visual-SLAM — AprilTag landmarks (OAK-D camera)</span>
-        </h3>
-        <p>
-          <span class="fr">
-            SLAM complet à partir du seul flux RGB monoculaire de la caméra OAK-D Pro : le filtre
-            estime simultanément la pose de la caméra (état à 10 composantes) et la pose 6D de
-            chaque AprilTag, ajouté à la carte dès sa première observation. Le modèle de mesure
-            reprojette les quatre coins de chaque tag dans le plan image (modèle sténopé,
-            jacobienne numérique par différences finies) ; une carte d'occupation LiDAR à 5 cm est
-            construite de zéro en toile de fond, et la trajectoire est évaluée quantitativement
-            face à l'odométrie fusionnée du robot.
-          </span>
-          <span class="en">
-            Complete SLAM from the OAK-D Pro camera's monocular RGB stream alone: the filter
-            jointly estimates the camera pose (10-component state) and the 6-DoF pose of every
-            AprilTag, added to the map at first sighting. The measurement model reprojects each
-            tag's four corners into the image plane (pinhole model, finite-difference numerical
-            Jacobian); a 5 cm LiDAR occupancy grid is built from scratch as a backdrop, and the
-            trajectory is quantitatively evaluated against the robot's fused odometry.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">Visual SLAM</span><span class="tag">EKF</span><span class="tag">AprilTag</span>
-          <span class="tag">OAK-D Pro</span><span class="tag">MATLAB</span><span class="tag">rosbag / mcap</span>
-        </div>
-        <a class="more" href="projects/apriltag-visual-slam.html">
-          <span class="fr">Lire l'article détaillé →</span><span class="en">Read the full article →</span>
-        </a>
-      </div>
-    </article>
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
 
-    <!-- Embedded mBot2 -->
-    <article class="card">
-      <img src="assets/mbot2.jpg" alt="mBot2 robot with CyberPi">
-      <div class="card-body">
-        <h3>
-          <span class="fr">Programmation embarquée mBot2 (CyberPi)</span>
-          <span class="en">Embedded programming on the mBot2 (CyberPi)</span>
-        </h3>
-        <p>
-          <span class="fr">
-            Développements Python sur microcontrôleur : suiveur de ligne avec capteurs RGB et
-            télémétrie temps réel, filtre de Kalman 1D pour lisser les mesures de distance
-            ultrason, téléopération au clavier via MATLAB et synthèse vocale embarquée.
-          </span>
-          <span class="en">
-            Python development on a microcontroller: RGB-sensor line follower with real-time
-            telemetry, a 1D Kalman filter to smooth ultrasonic range measurements, keyboard
-            teleoperation through MATLAB and on-board text-to-speech.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">MicroPython</span><span class="tag">Kalman 1D</span>
-          <span class="tag">Capteurs RGB</span><span class="tag">Wi-Fi / sockets</span>
-        </div>
-      </div>
-    </article>
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <ul class="navbar-list">
 
-    <!-- ROS 2 / Docker -->
-    <article class="card">
-      <img src="assets/tracker-v2.png" alt="LiDAR tracking visualization">
-      <div class="card-body">
-        <h3>
-          <span class="fr">Infrastructure ROS 2 &amp; Docker — ROSbot 3 Pro</span>
-          <span class="en">ROS 2 &amp; Docker infrastructure — ROSbot 3 Pro</span>
-        </h3>
-        <p>
-          <span class="fr">
-            Mise en service et exploitation d'un ROSbot 3 Pro : déploiement de piles logicielles
-            conteneurisées (Docker Compose) pour la navigation autonome et la téléprésence,
-            configuration DDS, pilotage de la caméra OAK-D (DepthAI), acquisition LiDAR temps réel
-            et enregistrement de données expérimentales au format mcap.
-          </span>
-          <span class="en">
-            Commissioning and operating a ROSbot 3 Pro: deployment of containerized software stacks
-            (Docker Compose) for autonomous navigation and telepresence, DDS configuration, OAK-D
-            camera integration (DepthAI), real-time LiDAR acquisition and experimental data recording
-            in mcap format.
-          </span>
-        </p>
-        <div class="tags">
-          <span class="tag">ROS 2</span><span class="tag">Docker</span><span class="tag">Linux</span>
-          <span class="tag">DepthAI</span><span class="tag">RViz</span>
-        </div>
-      </div>
-    </article>
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link="about">
+              <span class="fr">À propos</span><span class="en">About</span>
+            </button>
+          </li>
 
-  </div>
-</section>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="resume">
+              <span class="fr">Parcours</span><span class="en">Resume</span>
+            </button>
+          </li>
 
-<section id="competences">
-  <h2><span class="fr">Compétences</span><span class="en">Skills</span></h2>
-  <p class="section-sub">
-    <span class="fr">Acquises et mises en pratique sur des systèmes réels.</span>
-    <span class="en">Acquired and applied on real systems.</span>
-  </p>
-  <div class="skills-grid">
-    <div class="skill-box">
-      <h3><span class="fr">Estimation &amp; fusion de capteurs</span><span class="en">Estimation &amp; sensor fusion</span></h3>
-      <ul>
-        <li><span class="fr">Filtre de Kalman (1D, EKF, EKF robuste / M-estimateurs)</span><span class="en">Kalman filtering (1D, EKF, robust EKF / M-estimators)</span></li>
-        <li><span class="fr">Gating chi-carré, analyse d'innovation</span><span class="en">Chi-square gating, innovation analysis</span></li>
-        <li><span class="fr">Moindres carrés, Gauss-Newton, Procruste (SVD)</span><span class="en">Least squares, Gauss-Newton, Procrustes (SVD)</span></li>
-        <li><span class="fr">SLAM, association de données, K-Means</span><span class="en">SLAM, data association, K-Means</span></li>
-      </ul>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="portfolio">
+              <span class="fr">Projets</span><span class="en">Projects</span>
+            </button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="blog">Articles</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="contact">Contact</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="lang-btn-vcard" id="lang-toggle" type="button">🇬🇧 EN</button>
+          </li>
+
+        </ul>
+      </nav>
+
+
+      <!-- ABOUT -->
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title"><span class="fr">À propos</span><span class="en">About me</span></h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            <span class="fr">
+              Ingénieur aérospatial spécialisé en systèmes embarqués et télécommunications, passionné
+              par la robotique mobile et la fusion de capteurs. Lors de mon stage de fin d'études en
+              robotique, j'ai conçu et validé expérimentalement des systèmes complets de localisation,
+              de suivi de cible et de SLAM sur robots réels (ROSbot 3 Pro, mBot2) : filtres de Kalman
+              étendus robustes, LiDAR, vision par caméra (AprilTag), ROS 2 et MATLAB.
+            </span>
+            <span class="en">
+              Aerospace engineer specialized in embedded systems and telecommunications, passionate
+              about mobile robotics and sensor fusion. During my final-year robotics internship I
+              designed and experimentally validated complete localization, target-tracking and SLAM
+              systems on real robots (ROSbot 3 Pro, mBot2): robust extended Kalman filters, LiDAR,
+              camera vision (AprilTag), ROS 2 and MATLAB.
+            </span>
+          </p>
+
+          <p>
+            <span class="fr">
+              Je recherche un premier poste en CDI en systèmes embarqués, robotique ou traitement du
+              signal — un environnement où la rigueur mathématique rencontre le matériel réel.
+            </span>
+            <span class="en">
+              I am looking for a first permanent position in embedded systems, robotics or signal
+              processing — an environment where mathematical rigor meets real hardware.
+            </span>
+          </p>
+        </section>
+
+        <!-- domains -->
+        <section class="service">
+
+          <h3 class="h3 service-title"><span class="fr">Mes domaines</span><span class="en">What I do</span></h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="analytics-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">
+                  <span class="fr">Estimation &amp; fusion de capteurs</span>
+                  <span class="en">Estimation &amp; sensor fusion</span>
+                </h4>
+                <p class="service-item-text">
+                  <span class="fr">Filtres de Kalman (EKF, variantes robustes), SLAM, moindres carrés, Gauss-Newton, association de données.</span>
+                  <span class="en">Kalman filters (EKF, robust variants), SLAM, least squares, Gauss-Newton, data association.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">
+                  <span class="fr">Systèmes embarqués</span>
+                  <span class="en">Embedded systems</span>
+                </h4>
+                <p class="service-item-text">
+                  <span class="fr">Programmation sur microcontrôleur (MicroPython), capteurs, communication TCP/IP temps réel.</span>
+                  <span class="en">Microcontroller programming (MicroPython), sensors, real-time TCP/IP communication.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="navigate-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">
+                  <span class="fr">Robotique mobile &amp; ROS 2</span>
+                  <span class="en">Mobile robotics &amp; ROS 2</span>
+                </h4>
+                <p class="service-item-text">
+                  <span class="fr">ROSbot 3 Pro, rosbags (mcap), TF, RViz, navigation autonome, déploiement Docker.</span>
+                  <span class="en">ROSbot 3 Pro, rosbags (mcap), TF, RViz, autonomous navigation, Docker deployment.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="camera-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">
+                  <span class="fr">Vision par ordinateur</span>
+                  <span class="en">Computer vision</span>
+                </h4>
+                <p class="service-item-text">
+                  <span class="fr">Détection AprilTag, calibration caméra, modèle sténopé, reprojection, LiDAR et caméra de profondeur.</span>
+                  <span class="en">AprilTag detection, camera calibration, pinhole model, reprojection, LiDAR and depth cameras.</span>
+                </p>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!-- RESUME -->
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title"><span class="fr">Parcours</span><span class="en">Resume</span></h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3"><span class="fr">Formation</span><span class="en">Education</span></h3>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <!-- TODO: vérifier l'école et les années -->
+              <h4 class="h4 timeline-item-title">
+                <span class="fr">IPSA — École d'ingénieurs de l'air et de l'espace</span>
+                <span class="en">IPSA — French aerospace engineering school</span>
+              </h4>
+              <span>2021 — 2026</span>
+              <p class="timeline-text">
+                <span class="fr">Diplôme d'ingénieur aérospatial, spécialité systèmes embarqués et télécommunications.</span>
+                <span class="en">Master's-level aerospace engineering degree, major in embedded systems and telecommunications.</span>
+              </p>
+            </li>
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="briefcase-outline"></ion-icon>
+            </div>
+            <h3 class="h3"><span class="fr">Expérience</span><span class="en">Experience</span></h3>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">
+                <span class="fr">Stage de fin d'études — Robotique mobile</span>
+                <span class="en">Final-year internship — Mobile robotics</span>
+              </h4>
+              <span>2026</span>
+              <p class="timeline-text">
+                <span class="fr">
+                  Conception et validation expérimentale d'algorithmes de localisation, de suivi de
+                  cible et de SLAM sur robots réels : EKF robuste avec vérité terrain par AprilTag,
+                  SLAM visuel monoculaire, localisation par K-Means/Procruste et Gauss-Newton,
+                  cartographie d'occupation LiDAR, infrastructure ROS 2 / Docker.
+                </span>
+                <span class="en">
+                  Design and experimental validation of localization, target-tracking and SLAM
+                  algorithms on real robots: robust EKF with AprilTag ground truth, monocular visual
+                  SLAM, K-Means/Procrustes and Gauss-Newton localization, LiDAR occupancy mapping,
+                  ROS 2 / Docker infrastructure.
+                </span>
+              </p>
+            </li>
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title"><span class="fr">Compétences</span><span class="en">Skills</span></h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">MATLAB</h5>
+                <data value="90">90%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Python / MicroPython</h5>
+                <data value="85">85%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5"><span class="fr">Kalman / SLAM / Estimation</span><span class="en">Kalman / SLAM / Estimation</span></h5>
+                <data value="85">85%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">ROS 2 / Docker / Linux</h5>
+                <data value="75">75%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!-- PORTFOLIO -->
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title"><span class="fr">Projets</span><span class="en">Projects</span></h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+            <li class="filter-item">
+              <button class="active" data-filter-btn data-filter-value="all">
+                <span class="fr">Tous</span><span class="en">All</span>
+              </button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn data-filter-value="slam">SLAM &amp; Estimation</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn data-filter-value="embedded">
+                <span class="fr">Embarqué</span><span class="en">Embedded</span>
+              </button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn data-filter-value="infra">Infrastructure</button>
+            </li>
+          </ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-select-value>
+                <span class="fr">Catégorie</span><span class="en">Category</span>
+              </div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item data-filter-value="all">
+                  <span class="fr">Tous</span><span class="en">All</span>
+                </button>
+              </li>
+              <li class="select-item">
+                <button data-select-item data-filter-value="slam">SLAM &amp; Estimation</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item data-filter-value="embedded">
+                  <span class="fr">Embarqué</span><span class="en">Embedded</span>
+                </button>
+              </li>
+              <li class="select-item">
+                <button data-select-item data-filter-value="infra">Infrastructure</button>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="slam">
+              <a href="projects/apriltag-visual-slam.html">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/vslam-live-view.png" alt="EKF Visual-SLAM live view">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">SLAM visuel EKF — amers AprilTag</span>
+                  <span class="en">EKF Visual-SLAM — AprilTag landmarks</span>
+                </h3>
+                <p class="project-category">SLAM &amp; Estimation</p>
+                <p class="project-text">
+                  <span class="fr">SLAM complet depuis le seul flux RGB : pose caméra + carte de tags estimées conjointement, carte LiDAR, évaluation face à l'odométrie. Article détaillé →</span>
+                  <span class="en">Complete SLAM from the RGB stream alone: camera pose + tag map jointly estimated, LiDAR map, evaluation against odometry. Full article →</span>
+                </p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="slam">
+              <a href="projects/mbot2-localisation.html">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/position-globale.png" alt="mBot2 global localization">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">Localisation globale mBot2 — K-Means &amp; Procruste</span>
+                  <span class="en">mBot2 global localization — K-Means &amp; Procrustes</span>
+                </h3>
+                <p class="project-category">SLAM &amp; Estimation</p>
+                <p class="project-text">
+                  <span class="fr">Scan ultrason 360°, clustering K-Means, analyse de Procruste et navigation autonome vers une cible via MATLAB/TCP-IP. Article détaillé →</span>
+                  <span class="en">360° ultrasonic scan, K-Means clustering, Procrustes analysis and autonomous drive to a target via MATLAB/TCP-IP. Full article →</span>
+                </p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="slam">
+              <div>
+                <figure class="project-img">
+                  <img src="./assets/ekf-tracker-apriltag.png" alt="Robust EKF tracker with AprilTag ground truth">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">Suivi de cible par EKF robuste — LiDAR</span>
+                  <span class="en">Robust EKF target tracking — LiDAR</span>
+                </h3>
+                <p class="project-category">SLAM &amp; Estimation</p>
+                <p class="project-text">
+                  <span class="fr">Un ROSbot suit un mBot2 au LiDAR : EKF avec gating chi-carré et variante robuste RI-EKF (Tukey/IRLS, Belles et al. 2023), vérité terrain AprilTag continue, erreur ≈ 2 cm.</span>
+                  <span class="en">A ROSbot tracks an mBot2 with its LiDAR: EKF with chi-square gating and a robust RI-EKF variant (Tukey/IRLS, Belles et al. 2023), continuous AprilTag ground truth, ≈ 2 cm error.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="slam">
+              <div>
+                <figure class="project-img">
+                  <img src="./assets/ekf-apriltag-summary.png" alt="Visual-inertial EKF-SLAM evaluation">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">EKF-SLAM visuel-inertiel — AprilTag &amp; IMU</span>
+                  <span class="en">Visual-inertial EKF-SLAM — AprilTag &amp; IMU</span>
+                </h3>
+                <p class="project-category">SLAM &amp; Estimation</p>
+                <p class="project-text">
+                  <span class="fr">Fusion gyroscope + accéléromètre + observations de tags dans un flux d'événements unique ; calibration, transformations tf_static et évaluation quantitative.</span>
+                  <span class="en">Gyroscope + accelerometer + tag observations fused in a single event stream; calibration, tf_static transforms and quantitative evaluation.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="slam">
+              <div>
+                <figure class="project-img">
+                  <img src="./assets/resultats-gn.png" alt="Gauss-Newton localization">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">Localisation par Gauss-Newton</span>
+                  <span class="en">Gauss-Newton localization</span>
+                </h3>
+                <p class="project-category">SLAM &amp; Estimation</p>
+                <p class="project-text">
+                  <span class="fr">Estimation de pose par minimisation non linéaire des résidus de distance aux amers : jacobienne, itérations, validation expérimentale sur mBot2.</span>
+                  <span class="en">Pose estimation by nonlinear minimization of range residuals to landmarks: Jacobian, iterations, experimental validation on the mBot2.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="embedded">
+              <div>
+                <figure class="project-img">
+                  <img src="./assets/mbot2.jpg" alt="mBot2 with CyberPi">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">Programmation embarquée mBot2</span>
+                  <span class="en">Embedded programming on the mBot2</span>
+                </h3>
+                <p class="project-category"><span class="fr">Embarqué</span><span class="en">Embedded</span></p>
+                <p class="project-text">
+                  <span class="fr">Suiveur de ligne RGB avec télémétrie, filtre de Kalman 1D sur l'ultrason, téléopération clavier via MATLAB, synthèse vocale embarquée.</span>
+                  <span class="en">RGB line follower with telemetry, 1D Kalman filter on the ultrasonic sensor, keyboard teleoperation via MATLAB, on-board text-to-speech.</span>
+                </p>
+              </div>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="infra">
+              <div>
+                <figure class="project-img">
+                  <img src="./assets/tracker-v2.png" alt="ROS 2 and Docker infrastructure">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">Infrastructure ROS 2 &amp; Docker</span>
+                  <span class="en">ROS 2 &amp; Docker infrastructure</span>
+                </h3>
+                <p class="project-category">Infrastructure</p>
+                <p class="project-text">
+                  <span class="fr">Mise en service du ROSbot 3 Pro : piles Docker Compose (navigation, téléprésence), configuration DDS, caméra OAK-D (DepthAI), enregistrement mcap.</span>
+                  <span class="en">ROSbot 3 Pro commissioning: Docker Compose stacks (navigation, telepresence), DDS configuration, OAK-D camera (DepthAI), mcap recording.</span>
+                </p>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!-- ARTICLES (blog layout) -->
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Articles</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="projects/apriltag-visual-slam.html">
+                <figure class="blog-banner-box">
+                  <img src="./assets/vslam-trajectory-gt.png" alt="EKF Visual-SLAM article">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">SLAM</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07">2026</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">
+                    <span class="fr">SLAM visuel EKF avec amers AprilTag</span>
+                    <span class="en">EKF Visual-SLAM with AprilTag landmarks</span>
+                  </h3>
+                  <p class="blog-text">
+                    <span class="fr">Du modèle de reprojection à la mise à jour de Kalman : le pipeline complet, équations et résultats, en 10 sections.</span>
+                    <span class="en">From the reprojection model to the Kalman update: the complete pipeline, equations and results, in 10 sections.</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="projects/mbot2-localisation.html">
+                <figure class="blog-banner-box">
+                  <img src="./assets/position-globale.png" alt="mBot2 localization article">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category"><span class="fr">Localisation</span><span class="en">Localization</span></p>
+                    <span class="dot"></span>
+                    <time datetime="2026-03">2026</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">
+                    <span class="fr">Localisation et navigation autonome d'un mBot2</span>
+                    <span class="en">Localization and autonomous navigation of an mBot2</span>
+                  </h3>
+                  <p class="blog-text">
+                    <span class="fr">Scan ultrason 360°, K-Means et analyse de Procruste : comment un robot éducatif retrouve sa position et rejoint une cible. (FR)</span>
+                    <span class="en">360° ultrasonic scan, K-Means and Procrustes analysis: how an educational robot finds its pose and reaches a target. (French)</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!-- CONTACT -->
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            <span class="fr">
+              Je suis à la recherche de mon premier CDI en systèmes embarqués, robotique ou traitement
+              du signal. Le moyen le plus simple de me joindre est LinkedIn — n'hésitez pas !
+            </span>
+            <span class="en">
+              I am looking for my first permanent position in embedded systems, robotics or signal
+              processing. The easiest way to reach me is LinkedIn — feel free!
+            </span>
+          </p>
+
+          <div class="contact-links">
+            <!-- TODO: remplacer par votre vrai lien LinkedIn -->
+            <a class="form-btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+              <ion-icon name="logo-linkedin"></ion-icon>
+              <span>LinkedIn</span>
+            </a>
+            <a class="form-btn" href="https://github.com/DJ3B" target="_blank" rel="noopener">
+              <ion-icon name="logo-github"></ion-icon>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </section>
+
+      </article>
+
     </div>
-    <div class="skill-box">
-      <h3><span class="fr">Robotique &amp; capteurs</span><span class="en">Robotics &amp; sensors</span></h3>
-      <ul>
-        <li><span class="fr">ROS 2, rosbags (mcap), RViz, TF</span><span class="en">ROS 2, rosbags (mcap), RViz, TF</span></li>
-        <li><span class="fr">LiDAR, ultrason, IMU/gyroscope, caméra RGB</span><span class="en">LiDAR, ultrasonic, IMU/gyroscope, RGB camera</span></li>
-        <li><span class="fr">Vision : AprilTag, calibration caméra</span><span class="en">Vision: AprilTag, camera calibration</span></li>
-        <li><span class="fr">Plateformes : ROSbot 3 Pro, mBot2/CyberPi</span><span class="en">Platforms: ROSbot 3 Pro, mBot2/CyberPi</span></li>
-      </ul>
-    </div>
-    <div class="skill-box">
-      <h3><span class="fr">Programmation</span><span class="en">Programming</span></h3>
-      <ul>
-        <li>MATLAB</li>
-        <li>Python / MicroPython</li>
-        <li><span class="fr">Sockets TCP/IP, protocoles de communication</span><span class="en">TCP/IP sockets, communication protocols</span></li>
-        <li>HTML / CSS / JavaScript</li>
-      </ul>
-    </div>
-    <div class="skill-box">
-      <h3><span class="fr">Outils &amp; méthodes</span><span class="en">Tools &amp; methods</span></h3>
-      <ul>
-        <li>Docker / Docker Compose, Linux</li>
-        <li>Git / GitHub</li>
-        <li><span class="fr">Validation expérimentale, campagnes de mesures</span><span class="en">Experimental validation, measurement campaigns</span></li>
-        <li><span class="fr">Lecture et implémentation d'articles scientifiques</span><span class="en">Reading and implementing research papers</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="contact-box">
-    <p>
-      <span class="fr">Je suis à la recherche de mon premier CDI — n'hésitez pas à me contacter&nbsp;!</span>
-      <span class="en">I am looking for my first permanent position — feel free to reach out!</span>
-    </p>
-    <div class="btn-row" style="justify-content:center;">
-      <!-- TODO: remplacer par votre vrai lien LinkedIn -->
-      <a class="btn primary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/DJ3B" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-</section>
+  </main>
 
-<footer>
-  <span class="fr">© 2026 Said AFRITE — Portfolio réalisé à la main (HTML/CSS/JS).</span>
-  <span class="en">© 2026 Said AFRITE — Hand-built portfolio (HTML/CSS/JS).</span>
-</footer>
+  <script src="./assets/js/vcard.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<script src="script.js"></script>
 </body>
+
 </html>
