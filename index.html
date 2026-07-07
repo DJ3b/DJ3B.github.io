@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Said AFRITE — Portfolio Robotique &amp; Systèmes Embarqués</title>
+  <meta name="description" content="Portfolio de Said AFRITE — Ingénieur aérospatial, systèmes embarqués et télécommunications. Projets de robotique mobile : EKF, SLAM, fusion de capteurs, ROS 2.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-lang="fr">
+
+<nav>
+  <a class="brand" href="#top">Said AFRITE</a>
+  <div class="links">
+    <a href="#projets"><span class="fr">Projets</span><span class="en">Projects</span></a>
+    <a href="#competences"><span class="fr">Compétences</span><span class="en">Skills</span></a>
+    <a href="#contact">Contact</a>
+    <button class="lang-btn" id="lang-toggle" type="button">🇬🇧 English</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <h1>Said AFRITE</h1>
+  <p class="headline">
+    <span class="fr">Ingénieur aérospatial — Systèmes embarqués &amp; Télécommunications</span>
+    <span class="en">Aerospace Engineer — Embedded Systems &amp; Telecommunications</span>
+  </p>
+  <p class="pitch">
+    <span class="fr">
+      Passionné par la robotique mobile et la fusion de capteurs, j'ai conçu et validé
+      expérimentalement des systèmes complets de localisation, de suivi de cible et de SLAM
+      sur robots réels (ROSbot&nbsp;3 Pro, mBot2) : filtres de Kalman étendus robustes,
+      LiDAR, vision par caméra (AprilTag), ROS&nbsp;2 et MATLAB.
+      Je recherche un premier poste en CDI en systèmes embarqués, robotique ou traitement du signal.
+    </span>
+    <span class="en">
+      Passionate about mobile robotics and sensor fusion, I designed and experimentally
+      validated complete localization, target-tracking and SLAM systems on real robots
+      (ROSbot&nbsp;3 Pro, mBot2): robust extended Kalman filters, LiDAR, camera vision
+      (AprilTag), ROS&nbsp;2 and MATLAB.
+      I am looking for a first permanent position in embedded systems, robotics or signal processing.
+    </span>
+  </p>
+  <div class="btn-row">
+    <a class="btn primary" href="#projets"><span class="fr">Voir mes projets</span><span class="en">See my projects</span></a>
+    <!-- TODO: remplacer par vos vrais liens -->
+    <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+
+<section id="projets">
+  <h2><span class="fr">Projets</span><span class="en">Projects</span></h2>
+  <p class="section-sub">
+    <span class="fr">Travaux réalisés lors de mon stage de fin d'études en robotique mobile — du capteur à l'algorithme, validés sur robots réels.</span>
+    <span class="en">Work carried out during my final-year internship in mobile robotics — from sensor to algorithm, validated on real robots.</span>
+  </p>
+
+  <div class="grid">
+
+    <!-- Featured: EKF LiDAR tracker -->
+    <article class="card featured">
+      <img src="assets/ekf-tracker-apriltag.png" alt="EKF tracker with AprilTag ground truth">
+      <div class="card-body">
+        <h3>
+          <span class="fr">Suivi de cible par EKF robuste — LiDAR + vérité terrain caméra</span>
+          <span class="en">Robust EKF target tracking — LiDAR + camera ground truth</span>
+        </h3>
+        <p>
+          <span class="fr">
+            Un ROSbot&nbsp;3 Pro suit un mBot2 mobile grâce à son LiDAR : clustering du nuage de points,
+            zone de détection, puis filtre de Kalman étendu (modèle à vitesse constante, gating chi-carré
+            à 99,5&nbsp;%). La vérité terrain est fournie en continu par une caméra OAK-D Pro via détection
+            d'AprilTag (Tag36h11) avec calibration et transformation de repères TF. J'ai également implémenté
+            une variante <strong>robuste (RI-EKF)</strong> issue d'un article de recherche (Belles et al., 2023) :
+            M-estimateur de Tukey avec itérations IRLS, testée sur des données volontairement bruitées.
+            Pipeline complet de rejeu hors-ligne de rosbags ROS&nbsp;2 (mcap) sous MATLAB, avec analyse
+            d'innovation et erreur de position de l'ordre de 2&nbsp;cm.
+          </span>
+          <span class="en">
+            A ROSbot&nbsp;3 Pro tracks a moving mBot2 with its LiDAR: point-cloud clustering, detection
+            zone, then an extended Kalman filter (constant-velocity model, 99.5&nbsp;% chi-square innovation
+            gating). Continuous ground truth comes from an OAK-D Pro camera via AprilTag detection (Tag36h11)
+            with calibration and TF frame transforms. I also implemented a <strong>robust variant (RI-EKF)</strong>
+            from a research paper (Belles et al., 2023): Tukey M-estimator with IRLS iterations, tested on
+            deliberately noisy data. Full offline replay pipeline of ROS&nbsp;2 rosbags (mcap) in MATLAB,
+            with innovation analysis and position error around 2&nbsp;cm.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">MATLAB</span><span class="tag">ROS 2</span><span class="tag">EKF</span>
+          <span class="tag">LiDAR</span><span class="tag">AprilTag</span><span class="tag">OAK-D Pro</span>
+          <span class="tag">Robust filtering</span><span class="tag">rosbag / mcap</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- mBot2 localization -->
+    <article class="card">
+      <img src="assets/position-globale.png" alt="Estimated global position of the mBot2">
+      <div class="card-body">
+        <h3>
+          <span class="fr">Localisation globale d'un mBot2 — K-Means &amp; Procruste</span>
+          <span class="en">Global localization of an mBot2 — K-Means &amp; Procrustes</span>
+        </h3>
+        <p>
+          <span class="fr">
+            Le robot scanne son environnement à 360° (ultrason + gyroscope) et transmet les mesures
+            en temps réel à MATLAB via TCP/IP. Le nuage de points est segmenté par K-Means, puis une
+            analyse de Procruste teste les permutations d'amers pour estimer la pose complète (x, y, θ)
+            du robot, qui rejoint ensuite une cible de façon autonome.
+          </span>
+          <span class="en">
+            The robot performs a 360° scan of its surroundings (ultrasonic + gyroscope) and streams
+            measurements to MATLAB over TCP/IP. The point cloud is segmented with K-Means, then a
+            Procrustes analysis tests landmark permutations to estimate the robot's full pose (x, y, θ),
+            after which it drives autonomously to a target.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">K-Means</span>
+          <span class="tag">Procrustes</span><span class="tag">TCP/IP</span><span class="tag">CyberPi</span>
+        </div>
+        <a class="more" href="projects/mbot2-localisation.html">
+          <span class="fr">Lire l'article détaillé →</span><span class="en">Read the full article (FR) →</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Gauss-Newton localization -->
+    <article class="card">
+      <img src="assets/resultats-gn.png" alt="Gauss-Newton localization results">
+      <div class="card-body">
+        <h3>
+          <span class="fr">Localisation par optimisation de Gauss-Newton</span>
+          <span class="en">Localization via Gauss-Newton optimization</span>
+        </h3>
+        <p>
+          <span class="fr">
+            Estimation de la pose du robot par minimisation non linéaire des résidus de mesure
+            (distances aux amers) avec l'algorithme de Gauss-Newton : construction de la jacobienne,
+            itérations jusqu'à convergence et validation expérimentale sur le mBot2, en comparaison
+            avec l'approche Procruste.
+          </span>
+          <span class="en">
+            Robot pose estimation by nonlinear least-squares minimization of measurement residuals
+            (ranges to landmarks) using the Gauss-Newton algorithm: Jacobian construction, iteration
+            to convergence and experimental validation on the mBot2, compared against the Procrustes
+            approach.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">MATLAB</span><span class="tag">Gauss-Newton</span>
+          <span class="tag">Least squares</span><span class="tag">Estimation</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- SLAM -->
+    <article class="card">
+      <img src="assets/premier-mapping.png" alt="First successful SLAM mapping">
+      <div class="card-body">
+        <h3>
+          <span class="fr">SLAM — cartographie et localisation simultanées</span>
+          <span class="en">SLAM — simultaneous localization and mapping</span>
+        </h3>
+        <p>
+          <span class="fr">
+            Expérimentations de SLAM par EKF sur robots réels : cartographie de l'environnement,
+            enregistrement et rejeu de campagnes de mesures (rosbags de plusieurs Go), détection
+            d'amers par AprilTag et évaluation de la cohérence carte/trajectoire sur plusieurs
+            itérations d'algorithme.
+          </span>
+          <span class="en">
+            EKF-SLAM experiments on real robots: environment mapping, recording and replay of
+            measurement campaigns (multi-GB rosbags), AprilTag landmark detection and evaluation
+            of map/trajectory consistency across several algorithm iterations.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">SLAM</span><span class="tag">EKF</span><span class="tag">Python</span>
+          <span class="tag">MATLAB</span><span class="tag">ROS 2</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Embedded mBot2 -->
+    <article class="card">
+      <img src="assets/mbot2.jpg" alt="mBot2 robot with CyberPi">
+      <div class="card-body">
+        <h3>
+          <span class="fr">Programmation embarquée mBot2 (CyberPi)</span>
+          <span class="en">Embedded programming on the mBot2 (CyberPi)</span>
+        </h3>
+        <p>
+          <span class="fr">
+            Développements Python sur microcontrôleur : suiveur de ligne avec capteurs RGB et
+            télémétrie temps réel, filtre de Kalman 1D pour lisser les mesures de distance
+            ultrason, téléopération au clavier via MATLAB et synthèse vocale embarquée.
+          </span>
+          <span class="en">
+            Python development on a microcontroller: RGB-sensor line follower with real-time
+            telemetry, a 1D Kalman filter to smooth ultrasonic range measurements, keyboard
+            teleoperation through MATLAB and on-board text-to-speech.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">MicroPython</span><span class="tag">Kalman 1D</span>
+          <span class="tag">Capteurs RGB</span><span class="tag">Wi-Fi / sockets</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ROS 2 / Docker -->
+    <article class="card">
+      <img src="assets/tracker-v2.png" alt="LiDAR tracking visualization">
+      <div class="card-body">
+        <h3>
+          <span class="fr">Infrastructure ROS 2 &amp; Docker — ROSbot 3 Pro</span>
+          <span class="en">ROS 2 &amp; Docker infrastructure — ROSbot 3 Pro</span>
+        </h3>
+        <p>
+          <span class="fr">
+            Mise en service et exploitation d'un ROSbot 3 Pro : déploiement de piles logicielles
+            conteneurisées (Docker Compose) pour la navigation autonome et la téléprésence,
+            configuration DDS, pilotage de la caméra OAK-D (DepthAI), acquisition LiDAR temps réel
+            et enregistrement de données expérimentales au format mcap.
+          </span>
+          <span class="en">
+            Commissioning and operating a ROSbot 3 Pro: deployment of containerized software stacks
+            (Docker Compose) for autonomous navigation and telepresence, DDS configuration, OAK-D
+            camera integration (DepthAI), real-time LiDAR acquisition and experimental data recording
+            in mcap format.
+          </span>
+        </p>
+        <div class="tags">
+          <span class="tag">ROS 2</span><span class="tag">Docker</span><span class="tag">Linux</span>
+          <span class="tag">DepthAI</span><span class="tag">RViz</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="competences">
+  <h2><span class="fr">Compétences</span><span class="en">Skills</span></h2>
+  <p class="section-sub">
+    <span class="fr">Acquises et mises en pratique sur des systèmes réels.</span>
+    <span class="en">Acquired and applied on real systems.</span>
+  </p>
+  <div class="skills-grid">
+    <div class="skill-box">
+      <h3><span class="fr">Estimation &amp; fusion de capteurs</span><span class="en">Estimation &amp; sensor fusion</span></h3>
+      <ul>
+        <li><span class="fr">Filtre de Kalman (1D, EKF, EKF robuste / M-estimateurs)</span><span class="en">Kalman filtering (1D, EKF, robust EKF / M-estimators)</span></li>
+        <li><span class="fr">Gating chi-carré, analyse d'innovation</span><span class="en">Chi-square gating, innovation analysis</span></li>
+        <li><span class="fr">Moindres carrés, Gauss-Newton, Procruste (SVD)</span><span class="en">Least squares, Gauss-Newton, Procrustes (SVD)</span></li>
+        <li><span class="fr">SLAM, association de données, K-Means</span><span class="en">SLAM, data association, K-Means</span></li>
+      </ul>
+    </div>
+    <div class="skill-box">
+      <h3><span class="fr">Robotique &amp; capteurs</span><span class="en">Robotics &amp; sensors</span></h3>
+      <ul>
+        <li><span class="fr">ROS 2, rosbags (mcap), RViz, TF</span><span class="en">ROS 2, rosbags (mcap), RViz, TF</span></li>
+        <li><span class="fr">LiDAR, ultrason, IMU/gyroscope, caméra RGB</span><span class="en">LiDAR, ultrasonic, IMU/gyroscope, RGB camera</span></li>
+        <li><span class="fr">Vision : AprilTag, calibration caméra</span><span class="en">Vision: AprilTag, camera calibration</span></li>
+        <li><span class="fr">Plateformes : ROSbot 3 Pro, mBot2/CyberPi</span><span class="en">Platforms: ROSbot 3 Pro, mBot2/CyberPi</span></li>
+      </ul>
+    </div>
+    <div class="skill-box">
+      <h3><span class="fr">Programmation</span><span class="en">Programming</span></h3>
+      <ul>
+        <li>MATLAB</li>
+        <li>Python / MicroPython</li>
+        <li><span class="fr">Sockets TCP/IP, protocoles de communication</span><span class="en">TCP/IP sockets, communication protocols</span></li>
+        <li>HTML / CSS / JavaScript</li>
+      </ul>
+    </div>
+    <div class="skill-box">
+      <h3><span class="fr">Outils &amp; méthodes</span><span class="en">Tools &amp; methods</span></h3>
+      <ul>
+        <li>Docker / Docker Compose, Linux</li>
+        <li>Git / GitHub</li>
+        <li><span class="fr">Validation expérimentale, campagnes de mesures</span><span class="en">Experimental validation, measurement campaigns</span></li>
+        <li><span class="fr">Lecture et implémentation d'articles scientifiques</span><span class="en">Reading and implementing research papers</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-box">
+    <p>
+      <span class="fr">Je suis à la recherche de mon premier CDI — n'hésitez pas à me contacter&nbsp;!</span>
+      <span class="en">I am looking for my first permanent position — feel free to reach out!</span>
+    </p>
+    <div class="btn-row" style="justify-content:center;">
+      <!-- TODO: remplacer par vos vrais liens -->
+      <a class="btn primary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fr">© 2026 Said AFRITE — Portfolio réalisé à la main (HTML/CSS/JS).</span>
+  <span class="en">© 2026 Said AFRITE — Hand-built portfolio (HTML/CSS/JS).</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

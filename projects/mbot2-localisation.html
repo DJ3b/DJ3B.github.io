@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Localisation d'un mBot2 — Said AFRITE</title>
+  <meta name="description" content="Localisation et navigation autonome d'un robot mBot2 : scan ultrason 360°, K-Means, analyse de Procruste et communication TCP/IP avec MATLAB.">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-lang="fr">
+
+<nav>
+  <a class="brand" href="../index.html">Said AFRITE</a>
+  <div class="links">
+    <a href="../index.html#projets">Projets</a>
+    <a href="../index.html#competences">Compétences</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="article">
+  <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+
+  <h1>Localisation et navigation autonome d'un robot mBot2</h1>
+  <p style="color: var(--muted);">Capteur ultrason, algorithmes de recalage (K-Means, Procruste) et communication TCP/IP avec MATLAB.</p>
+
+  <h2>Introduction du projet</h2>
+  <p>Dans le cadre de mon stage, j'ai développé un système de localisation pour un robot mBot2.
+  L'objectif était de permettre au robot de se repérer dans un espace restreint en utilisant uniquement
+  son capteur à ultrasons et son gyroscope, puis de se diriger vers une cible précise. On commence par
+  créer une carte de l'environnement d'étude, où les landmarks sont positionnés selon leurs coordonnées
+  (x, y) dans le repère de la carte choisie. Dans ce cas, 3 boîtes sont choisies et positionnées autour
+  du robot. L'environnement de l'étude doit être stérile pour éviter de fausses mesures. La complexité
+  réside dans le fait que le robot doit scanner son environnement, identifier des points de repère et
+  calculer sa position globale en communiquant avec un serveur MATLAB via une connexion TCP/IP.</p>
+
+  <figure>
+    <img src="../assets/mbot2.jpg" alt="mBot2 équipé du module CyberPi">
+    <figcaption>Figure 1 : Robot mBot2 équipé du module CyberPi</figcaption>
+  </figure>
+
+  <h2>Étape 1 : Acquisition de données</h2>
+  <p>La première partie du projet se déroule directement sur le microcontrôleur du robot (CyberPi).
+  Le script Python embarqué commence par établir une connexion Wi-Fi et se connecte au serveur MATLAB
+  via un socket TCP sur le port 5000.</p>
+
+  <p>Une fois connecté, le robot effectue une rotation sur lui-même à vitesse réduite pour réaliser un
+  balayage de son environnement. À une fréquence de 20&nbsp;Hz, il relève deux informations :</p>
+  <ul>
+    <li><strong>L'angle actuel</strong> via son gyroscope intégré.</li>
+    <li><strong>La distance de l'obstacle</strong> mesurée par son capteur ultrason.</li>
+  </ul>
+  <p>Ces données sont envoyées en temps réel à MATLAB sous le format <code>angle,distance</code>.
+  Le robot s'arrête lorsqu'il a effectué un tour complet (soit un cumul de rotation d'environ 355 degrés)
+  et envoie un signal "END".</p>
+
+  <figure>
+    <img src="../assets/scan360-code.png" alt="Code Python du scan 360°">
+    <figcaption>Figure 2 : Extrait de code Python sur microcontrôleur pour le scan 360°</figcaption>
+  </figure>
+
+  <h2>Étape 2 : Traitement et localisation sur MATLAB</h2>
+  <p>Étant donné la faible puissance de calcul et le stockage restreint du microcontrôleur, le traitement
+  des données est effectué sur un PC. Le script MATLAB écoute sur le port 5000 et réceptionne le nuage de
+  points. Pour éviter le bruit des capteurs vis-à-vis des obstacles environnants qui ne sont pas répertoriés
+  dans la carte globale, les distances irréalistes ou erronées (hors de la plage 0–40&nbsp;cm) sont filtrées.
+  Cette distance peut être adaptée à l'environnement de l'expérience.</p>
+
+  <h3>1. Clustering avec K-Means</h3>
+  <p>Les coordonnées polaires reçues sont converties en coordonnées cartésiennes locales dans le repère
+  robot. À ce stade, le robot « voit » des nuages de points. Pour identifier les trois boîtes qui nous
+  servent de repères (landmarks), on utilise l'algorithme d'apprentissage non supervisé
+  <strong>K-Means</strong>. En demandant 3 clusters (<code>kmeans(X_scan, 3)</code>), l'algorithme trouve
+  le centre de gravité de chaque boîte dans le repère local du robot.</p>
+
+  <figure>
+    <img src="../assets/scan-local.png" alt="Points du scan robot">
+    <figcaption>Figure 3 : Ensemble de points du scan robot</figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/points-scan.png" alt="Clusters identifiés">
+    <figcaption>Figure 4 : Points du scan après identification des clusters dans le repère robot</figcaption>
+  </figure>
+
+  <h3>2. Data association et analyse de Procruste</h3>
+  <p>Nous connaissons la position absolue de nos 3 boîtes dans la pièce (la carte globale). Le défi est de
+  faire correspondre nos 3 boîtes « locales » avec ces 3 boîtes « globales ». Puisque nous ne savons pas
+  quelle boîte est laquelle, le script teste toutes les permutations possibles (6 combinaisons).</p>
+
+  <p>Pour chaque permutation, une <strong>analyse de Procruste</strong> est effectuée. Cet algorithme
+  calcule la meilleure translation et rotation pour superposer la carte locale sur la carte globale.
+  La combinaison qui donne la plus petite erreur est conservée.</p>
+
+  <h2>Mathématiques de l'erreur de Procruste</h2>
+  <p>L'algorithme de Procruste permet de recaler le scan local (nuage de points mobile) sur une carte
+  globale (points de référence fixes).</p>
+
+  <h3>1. Le modèle de transformation</h3>
+  <p>L'algorithme cherche à résoudre l'équation de transformation rigide suivante :</p>
+  <div class="math-block">X<sub>global</sub> = X<sub>local</sub> * T + c</div>
+  <ul>
+    <li><strong>X<sub>local</sub></strong> : matrice (3×2) des amers détectés.</li>
+    <li><strong>T</strong> : matrice d'isométrie (rotation).</li>
+    <li><strong>c</strong> : vecteur de translation (position du robot).</li>
+  </ul>
+
+  <h3>2. Définition de l'erreur quadratique</h3>
+  <p>L'erreur renvoyée par la fonction <code>procrustes()</code> (notée <em>d</em>) est la
+  <strong>somme des carrés des résidus</strong>. Elle mesure l'écart entre les positions réelles des
+  boîtes et les positions estimées après transformation :</p>
+  <div class="math-block">d = &Sigma; || (X<sub>global, i</sub>) - (X<sub>local, i</sub> * T + c) ||<sup>2</sup></div>
+  <p>Plus <strong>d</strong> est proche de 0, plus l'association entre les points du scan et les points
+  de la carte est cohérente.</p>
+
+  <h3>3. Étapes de minimisation</h3>
+  <p><strong>A. Centrage (translation)</strong> — pour isoler la rotation, on centre les deux nuages de
+  points en soustrayant leur moyenne respective (barycentre) :</p>
+  <div class="math-block">X' = X - &mu;<sub>X</sub></div>
+  <p><strong>B. Rotation (SVD)</strong> — la rotation optimale <strong>T</strong> est trouvée via une
+  décomposition en valeurs singulières (SVD) de la matrice de covariance <strong>M</strong> :</p>
+  <div class="math-block">M = X<sub>local</sub><sup>T</sup> * X<sub>global</sub><br>M = U &Sigma; V<sup>T</sup><br>T = U * V<sup>T</sup></div>
+
+  <h3>4. Application à la localisation</h3>
+  <table>
+    <thead>
+      <tr><th>Composante</th><th>Résultat robotique</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Erreur (d)</strong></td><td>Validation de la correspondance (data association).</td></tr>
+      <tr><td><strong>Translation (c)</strong></td><td>Coordonnées (X, Y) du robot dans la carte.</td></tr>
+      <tr><td><strong>Rotation (T)</strong></td><td>Orientation (&theta;) du robot.</td></tr>
+    </tbody>
+  </table>
+
+  <p><em>Note : dans le script MATLAB, nous testons les 6 permutations possibles des boîtes. Celle qui
+  minimise <strong>d</strong> est retenue comme la configuration réelle du robot.</em></p>
+
+  <p>La matrice de transformation de Procruste nous donne alors directement :</p>
+  <ul>
+    <li>La position en X et Y du robot dans la pièce (extraite du vecteur de translation).</li>
+    <li>L'orientation du robot (extraite de la matrice de rotation).</li>
+  </ul>
+
+  <figure>
+    <img src="../assets/position-globale.png" alt="Estimation de position et orientation">
+    <figcaption>Figure 5 : Résultat de l'estimation de position et d'orientation du robot</figcaption>
+  </figure>
+
+  <h2>Étape 3 : Calcul de trajectoire et mouvement</h2>
+  <p>Maintenant que MATLAB connaît la position exacte du robot et son orientation, il calcule le vecteur
+  pour atteindre une cible définie à l'avance (dans mon test : X = −58, Y = 65).</p>
+  <p>Une simple trigonométrie (utilisant <code>atan2</code>) permet d'en déduire l'angle de rotation
+  relatif nécessaire et la distance linéaire à parcourir.</p>
+  <p>MATLAB renvoie alors l'ordre de mouvement au robot via la commande TCP : <code>MOVE,angle,distance</code>.
+  De son côté, le mBot2 réceptionne cette chaîne de caractères, la découpe, effectue sa rotation, puis
+  avance en ligne droite jusqu'à son objectif avant d'afficher "Arrived !" sur son écran.</p>
+
+  <h2>Conclusion des travaux</h2>
+  <p>Cette approche hybride montre comment un matériel simple (un mBot éducatif) couplé à la puissance de
+  calcul d'un ordinateur distant permet de mettre en place des concepts avancés de la robotique mobile.
+  La robustesse de l'algorithme K-Means couplée à l'analyse de Procruste permet de pallier les imprécisions
+  inhérentes au capteur ultrason.</p>
+
+  <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+</div>
+
+<footer>© 2026 Said AFRITE</footer>
+
+</body>
+</html>
