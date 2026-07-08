@@ -1885,6 +1885,13 @@ textarea.form-input::-webkit-resizer { display: none; }
   #SITE CUSTOMIZATIONS (Said AFRITE)
 \*-----------------------------------*/
 
+/* accent color: white/light gray instead of the template gold */
+:root {
+  --orange-yellow-crayola: hsl(0, 0%, 98%);
+  --vegas-gold: hsl(0, 0%, 75%);
+  --text-gradient-yellow: linear-gradient(to bottom right, hsl(0, 0%, 100%), hsl(0, 0%, 82%));
+}
+
 /* bilingual FR/EN toggle */
 body[data-lang="fr"] .en { display: none !important; }
 body[data-lang="en"] .fr { display: none !important; }

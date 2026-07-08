@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Said AFRITE - Portfolio Robotique &amp; Systèmes Embarqués</title>
   <meta name="description" content="Portfolio de Said AFRITE - Ingénieur aérospatial, systèmes embarqués et télécommunications. Projets de robotique mobile : EKF, SLAM, fusion de capteurs, ROS 2.">
-  <link rel="stylesheet" href="./assets/css/style.css?v=3">
+  <link rel="stylesheet" href="./assets/css/style.css?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -578,20 +578,23 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="slam">
-              <div>
+              <a href="projects/lidar-camera-tracker.html">
                 <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
                   <img src="./assets/ekf-tracker-apriltag.png" alt="Robust EKF tracker with AprilTag ground truth">
                 </figure>
                 <h3 class="project-title">
-                  <span class="fr">Suivi de cible par EKF robuste - LiDAR</span>
-                  <span class="en">Robust EKF target tracking - LiDAR</span>
+                  <span class="fr">Suivi de cible par EKF - LiDAR &amp; vérité terrain AprilTag</span>
+                  <span class="en">EKF target tracking - LiDAR &amp; AprilTag ground truth</span>
                 </h3>
                 <p class="project-category">SLAM &amp; Estimation</p>
                 <p class="project-text">
-                  <span class="fr">Un ROSbot suit un mBot2 au LiDAR : EKF avec gating chi-carré et variante robuste RI-EKF (Tukey/IRLS, Belles et al. 2023), vérité terrain AprilTag continue, erreur ≈ 2 cm.</span>
-                  <span class="en">A ROSbot tracks an mBot2 with its LiDAR: EKF with chi-square gating and a robust RI-EKF variant (Tukey/IRLS, Belles et al. 2023), continuous AprilTag ground truth, ≈ 2 cm error.</span>
+                  <span class="fr">Un ROSbot suit un mBot2 au LiDAR : clustering, EKF avec gating chi-carré, vérité terrain AprilTag continue, RMSE de 1,8 cm et analyse de cohérence ANEES. Article détaillé →</span>
+                  <span class="en">A ROSbot tracks an mBot2 with its LiDAR: clustering, EKF with chi-square gating, continuous AprilTag ground truth, 1.8 cm RMSE and ANEES consistency analysis. Full article →</span>
                 </p>
-              </div>
+              </a>
             </li>
 
             <li class="project-item active" data-filter-item data-category="slam">
@@ -679,6 +682,29 @@
         <section class="blog-posts">
 
           <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="projects/lidar-camera-tracker.html">
+                <figure class="blog-banner-box">
+                  <img src="./assets/ekf-v5-summary.png" alt="EKF tracker article">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Tracking</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07">2026</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">
+                    <span class="fr">Suivi de cible par EKF : LiDAR et vérité terrain AprilTag</span>
+                    <span class="en">EKF target tracking: LiDAR and AprilTag ground truth</span>
+                  </h3>
+                  <p class="blog-text">
+                    <span class="fr">Du scan LiDAR brut au gating chi-carré : le pipeline complet, sa justification statistique et une RMSE de 1,8 cm.</span>
+                    <span class="en">From the raw LiDAR scan to chi-square gating: the complete pipeline, its statistical justification and a 1.8 cm RMSE.</span>
+                  </p>
+                </div>
+              </a>
+            </li>
 
             <li class="blog-post-item">
               <a href="projects/apriltag-visual-slam.html">
