@@ -123,13 +123,9 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link="portfolio">
+            <button class="navbar-link" data-nav-link="blog">
               <span class="fr">Projets</span><span class="en">Projects</span>
             </button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link="blog">Articles</button>
           </li>
 
           <li class="navbar-item">
@@ -478,264 +474,16 @@
       </article>
 
 
-      <!-- PORTFOLIO -->
-      <article class="portfolio" data-page="portfolio">
+      <!-- ARTICLES (blog layout) -->
+      <article class="blog" data-page="blog">
 
         <header>
           <h2 class="h2 article-title"><span class="fr">Projets</span><span class="en">Projects</span></h2>
         </header>
 
-        <section class="projects">
-
-          <ul class="filter-list">
-            <li class="filter-item">
-              <button class="active" data-filter-btn data-filter-value="all">
-                <span class="fr">Tous</span><span class="en">All</span>
-              </button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn data-filter-value="slam">SLAM &amp; Estimation</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn data-filter-value="embedded">
-                <span class="fr">Embarqué</span><span class="en">Embedded</span>
-              </button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn data-filter-value="aero">
-                <span class="fr">Aéronautique</span><span class="en">Aeronautics</span>
-              </button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn data-filter-value="infra">Infrastructure</button>
-            </li>
-          </ul>
-
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-select-value>
-                <span class="fr">Catégorie</span><span class="en">Category</span>
-              </div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-            </button>
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item data-filter-value="all">
-                  <span class="fr">Tous</span><span class="en">All</span>
-                </button>
-              </li>
-              <li class="select-item">
-                <button data-select-item data-filter-value="slam">SLAM &amp; Estimation</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item data-filter-value="embedded">
-                  <span class="fr">Embarqué</span><span class="en">Embedded</span>
-                </button>
-              </li>
-              <li class="select-item">
-                <button data-select-item data-filter-value="aero">
-                  <span class="fr">Aéronautique</span><span class="en">Aeronautics</span>
-                </button>
-              </li>
-              <li class="select-item">
-                <button data-select-item data-filter-value="infra">Infrastructure</button>
-              </li>
-            </ul>
-          </div>
-
-          <ul class="project-list">
-
-            <li class="project-item active" data-filter-item data-category="aero">
-              <a href="projects/autonomous-glider.html">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/glider-photo.jpg" alt="1 m wingspan autonomous glider">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">Planeur autonome à pilote automatique</span>
-                  <span class="en">Autonomous glider with autopilot</span>
-                </h3>
-                <p class="project-category"><span class="fr">Aéronautique</span><span class="en">Aeronautics</span></p>
-                <p class="project-text">
-                  <span class="fr">Planeur de 1 m optimisé vol lent (profil CH10sm, bas Reynolds, XFLR5) : structure balsa et impression 3D, PID embarqué sur Arduino à 100 Hz, essais en vol comparatifs à l'ENAC. Article détaillé →</span>
-                  <span class="en">1 m glider optimized for slow flight (CH10sm airfoil, low Reynolds, XFLR5): balsa and 3D-printed structure, on-board Arduino PID at 100 Hz, comparative flight tests at ENAC. Full article →</span>
-                </p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="slam">
-              <a href="projects/apriltag-visual-slam.html">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/vslam-live-view.png" alt="EKF Visual-SLAM live view">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">SLAM visuel EKF - amers AprilTag</span>
-                  <span class="en">EKF Visual-SLAM - AprilTag landmarks</span>
-                </h3>
-                <p class="project-category">SLAM &amp; Estimation</p>
-                <p class="project-text">
-                  <span class="fr">SLAM complet depuis le seul flux RGB : pose caméra + carte de tags estimées conjointement, carte LiDAR, évaluation face à l'odométrie. Article détaillé →</span>
-                  <span class="en">Complete SLAM from the RGB stream alone: camera pose + tag map jointly estimated, LiDAR map, evaluation against odometry. Full article →</span>
-                </p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="slam">
-              <a href="projects/mbot2-localisation.html">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/position-globale.png" alt="mBot2 global localization">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">Localisation globale mBot2 - K-Means &amp; Procruste</span>
-                  <span class="en">mBot2 global localization - K-Means &amp; Procrustes</span>
-                </h3>
-                <p class="project-category">SLAM &amp; Estimation</p>
-                <p class="project-text">
-                  <span class="fr">Scan ultrason 360°, clustering K-Means, analyse de Procruste et navigation autonome vers une cible via MATLAB/TCP-IP. Article détaillé →</span>
-                  <span class="en">360° ultrasonic scan, K-Means clustering, Procrustes analysis and autonomous drive to a target via MATLAB/TCP-IP. Full article →</span>
-                </p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="slam">
-              <a href="projects/lidar-camera-tracker.html">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/ekf-tracker-apriltag.png" alt="Robust EKF tracker with AprilTag ground truth">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">Suivi de cible par EKF - LiDAR &amp; vérité terrain AprilTag</span>
-                  <span class="en">EKF target tracking - LiDAR &amp; AprilTag ground truth</span>
-                </h3>
-                <p class="project-category">SLAM &amp; Estimation</p>
-                <p class="project-text">
-                  <span class="fr">Un ROSbot suit un mBot2 au LiDAR : clustering, EKF avec gating chi-carré, vérité terrain AprilTag continue, RMSE de 1,8 cm et analyse de cohérence ANEES. Article détaillé →</span>
-                  <span class="en">A ROSbot tracks an mBot2 with its LiDAR: clustering, EKF with chi-square gating, continuous AprilTag ground truth, 1.8 cm RMSE and ANEES consistency analysis. Full article →</span>
-                </p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="slam">
-              <div>
-                <figure class="project-img">
-                  <img src="./assets/ekf-apriltag-summary.png" alt="Visual-inertial EKF-SLAM evaluation">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">EKF-SLAM visuel-inertiel - AprilTag &amp; IMU</span>
-                  <span class="en">Visual-inertial EKF-SLAM - AprilTag &amp; IMU</span>
-                </h3>
-                <p class="project-category">SLAM &amp; Estimation</p>
-                <p class="project-text">
-                  <span class="fr">Fusion gyroscope + accéléromètre + observations de tags dans un flux d'événements unique ; calibration, transformations tf_static et évaluation quantitative.</span>
-                  <span class="en">Gyroscope + accelerometer + tag observations fused in a single event stream; calibration, tf_static transforms and quantitative evaluation.</span>
-                </p>
-              </div>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="slam">
-              <div>
-                <figure class="project-img">
-                  <img src="./assets/resultats-gn.png" alt="Gauss-Newton localization">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">Localisation par Gauss-Newton</span>
-                  <span class="en">Gauss-Newton localization</span>
-                </h3>
-                <p class="project-category">SLAM &amp; Estimation</p>
-                <p class="project-text">
-                  <span class="fr">Estimation de pose par minimisation non linéaire des résidus de distance aux amers : jacobienne, itérations, validation expérimentale sur mBot2.</span>
-                  <span class="en">Pose estimation by nonlinear minimization of range residuals to landmarks: Jacobian, iterations, experimental validation on the mBot2.</span>
-                </p>
-              </div>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="embedded">
-              <div>
-                <figure class="project-img">
-                  <img src="./assets/mbot2.jpg" alt="mBot2 with CyberPi">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">Programmation embarquée mBot2</span>
-                  <span class="en">Embedded programming on the mBot2</span>
-                </h3>
-                <p class="project-category"><span class="fr">Embarqué</span><span class="en">Embedded</span></p>
-                <p class="project-text">
-                  <span class="fr">Suiveur de ligne RGB avec télémétrie, filtre de Kalman 1D sur l'ultrason, téléopération clavier via MATLAB, synthèse vocale embarquée.</span>
-                  <span class="en">RGB line follower with telemetry, 1D Kalman filter on the ultrasonic sensor, keyboard teleoperation via MATLAB, on-board text-to-speech.</span>
-                </p>
-              </div>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="infra">
-              <div>
-                <figure class="project-img">
-                  <img src="./assets/tracker-v2.png" alt="ROS 2 and Docker infrastructure">
-                </figure>
-                <h3 class="project-title">
-                  <span class="fr">Infrastructure ROS 2 &amp; Docker</span>
-                  <span class="en">ROS 2 &amp; Docker infrastructure</span>
-                </h3>
-                <p class="project-category">Infrastructure</p>
-                <p class="project-text">
-                  <span class="fr">Mise en service du ROSbot 3 Pro : piles Docker Compose (navigation, téléprésence), configuration DDS, caméra OAK-D (DepthAI), enregistrement mcap.</span>
-                  <span class="en">ROSbot 3 Pro commissioning: Docker Compose stacks (navigation, telepresence), DDS configuration, OAK-D camera (DepthAI), mcap recording.</span>
-                </p>
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-      <!-- ARTICLES (blog layout) -->
-      <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Articles</h2>
-        </header>
-
         <section class="blog-posts">
 
           <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="projects/lidar-camera-tracker.html">
-                <figure class="blog-banner-box">
-                  <img src="./assets/ekf-v5-summary.png" alt="EKF tracker article">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category">Tracking</p>
-                    <span class="dot"></span>
-                    <time datetime="2026-07">2026</time>
-                  </div>
-                  <h3 class="h3 blog-item-title">
-                    <span class="fr">Suivi de cible par EKF : LiDAR et vérité terrain AprilTag</span>
-                    <span class="en">EKF target tracking: LiDAR and AprilTag ground truth</span>
-                  </h3>
-                  <p class="blog-text">
-                    <span class="fr">Du scan LiDAR brut au gating chi-carré : le pipeline complet, sa justification statistique et une RMSE de 1,8 cm.</span>
-                    <span class="en">From the raw LiDAR scan to chi-square gating: the complete pipeline, its statistical justification and a 1.8 cm RMSE.</span>
-                  </p>
-                </div>
-              </a>
-            </li>
-
             <li class="blog-post-item">
               <a href="projects/autonomous-glider.html">
                 <figure class="blog-banner-box">
@@ -762,7 +510,7 @@
             <li class="blog-post-item">
               <a href="projects/apriltag-visual-slam.html">
                 <figure class="blog-banner-box">
-                  <img src="./assets/vslam-trajectory-gt.png" alt="EKF Visual-SLAM article">
+                  <img src="./assets/vslam-occupancy-map.png" alt="EKF Visual-SLAM article">
                 </figure>
                 <div class="blog-content">
                   <div class="blog-meta">
@@ -777,6 +525,29 @@
                   <p class="blog-text">
                     <span class="fr">Du modèle de reprojection à la mise à jour de Kalman : le pipeline complet, équations et résultats, en 10 sections.</span>
                     <span class="en">From the reprojection model to the Kalman update: the complete pipeline, equations and results, in 10 sections.</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="projects/lidar-camera-tracker.html">
+                <figure class="blog-banner-box">
+                  <img src="./assets/ekf-tracker-apriltag.png" alt="EKF tracker article">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Tracking</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07">2026</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">
+                    <span class="fr">Suivi de cible par EKF : LiDAR et vérité terrain AprilTag</span>
+                    <span class="en">EKF target tracking: LiDAR and AprilTag ground truth</span>
+                  </h3>
+                  <p class="blog-text">
+                    <span class="fr">Du scan LiDAR brut au gating chi-carré : le pipeline complet, sa justification statistique et une RMSE de 1,8 cm.</span>
+                    <span class="en">From the raw LiDAR scan to chi-square gating: the complete pipeline, its statistical justification and a 1.8 cm RMSE.</span>
                   </p>
                 </div>
               </a>
