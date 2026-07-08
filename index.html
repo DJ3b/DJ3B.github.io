@@ -390,8 +390,8 @@
                 <span class="en">Autonomous glider</span>
               </h4>
               <p class="timeline-text">
-                <span class="fr">Conception et réalisation d'un planeur autonome (1 m d'envergure) à pilote automatique embarqué : firmware en C sur microcontrôleur, acquisition capteurs, asservissement et boucle de contrôle temps réel.</span>
-                <span class="en">Design and build of an autonomous glider (1 m wingspan) with an on-board autopilot: C firmware on a microcontroller, sensor acquisition, servo control and a real-time control loop.</span>
+                <span class="fr">Conception et réalisation d'un planeur autonome (1 m d'envergure) à pilote automatique embarqué : firmware sur microcontrôleur, acquisition capteurs, asservissement et boucle de contrôle temps réel. <a href="projects/autonomous-glider.html" style="color: var(--orange-yellow-crayola);">Article détaillé →</a></span>
+                <span class="en">Design and build of an autonomous glider (1 m wingspan) with an on-board autopilot: microcontroller firmware, sensor acquisition, servo control and a real-time control loop. <a href="projects/autonomous-glider.html" style="color: var(--orange-yellow-crayola);">Full article →</a></span>
               </p>
             </li>
             <li class="timeline-item">
@@ -502,6 +502,11 @@
               </button>
             </li>
             <li class="filter-item">
+              <button data-filter-btn data-filter-value="aero">
+                <span class="fr">Aéronautique</span><span class="en">Aeronautics</span>
+              </button>
+            </li>
+            <li class="filter-item">
               <button data-filter-btn data-filter-value="infra">Infrastructure</button>
             </li>
           </ul>
@@ -527,6 +532,11 @@
               <li class="select-item">
                 <button data-select-item data-filter-value="embedded">
                   <span class="fr">Embarqué</span><span class="en">Embedded</span>
+                </button>
+              </li>
+              <li class="select-item">
+                <button data-select-item data-filter-value="aero">
+                  <span class="fr">Aéronautique</span><span class="en">Aeronautics</span>
                 </button>
               </li>
               <li class="select-item">
@@ -631,6 +641,26 @@
               </div>
             </li>
 
+            <li class="project-item active" data-filter-item data-category="aero">
+              <a href="projects/autonomous-glider.html">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/glider-photo.jpg" alt="1 m wingspan autonomous glider">
+                </figure>
+                <h3 class="project-title">
+                  <span class="fr">Planeur autonome à pilote automatique</span>
+                  <span class="en">Autonomous glider with autopilot</span>
+                </h3>
+                <p class="project-category"><span class="fr">Aéronautique</span><span class="en">Aeronautics</span></p>
+                <p class="project-text">
+                  <span class="fr">Planeur de 1 m optimisé vol lent (profil CH10sm, bas Reynolds, XFLR5) : structure balsa et impression 3D, PID embarqué sur Arduino à 100 Hz, essais en vol comparatifs à l'ENAC. Article détaillé →</span>
+                  <span class="en">1 m glider optimized for slow flight (CH10sm airfoil, low Reynolds, XFLR5): balsa and 3D-printed structure, on-board Arduino PID at 100 Hz, comparative flight tests at ENAC. Full article →</span>
+                </p>
+              </a>
+            </li>
+
             <li class="project-item active" data-filter-item data-category="embedded">
               <div>
                 <figure class="project-img">
@@ -701,6 +731,29 @@
                   <p class="blog-text">
                     <span class="fr">Du scan LiDAR brut au gating chi-carré : le pipeline complet, sa justification statistique et une RMSE de 1,8 cm.</span>
                     <span class="en">From the raw LiDAR scan to chi-square gating: the complete pipeline, its statistical justification and a 1.8 cm RMSE.</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="projects/autonomous-glider.html">
+                <figure class="blog-banner-box">
+                  <img src="./assets/glider-photo.jpg" alt="Autonomous glider article">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category"><span class="fr">Aéronautique</span><span class="en">Aeronautics</span></p>
+                    <span class="dot"></span>
+                    <time datetime="2026-01">2025 - 2026</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">
+                    <span class="fr">Planeur autonome : prototypage rapide et pilote automatique</span>
+                    <span class="en">Autonomous glider: rapid prototyping and autopilot</span>
+                  </h3>
+                  <p class="blog-text">
+                    <span class="fr">Aérodynamique bas Reynolds, fabrication balsa et 3D, PID embarqué et essais en vol : la trajectoire en cloche devient un vol plat.</span>
+                    <span class="en">Low Reynolds aerodynamics, balsa and 3D-printed build, on-board PID and flight tests: the bell-shaped trajectory becomes level flight.</span>
                   </p>
                 </div>
               </a>
