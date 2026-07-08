@@ -1,4 +1,4 @@
-# Portfolio — Said AFRITE
+﻿# Portfolio - Said AFRITE
 
 Personal portfolio (FR/EN) showcasing my mobile-robotics internship projects:
 robust EKF target tracking (LiDAR + AprilTag ground truth), global localization

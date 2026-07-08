@@ -1929,6 +1929,17 @@ body[data-lang="en"] .fr { display: none !important; }
   line-height: 1.5;
 }
 
+/* plain skills list (no percentage bars) */
+.skills-text {
+  color: var(--light-gray-70);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.skills-item:last-child .skills-text { margin-bottom: 0; }
+
 /* contact links (no form backend on GitHub Pages) */
 .contact-links {
   display: flex;

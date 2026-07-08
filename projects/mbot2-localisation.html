@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Localisation d'un mBot2 — Said AFRITE</title>
+  <title>Localisation d'un mBot2 - Said AFRITE</title>
   <meta name="description" content="Localisation et navigation autonome d'un robot mBot2 : scan ultrason 360°, K-Means, analyse de Procruste et communication TCP/IP avec MATLAB.">
   <link rel="stylesheet" href="../style.css">
 </head>
@@ -63,7 +63,7 @@
   <p>Étant donné la faible puissance de calcul et le stockage restreint du microcontrôleur, le traitement
   des données est effectué sur un PC. Le script MATLAB écoute sur le port 5000 et réceptionne le nuage de
   points. Pour éviter le bruit des capteurs vis-à-vis des obstacles environnants qui ne sont pas répertoriés
-  dans la carte globale, les distances irréalistes ou erronées (hors de la plage 0–40&nbsp;cm) sont filtrées.
+  dans la carte globale, les distances irréalistes ou erronées (hors de la plage 0-40&nbsp;cm) sont filtrées.
   Cette distance peut être adaptée à l'environnement de l'expérience.</p>
 
   <h3>1. Clustering avec K-Means</h3>
@@ -114,10 +114,10 @@
   de la carte est cohérente.</p>
 
   <h3>3. Étapes de minimisation</h3>
-  <p><strong>A. Centrage (translation)</strong> — pour isoler la rotation, on centre les deux nuages de
+  <p><strong>A. Centrage (translation)</strong> - pour isoler la rotation, on centre les deux nuages de
   points en soustrayant leur moyenne respective (barycentre) :</p>
   <div class="math-block">X' = X - &mu;<sub>X</sub></div>
-  <p><strong>B. Rotation (SVD)</strong> — la rotation optimale <strong>T</strong> est trouvée via une
+  <p><strong>B. Rotation (SVD)</strong> - la rotation optimale <strong>T</strong> est trouvée via une
   décomposition en valeurs singulières (SVD) de la matrice de covariance <strong>M</strong> :</p>
   <div class="math-block">M = X<sub>local</sub><sup>T</sup> * X<sub>global</sub><br>M = U &Sigma; V<sup>T</sup><br>T = U * V<sup>T</sup></div>
 

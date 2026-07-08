@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLAM visuel EKF avec amers AprilTag — Said AFRITE</title>
+  <title>SLAM visuel EKF avec amers AprilTag - Said AFRITE</title>
   <meta name="description" content="SLAM visuel monoculaire par filtre de Kalman étendu avec amers AprilTag sur ROSbot 3 Pro : modèle de mesure par reprojection, jacobiennes, carte d'occupation LiDAR et évaluation face à l'odométrie.">
   <link rel="stylesheet" href="../style.css">
 </head>
@@ -29,8 +29,8 @@
     <span class="en">EKF Visual-SLAM with AprilTag landmarks</span>
   </h1>
   <p style="color: var(--muted);">
-    <span class="fr">Localisation et cartographie simultanées à partir d'une seule caméra RGB, sur un Husarion ROSbot 3 Pro — rejeu hors-ligne de rosbags ROS 2 sous MATLAB.</span>
-    <span class="en">Simultaneous localization and mapping from a single RGB camera, on a Husarion ROSbot 3 Pro — offline ROS 2 rosbag replay in MATLAB.</span>
+    <span class="fr">Localisation et cartographie simultanées à partir d'une seule caméra RGB, sur un Husarion ROSbot 3 Pro - rejeu hors-ligne de rosbags ROS 2 sous MATLAB.</span>
+    <span class="en">Simultaneous localization and mapping from a single RGB camera, on a Husarion ROSbot 3 Pro - offline ROS 2 rosbag replay in MATLAB.</span>
   </p>
 
   <h2><span class="fr">1. Le problème</span><span class="en">1. The problem</span></h2>
@@ -47,9 +47,9 @@
       distribution par une gaussienne 𝒩(x̂, P) : une moyenne x̂ (la meilleure estimation)
       et une covariance P (l'incertitude). Le filtre alterne alors deux mouvements, image
       après image : <strong>prédire</strong> (pousser l'état à travers un modèle de
-      mouvement — l'incertitude <em>croît</em>) et <strong>corriger</strong> (comparer ce
+      mouvement - l'incertitude <em>croît</em>) et <strong>corriger</strong> (comparer ce
       que la caméra a réellement vu à ce qu'elle <em>aurait dû</em> voir selon l'estimation
-      courante — l'incertitude <em>décroît</em>).
+      courante - l'incertitude <em>décroît</em>).
     </span>
     <span class="en">
       A robot dropped into an unknown room faces a chicken-and-egg problem: to know
@@ -62,9 +62,9 @@
       (EKF), which approximates the distribution by a Gaussian 𝒩(x̂, P): a mean x̂ (the
       best estimate) and a covariance P (the uncertainty). The filter then alternates two
       moves, frame after frame: <strong>predict</strong> (push the state through a motion
-      model — uncertainty <em>grows</em>) and <strong>correct</strong> (compare what the
+      model - uncertainty <em>grows</em>) and <strong>correct</strong> (compare what the
       camera actually saw with what the current estimate says it <em>should</em> have seen
-      — uncertainty <em>shrinks</em>).
+      - uncertainty <em>shrinks</em>).
     </span>
   </p>
 
@@ -72,22 +72,22 @@
   <p>
     <span class="fr">
       Le SLAM visuel généraliste extrait et apparie des milliers de points d'intérêt
-      naturels — puissant mais lourd et fragile. Ici, on utilise des
+      naturels - puissant mais lourd et fragile. Ici, on utilise des
       <strong>AprilTags</strong> : des codes-barres carrés imprimés (famille
       <code>tag36h11</code>) qu'un détecteur retrouve de manière fiable, en renvoyant à la
       fois un <em>identifiant</em> entier unique et les coordonnées pixel des quatre coins.
       Chaque tag ayant une taille physique connue (L = 0,1515 m) et un identifiant connu,
-      l'association de données (« quel amer est-ce ? ») devient triviale et exacte — pas de
+      l'association de données (« quel amer est-ce ? ») devient triviale et exacte - pas de
       gating au plus proche voisin, pas de faux appariements. On peut ainsi se concentrer
       sur les mathématiques de l'estimation plutôt que sur l'appariement de descripteurs.
     </span>
     <span class="en">
-      General visual SLAM extracts and matches thousands of natural feature points —
+      General visual SLAM extracts and matches thousands of natural feature points -
       powerful but heavy and brittle. Here we use <strong>AprilTags</strong> instead:
       printed square barcodes (family <code>tag36h11</code>) that a detector finds
       reliably, returning both a unique integer <em>ID</em> and the pixel coordinates of
       the four corners. Because every tag has a known physical size (L = 0.1515 m) and a
-      known ID, data association ("which landmark is this?") becomes trivial and exact —
+      known ID, data association ("which landmark is this?") becomes trivial and exact -
       no nearest-neighbour gating, no spurious matches. This lets the work focus on the
       estimation mathematics rather than on feature matching.
     </span>
@@ -103,7 +103,7 @@
       les images caméra, le LiDAR 2D, la géométrie statique du robot
       (<code>/tf_static</code>) et l'odométrie fusionnée roues/IMU. Le bag est ensuite
       rejoué hors-ligne dans MATLAB : rien ne tourne sur le robot. Point clé :
-      <strong>seul le flux RGB monoculaire alimente le filtre</strong> — l'odométrie du
+      <strong>seul le flux RGB monoculaire alimente le filtre</strong> - l'odométrie du
       robot sert <em>exclusivement</em> de vérité terrain pour l'évaluation, et le LiDAR
       sert uniquement à dessiner une carte d'occupation en toile de fond.
     </span>
@@ -114,7 +114,7 @@
       around while a ROS 2 <em>rosbag</em> recorded the camera images, the 2D LiDAR, the
       robot's static geometry (<code>/tf_static</code>) and the fused wheel/IMU odometry.
       The bag is then replayed offline in MATLAB: nothing runs on the robot. Key point:
-      <strong>only the monocular RGB stream feeds the filter</strong> — the robot's
+      <strong>only the monocular RGB stream feeds the filter</strong> - the robot's
       odometry is used <em>exclusively</em> as ground truth for evaluation, and the LiDAR
       only draws an occupancy-grid backdrop.
     </span>
@@ -130,7 +130,7 @@
     <tbody>
       <tr>
         <td><code>/oak/rgb/image_raw/compressed</code></td>
-        <td><span class="fr">Images caméra — l'unique entrée du filtre</span><span class="en">Camera images — the filter's only input</span></td>
+        <td><span class="fr">Images caméra - l'unique entrée du filtre</span><span class="en">Camera images - the filter's only input</span></td>
       </tr>
       <tr>
         <td><code>/oak/rgb/camera_info</code></td>
@@ -146,7 +146,7 @@
       </tr>
       <tr>
         <td><code>/scan_filtered</code></td>
-        <td><span class="fr">LiDAR 2D — carte d'occupation en fond</span><span class="en">2D LiDAR — occupancy-map backdrop</span></td>
+        <td><span class="fr">LiDAR 2D - carte d'occupation en fond</span><span class="en">2D LiDAR - occupancy-map backdrop</span></td>
       </tr>
     </tbody>
   </table>
@@ -154,8 +154,8 @@
   <figure>
     <img src="../assets/vslam-live-view.png" alt="Live SLAM view: map and camera frame">
     <figcaption>
-      <span class="fr">Figure 1 : Vue de diagnostic en direct — carte EKF vue de dessus (vert = vérité terrain, rouge = estimation, carrés bleus = tags, fond grisé = occupation LiDAR) et image caméra avec les coins détectés.</span>
-      <span class="en">Figure 1: Live diagnostic view — top-down EKF map (green = ground truth, red = estimate, blue squares = tags, grayscale = LiDAR occupancy) and the camera frame with detected corners.</span>
+      <span class="fr">Figure 1 : Vue de diagnostic en direct - carte EKF vue de dessus (vert = vérité terrain, rouge = estimation, carrés bleus = tags, fond grisé = occupation LiDAR) et image caméra avec les coins détectés.</span>
+      <span class="en">Figure 1: Live diagnostic view - top-down EKF map (green = ground truth, red = estimate, blue squares = tags, grayscale = LiDAR occupancy) and the camera frame with detected corners.</span>
     </figcaption>
   </figure>
 
@@ -171,9 +171,9 @@
   </p>
   <div class="math-block">x = [ θ, ψ, φ, p<sub>WC</sub>, w, v<sub>1</sub> | θ<sup>(1)</sup>, ψ<sup>(1)</sup>, φ<sup>(1)</sup>, p<sub>WP</sub><sup>(1)</sup> | … ]<sup>T</sup> ∈ ℝ<sup>10+6K</sup></div>
   <ul>
-    <li><span class="fr"><strong>1–3</strong> : angles d'Euler de la caméra (attitude R<sub>WC</sub>)</span><span class="en"><strong>1–3</strong>: camera Euler angles (attitude R<sub>WC</sub>)</span></li>
-    <li><span class="fr"><strong>4–6</strong> : position de la caméra p<sub>WC</sub> dans le monde</span><span class="en"><strong>4–6</strong>: camera position p<sub>WC</sub> in the world</span></li>
-    <li><span class="fr"><strong>7–9</strong> : vitesse angulaire w (repère corps)</span><span class="en"><strong>7–9</strong>: angular velocity w (body frame)</span></li>
+    <li><span class="fr"><strong>1-3</strong> : angles d'Euler de la caméra (attitude R<sub>WC</sub>)</span><span class="en"><strong>1-3</strong>: camera Euler angles (attitude R<sub>WC</sub>)</span></li>
+    <li><span class="fr"><strong>4-6</strong> : position de la caméra p<sub>WC</sub> dans le monde</span><span class="en"><strong>4-6</strong>: camera position p<sub>WC</sub> in the world</span></li>
+    <li><span class="fr"><strong>7-9</strong> : vitesse angulaire w (repère corps)</span><span class="en"><strong>7-9</strong>: angular velocity w (body frame)</span></li>
     <li><span class="fr"><strong>10</strong> : vitesse linéaire avant v<sub>1</sub> (axe +X caméra)</span><span class="en"><strong>10</strong>: forward linear velocity v<sub>1</sub> (camera +X axis)</span></li>
     <li><span class="fr"><strong>10+6(j−1)+1 … +6</strong> : angles d'Euler et position du tag j</span><span class="en"><strong>10+6(j−1)+1 … +6</strong>: Euler angles and position of tag j</span></li>
   </ul>
@@ -199,19 +199,19 @@
     </span>
   </p>
 
-  <h2><span class="fr">5. Prédiction — modèle à vitesse constante</span><span class="en">5. Prediction — constant-velocity model</span></h2>
+  <h2><span class="fr">5. Prédiction - modèle à vitesse constante</span><span class="en">5. Prediction - constant-velocity model</span></h2>
   <p>
     <span class="fr">
       Entre deux images séparées de δt, le robot est propagé par un modèle à
       <strong>vitesse constante</strong> : la caméra avance le long de son propre axe X à
       la vitesse v<sub>1</sub>, et son orientation intègre la vitesse angulaire w. Les tags
-      ne bougent pas — leurs blocs sont propagés par l'identité.
+      ne bougent pas - leurs blocs sont propagés par l'identité.
     </span>
     <span class="en">
       Between two frames separated by δt, the robot is propagated with a
       <strong>constant-velocity</strong> model: the camera moves forward along its own X
       axis at speed v<sub>1</sub>, and its orientation integrates the angular velocity w.
-      The tags do not move — their blocks are propagated by the identity.
+      The tags do not move - their blocks are propagated by the identity.
     </span>
   </p>
   <div class="math-block">
@@ -235,7 +235,7 @@
   </p>
   <div class="math-block">x̂<sup>−</sup> = f(x̂),&nbsp;&nbsp;&nbsp; P<sup>−</sup> = F P F<sup>T</sup> + Q,&nbsp;&nbsp;&nbsp; P ← ½(P + P<sup>T</sup>)</div>
 
-  <h2><span class="fr">6. Observation — reprojeter les coins des tags</span><span class="en">6. Observation — reprojecting the tag corners</span></h2>
+  <h2><span class="fr">6. Observation - reprojeter les coins des tags</span><span class="en">6. Observation - reprojecting the tag corners</span></h2>
   <p>
     <span class="fr">
       La mesure d'un tag est constituée des <strong>pixels de ses quatre coins</strong>,
@@ -271,7 +271,7 @@
     </span>
   </p>
 
-  <h2><span class="fr">7. Correction — la mise à jour de Kalman</span><span class="en">7. Correction — the Kalman update</span></h2>
+  <h2><span class="fr">7. Correction - la mise à jour de Kalman</span><span class="en">7. Correction - the Kalman update</span></h2>
   <p>
     <span class="fr">
       Pour tous les tags détectés dans l'image, on forme l'innovation (mesure moins
@@ -306,8 +306,8 @@
     <span class="fr">
       Le modèle h(x) étant pénible à dériver à la main, la jacobienne de mesure H est
       calculée <strong>numériquement</strong> par différences finies avant
-      (δ = 10⁻⁶) — et uniquement sur les colonnes actives : h pour le tag j ne dépend
-      que de la pose caméra (colonnes 1–6) et du bloc de ce tag. Toutes les autres
+      (δ = 10⁻⁶) - et uniquement sur les colonnes actives : h pour le tag j ne dépend
+      que de la pose caméra (colonnes 1-6) et du bloc de ce tag. Toutes les autres
       colonnes restent nulles, ce qui garde H creuse. Chaque tag observé contribue un bloc
       de 8 lignes ; le bruit de mesure vaut R = σ<sub>px</sub>² I avec σ<sub>px</sub> = 5 px,
       volontairement large pour absorber la distorsion non corrigée de l'image. La mise à
@@ -316,9 +316,9 @@
     </span>
     <span class="en">
       Since h(x) is awkward to differentiate by hand, the measurement Jacobian H is
-      computed <strong>numerically</strong> by forward finite differences (δ = 10⁻⁶) —
+      computed <strong>numerically</strong> by forward finite differences (δ = 10⁻⁶) -
       and only on the active columns: h for tag j depends only on the camera pose
-      (columns 1–6) and on that tag's own block. Every other column stays zero, keeping H
+      (columns 1-6) and on that tag's own block. Every other column stays zero, keeping H
       sparse. Each observed tag contributes an 8-row block; the measurement noise is
       R = σ<sub>px</sub>² I with σ<sub>px</sub> = 5 px, deliberately large to absorb the
       uncorrected image distortion. The update ends with angle wrapping into (−π, π] and
@@ -334,7 +334,7 @@
       de zéro depuis le LiDAR : le monde est discrétisé en cellules de 5 cm, chaque
       cellule maintient un log-odds d'occupation mis à jour par lancer de rayons
       (les cellules traversées par le rayon deviennent libres, la cellule d'impact devient
-      occupée). Cette carte ne nourrit <em>pas</em> le filtre — elle sert d'arrière-plan
+      occupée). Cette carte ne nourrit <em>pas</em> le filtre - elle sert d'arrière-plan
       de visualisation et de vérification qualitative de la géométrie estimée.
     </span>
     <span class="en">
@@ -342,7 +342,7 @@
       space, obstacles), a 2D occupancy grid is built from scratch from the LiDAR: the
       world is discretised into 5 cm cells, each holding an occupancy log-odds updated by
       ray casting (cells crossed by a ray become free, the hit cell becomes occupied).
-      This map does <em>not</em> feed the filter — it serves as a visualization backdrop
+      This map does <em>not</em> feed the filter - it serves as a visualization backdrop
       and a qualitative sanity check of the estimated geometry.
     </span>
   </p>
@@ -355,14 +355,14 @@
       fréquence et la qualité des observations de tags : dans les passages sans tag
       visible, l'estimation repose sur la seule prédiction à vitesse constante et l'erreur
       croît, jusqu'à ce qu'un tag revienne dans le champ de vision et ramène l'estimation
-      — visible en dents de scie sur l'erreur par axe.
+      - visible en dents de scie sur l'erreur par axe.
     </span>
     <span class="en">
       Even though the filter sees <em>only the camera</em>, the estimated trajectory
       closely tracks the fused-odometry reference. Its accuracy is ultimately limited by
       how often and how well tags are observed: in stretches with no visible tag the
       estimate relies purely on the constant-velocity prediction and the error grows,
-      until a tag re-enters the field of view and pulls the estimate back — visible as a
+      until a tag re-enters the field of view and pulls the estimate back - visible as a
       saw-tooth in the per-axis error.
     </span>
   </p>
@@ -370,8 +370,8 @@
   <figure>
     <img src="../assets/vslam-trajectory-gt.png" alt="EKF trajectory vs ground truth">
     <figcaption>
-      <span class="fr">Figure 2 : Trajectoire vue de dessus — estimation EKF (rouge) contre <code>/odometry/filtered</code> (noir), avec les six amers cartographiés.</span>
-      <span class="en">Figure 2: Top-down trajectory — EKF estimate (red) vs <code>/odometry/filtered</code> (black), with the six mapped landmarks.</span>
+      <span class="fr">Figure 2 : Trajectoire vue de dessus - estimation EKF (rouge) contre <code>/odometry/filtered</code> (noir), avec les six amers cartographiés.</span>
+      <span class="en">Figure 2: Top-down trajectory - EKF estimate (red) vs <code>/odometry/filtered</code> (black), with the six mapped landmarks.</span>
     </figcaption>
   </figure>
 
@@ -386,32 +386,32 @@
   <figure>
     <img src="../assets/vslam-innovation.png" alt="Correction innovation norm">
     <figcaption>
-      <span class="fr">Figure 4 : Norme d'innovation par image — les pics marquent les désaccords prédiction/mesure ; la tendance décroissante indique que la carte se stabilise.</span>
-      <span class="en">Figure 4: Innovation norm per frame — spikes mark prediction/measurement disagreements; the downward trend shows the map stabilising.</span>
+      <span class="fr">Figure 4 : Norme d'innovation par image - les pics marquent les désaccords prédiction/mesure ; la tendance décroissante indique que la carte se stabilise.</span>
+      <span class="en">Figure 4: Innovation norm per frame - spikes mark prediction/measurement disagreements; the downward trend shows the map stabilising.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/vslam-landmark-map.png" alt="Final landmark map with covariance ellipses">
     <figcaption>
-      <span class="fr">Figure 5 : Carte finale des tags avec ellipses de covariance à 2σ (blocs diagonaux de P) — des ellipses serrées signifient des tags bien localisés.</span>
-      <span class="en">Figure 5: Final tag map with 2σ covariance ellipses (diagonal blocks of P) — tight ellipses mean well-localised tags.</span>
+      <span class="fr">Figure 5 : Carte finale des tags avec ellipses de covariance à 2σ (blocs diagonaux de P) - des ellipses serrées signifient des tags bien localisés.</span>
+      <span class="en">Figure 5: Final tag map with 2σ covariance ellipses (diagonal blocks of P) - tight ellipses mean well-localised tags.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/vslam-occupancy-map.png" alt="LiDAR occupancy map">
     <figcaption>
-      <span class="fr">Figure 6 : Carte d'occupation LiDAR (blanc = libre, noir = mur/obstacle, gris = inconnu) avec trajectoires et tags superposés — l'image « classique » du SLAM.</span>
-      <span class="en">Figure 6: LiDAR occupancy map (white = free, black = wall/obstacle, grey = unknown) with trajectories and tags overlaid — the "classic" SLAM picture.</span>
+      <span class="fr">Figure 6 : Carte d'occupation LiDAR (blanc = libre, noir = mur/obstacle, gris = inconnu) avec trajectoires et tags superposés - l'image « classique » du SLAM.</span>
+      <span class="en">Figure 6: LiDAR occupancy map (white = free, black = wall/obstacle, grey = unknown) with trajectories and tags overlaid - the "classic" SLAM picture.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/vslam-live-figure.png" alt="EKF Visual-SLAM live figure">
     <figcaption>
-      <span class="fr">Figure 7 : La fenêtre MATLAB en cours d'exécution — carte EKF (image 160, 2 tags cartographiés) et détection des coins du tag dans l'image caméra.</span>
-      <span class="en">Figure 7: The MATLAB window mid-run — EKF map (frame 160, 2 tags mapped) and tag corner detection in the camera frame.</span>
+      <span class="fr">Figure 7 : La fenêtre MATLAB en cours d'exécution - carte EKF (image 160, 2 tags cartographiés) et détection des coins du tag dans l'image caméra.</span>
+      <span class="en">Figure 7: The MATLAB window mid-run - EKF map (frame 160, 2 tags mapped) and tag corner detection in the camera frame.</span>
     </figcaption>
   </figure>
 
@@ -436,7 +436,7 @@
       limitations include the missing distortion correction (compensated by a larger R),
       the zero cross-covariance prior at landmark initialization (a benign, self-healing
       inconsistency), and the constant-velocity model which can lag under sharp
-      accelerations — all clearly scoped avenues for improvement.
+      accelerations - all clearly scoped avenues for improvement.
     </span>
   </p>
 
