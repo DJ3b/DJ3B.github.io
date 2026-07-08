@@ -87,35 +87,85 @@
       pitching moment, and minimal drag near C<sub>z max</sub>.
     </span>
   </p>
+  <figure>
+    <img src="../assets/glider-polars.png" alt="XFOIL polars and lift curves of the five candidate airfoils">
+    <figcaption>
+      <span class="fr">Figure 2 : Polaires (Cl en fonction de Cd) et courbes de portance (Cl en fonction de l'incidence) des cinq profils candidats, calculées sous XFOIL à Re = 30 000, 40 000, 60 000 et 100 000.</span>
+      <span class="en">Figure 2: Polars (Cl vs Cd) and lift curves (Cl vs incidence) of the five candidate airfoils, computed in XFOIL at Re = 30,000, 40,000, 60,000 and 100,000.</span>
+    </figcaption>
+  </figure>
+
   <p>
     <span class="fr">
       Le <strong>CH10sm</strong> (série Drela CH, conçue pour les très bas Reynolds) l'a
       emporté : C<sub>z max</sub> d'environ 1,6, décrochage progressif (courbe arrondie au
-      sommet), et un coefficient de moment remarquablement plat entre 2° et 15°, donc un
-      centre de poussée fixe et un vol prévisible. Sa contrepartie est un fort moment
-      piqueur (C<sub>m</sub> ≈ -0,20) qui exige un empennage bien dimensionné. Nous avons
-      ciblé une incidence de 16° (C<sub>z</sub> = 1,4), un calage d'aile de 6°, et une
-      surface portante de 0,156 m² : aile en deux parties, corde de 180 mm au centre,
-      effilement à 140 mm au saumon (effilement 0,778) pour approcher la répartition de
-      portance elliptique.
+      sommet, l'assurance de voler lentement sans perdre brusquement la portance), et un
+      coefficient de moment remarquablement plat entre 2° et 15°, donc un centre de poussée
+      fixe et un vol prévisible même en rafale. Le davissm avait une traînée plus faible et
+      un C<sub>z</sub> comparable, mais son décrochage instable et précoce l'a disqualifié :
+      dans notre contexte, la douceur du décrochage vaut plus que la traînée. La
+      contrepartie du CH10sm est un fort moment piqueur (C<sub>m</sub> ≈ -0,20), visible
+      sur la Figure 3, qui exige un bras de levier de queue et un empennage bien
+      dimensionnés.
     </span>
     <span class="en">
       The <strong>CH10sm</strong> (Drela CH series, designed for very low Reynolds) won:
-      C<sub>z max</sub> of about 1.6, progressive stall (rounded lift-curve top), and a
-      remarkably flat moment coefficient between 2° and 15°, hence a fixed centre of
-      pressure and predictable flight. Its trade-off is a strong nose-down moment
-      (C<sub>m</sub> ≈ -0.20) that demands a properly sized tail. We targeted a 16°
-      incidence (C<sub>z</sub> = 1.4), a 6° wing setting angle, and a 0.156 m² lifting
-      surface: a two-part wing, 180 mm root chord tapering to 140 mm at the tip (taper
-      ratio 0.778) to approach the elliptical lift distribution.
+      C<sub>z max</sub> of about 1.6, progressive stall (rounded lift-curve top, the
+      guarantee of flying slowly without suddenly losing lift), and a remarkably flat
+      moment coefficient between 2° and 15°, hence a fixed centre of pressure and
+      predictable flight even in gusts. The davissm airfoil had lower drag and a comparable
+      C<sub>z</sub>, but its unstable, early stall disqualified it: in our context, stall
+      gentleness is worth more than drag. The CH10sm's trade-off is a strong nose-down
+      moment (C<sub>m</sub> ≈ -0.20), visible in Figure 3, which demands a properly sized
+      tail lever arm and stabilizer.
+    </span>
+  </p>
+
+  <figure>
+    <img src="../assets/glider-cm-curve.png" alt="Moment coefficient versus incidence for the candidate airfoils">
+    <figcaption>
+      <span class="fr">Figure 3 : Coefficient de moment en fonction de l'incidence. La courbe du CH10sm (rouge) est la plus basse (fort moment piqueur) mais remarquablement plate et insensible au Reynolds : le comportement en tangage reste identique à toutes les vitesses de vol.</span>
+      <span class="en">Figure 3: Moment coefficient versus incidence. The CH10sm curve (red) is the lowest (strong nose-down moment) but remarkably flat and insensitive to Reynolds number: the pitch behaviour stays identical at every flight speed.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="fr">
+      Les choix de dimensionnement découlent de cette sélection. Incidence ciblée de 16°
+      (C<sub>z</sub> = 1,4, en retrait du C<sub>z max</sub> instable à 18°) et surface
+      portante de 0,156 m² pour une vitesse cible de 5 m/s. Le calage de l'aile a été
+      poussé à 6° (contre 4° usuels) pour réduire l'assiette et la traînée du fuselage en
+      vol lent, avec une réserve mécanique de -3° dans la pièce d'attache si l'incidence
+      s'avérait excessive. L'aile est en deux parties : corde de 180 mm au centre, où la
+      tige de carbone passe à 25 % de la corde (le centre aérodynamique, pour annuler la
+      torsion induite par le moment de tangage), et effilement à 140 mm au saumon
+      (effilement 0,778), la corde minimale acceptable avant que la tige ne fragilise les
+      nervures de balsa. Ce compromis rapproche la répartition de portance de la
+      distribution elliptique optimale. Un fichier Excel développé pour le projet
+      centralisait tous ces paramètres : foyer global, cordes aérodynamiques moyennes,
+      position des nervures.
+    </span>
+    <span class="en">
+      The sizing decisions follow from that selection. Target incidence of 16°
+      (C<sub>z</sub> = 1.4, backing off from the unstable C<sub>z max</sub> at 18°) and a
+      0.156 m² lifting surface for a 5 m/s target speed. The wing setting angle was pushed
+      to 6° (versus the usual 4°) to lower the fuselage attitude and its drag in slow
+      flight, with a mechanical fallback of -3° in the attachment part in case the
+      incidence proved excessive. The wing is built in two parts: a 180 mm root chord,
+      where the carbon rod passes at 25% chord (the aerodynamic centre, cancelling the
+      torsion induced by the pitching moment), tapering to 140 mm at the tip (taper ratio
+      0.778), the minimum acceptable chord before the rod weakens the balsa ribs. This
+      compromise brings the lift distribution close to the optimal elliptical one. A
+      spreadsheet developed for the project centralized all these parameters: global
+      neutral point, mean aerodynamic chords, rib positions.
     </span>
   </p>
 
   <figure>
     <img src="../assets/glider-xflr5-flow.png" alt="XFLR5 flow visualization around the glider">
     <figcaption>
-      <span class="fr">Figure 2 : Visualisation XFLR5 de l'écoulement autour des surfaces portantes du planeur.</span>
-      <span class="en">Figure 2: XFLR5 visualization of the airflow around the glider's lifting surfaces.</span>
+      <span class="fr">Figure 4 : Visualisation XFLR5 de l'écoulement autour des surfaces portantes du planeur.</span>
+      <span class="en">Figure 4: XFLR5 visualization of the airflow around the glider's lifting surfaces.</span>
     </figcaption>
   </figure>
 
@@ -202,6 +252,36 @@
       JSON through a small web interface.
     </span>
   </p>
+  <p>
+    <span class="fr">
+      Côté intégration, le proto shield sert de support de câblage : les fils du
+      servomoteur y sont soudés sur trois broches (VCC, GND et la sortie A2 qui génère le
+      signal de commande), ce qui évite toute modification directe des cartes Arduino et
+      IMU, partagées avec les autres groupes.
+    </span>
+    <span class="en">
+      On the integration side, the proto shield serves as the wiring platform: the servo
+      wires are soldered onto three pins (VCC, GND and the A2 output that generates the
+      command signal), avoiding any direct modification of the Arduino and IMU boards,
+      which were shared with the other groups.
+    </span>
+  </p>
+
+  <figure>
+    <img src="../assets/glider-electronics.jpg" alt="Arduino MKR stack with soldered servo wiring">
+    <figcaption>
+      <span class="fr">Figure 5 : L'électronique embarquée assemblée : pile Arduino MKR WiFi 1010 + IMU + proto shield, câbles du servomoteur soudés.</span>
+      <span class="en">Figure 5: The assembled on-board electronics: Arduino MKR WiFi 1010 + IMU + proto shield stack, with the servo wires soldered on.</span>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/glider-tail-spring.jpg" alt="Torsion spring of the pull-string linkage on the tail">
+    <figcaption>
+      <span class="fr">Figure 6 : Le ressort de torsion du système pull-string sur la gouverne. C'est cette élasticité qui laissait la gouverne osciller en vol et a motivé le passage au pull-pull.</span>
+      <span class="en">Figure 6: The pull-string system's torsion spring on the control surface. This elasticity let the surface oscillate in flight and motivated the switch to the pull-pull linkage.</span>
+    </figcaption>
+  </figure>
 
   <h2><span class="fr">6. Le pilote automatique : pourquoi un PID sans modèle</span><span class="en">6. The autopilot: why a model-free PID</span></h2>
   <p>
@@ -245,6 +325,51 @@
       balance, K<sub>d</sub> = 0.1 to damp oscillations and avoid overshoot.
     </span>
   </p>
+  <p>
+    <span class="fr">
+      Le réglage s'est fait lancer après lancer, en s'appuyant sur l'effet classique de
+      chaque gain sur la réponse :
+    </span>
+    <span class="en">
+      Tuning was done launch after launch, guided by each gain's classical effect on the
+      response:
+    </span>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><span class="fr">Gain</span><span class="en">Gain</span></th>
+        <th><span class="fr">Temps de montée</span><span class="en">Rise time</span></th>
+        <th><span class="fr">Dépassement</span><span class="en">Overshoot</span></th>
+        <th><span class="fr">Temps de réponse</span><span class="en">Settling time</span></th>
+        <th><span class="fr">Erreur statique</span><span class="en">Static error</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>K<sub>p</sub> = 2,0</td>
+        <td><span class="fr">Diminue</span><span class="en">Decreases</span></td>
+        <td><span class="fr">Augmente</span><span class="en">Increases</span></td>
+        <td><span class="fr">Faible effet</span><span class="en">Small effect</span></td>
+        <td><span class="fr">Diminue</span><span class="en">Decreases</span></td>
+      </tr>
+      <tr>
+        <td>K<sub>i</sub> = 0,2</td>
+        <td><span class="fr">Diminue</span><span class="en">Decreases</span></td>
+        <td><span class="fr">Augmente</span><span class="en">Increases</span></td>
+        <td><span class="fr">Augmente</span><span class="en">Increases</span></td>
+        <td><span class="fr">Élimine</span><span class="en">Eliminates</span></td>
+      </tr>
+      <tr>
+        <td>K<sub>d</sub> = 0,1</td>
+        <td><span class="fr">Faible diminution</span><span class="en">Small decrease</span></td>
+        <td><span class="fr">Diminue</span><span class="en">Decreases</span></td>
+        <td><span class="fr">Diminue</span><span class="en">Decreases</span></td>
+        <td><span class="fr">Aucun effet</span><span class="en">No effect</span></td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2><span class="fr">7. Essais en vol et résultats</span><span class="en">7. Flight tests and results</span></h2>
   <p>
@@ -271,18 +396,26 @@
   </p>
 
   <figure>
+    <img src="../assets/glider-flight-phase.png" alt="Automatic flight phase detection on a launch recording">
+    <figcaption>
+      <span class="fr">Figure 7 : Détection automatique de la phase de vol sur un lancer : le pic de vitesse du lancer et celui de la réception bornent la zone verte, qui coïncide avec une vitesse verticale typique d'un vol plané.</span>
+      <span class="en">Figure 7: Automatic flight-phase detection on one launch: the speed peaks at launch and landing bound the green zone, which coincides with a vertical speed typical of gliding flight.</span>
+    </figcaption>
+  </figure>
+
+  <figure>
     <img src="../assets/glider-trajectories.png" alt="2D trajectories without and with autopilot">
     <figcaption>
-      <span class="fr">Figure 3 : Trajectoires 2D projetées dans le plan de mouvement : en vol libre (à gauche), des cloches balistiques typiques d'une phugoïde non amortie ; avec pilote automatique (à droite), des trajectoires nettement plus plates et linéaires.</span>
-      <span class="en">Figure 3: 2D trajectories projected onto the plane of motion: in free flight (left), ballistic bell shapes typical of an undamped phugoid; with the autopilot (right), markedly flatter and more linear trajectories.</span>
+      <span class="fr">Figure 8 : Trajectoires 2D projetées dans le plan de mouvement : en vol libre (à gauche), des cloches balistiques typiques d'une phugoïde non amortie ; avec pilote automatique (à droite), des trajectoires nettement plus plates et linéaires.</span>
+      <span class="en">Figure 8: 2D trajectories projected onto the plane of motion: in free flight (left), ballistic bell shapes typical of an undamped phugoid; with the autopilot (right), markedly flatter and more linear trajectories.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/glider-speeds.png" alt="Speed evolution during flights">
     <figcaption>
-      <span class="fr">Figure 4 : Évolution des vitesses pendant les phases de vol. Sans PA, la vitesse plonge parfois près du décrochage (environ 14 km/h) puis remonte en piqué ; avec PA, la décroissance est douce et la vitesse reste dans la plage optimale du profil.</span>
-      <span class="en">Figure 4: Speed evolution during the flight phases. Without the autopilot, the speed sometimes drops close to stall (about 14 km/h) then recovers in a dive; with it, the decay is gentle and the speed stays in the airfoil's optimal range.</span>
+      <span class="fr">Figure 9 : Évolution des vitesses pendant les phases de vol. Sans PA, la vitesse plonge parfois près du décrochage (environ 14 km/h) puis remonte en piqué ; avec PA, la décroissance est douce et la vitesse reste dans la plage optimale du profil.</span>
+      <span class="en">Figure 9: Speed evolution during the flight phases. Without the autopilot, the speed sometimes drops close to stall (about 14 km/h) then recovers in a dive; with it, the decay is gentle and the speed stays in the airfoil's optimal range.</span>
     </figcaption>
   </figure>
 
