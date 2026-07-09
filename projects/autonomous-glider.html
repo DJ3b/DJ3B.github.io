@@ -223,6 +223,55 @@
     </span>
   </p>
 
+  <figure>
+    <img src="../assets/glider-wing-structure.png" alt="CAD render of the balsa wing structure">
+    <figcaption>
+      <span class="fr">Figure 5 : La structure de l'aile en CAO : nervures et lisses de balsa sur les deux demi-ailes, avec l'effilement et la flèche de l'aile externe. Des « pièces guides » imprimées en 3D ont servi à aligner les nervures aux bonnes distances pendant l'assemblage.</span>
+      <span class="en">Figure 5: The wing structure in CAD: balsa ribs and stringers over the two wing halves, showing the outer wing's taper and sweep. 3D-printed guide pieces were used to align the ribs at the correct spacing during assembly.</span>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/glider-cockpit-cad.png" alt="Longitudinal CAD section of the cockpit">
+    <figcaption>
+      <span class="fr">Figure 6 : Coupe longitudinale du cockpit en CAO : la pile Arduino s'insère au-dessus de la batterie, le tout dans une coque imprimée en PLA Aero profilée pour réduire la traînée.</span>
+      <span class="en">Figure 6: Longitudinal CAD section of the cockpit: the Arduino stack sits above the battery, all inside a PLA Aero printed shell profiled to reduce drag.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="fr">
+      Une fois les pièces découpées et imprimées, l'assemblage a suivi : nervures enfilées
+      sur la tige de carbone, entoilage Oracover thermocollé au fer (les lisses assurant
+      une mise sous tension uniforme du film, garantissant une surface sans pli), et
+      vérification systématique du centrage avant chaque vol. La découpeuse laser a aussi
+      permis une touche personnelle : un dragon gravé en niveaux de gris sur l'empennage.
+    </span>
+    <span class="en">
+      Once the parts were cut and printed, assembly followed: ribs threaded onto the
+      carbon rod, Oracover film heat-shrunk with an iron (the stringers ensuring uniform
+      film tension for a wrinkle-free surface), and a systematic balance check before every
+      flight. The laser cutter also allowed a personal touch: a dragon engraved in
+      grayscale on the tail.
+    </span>
+  </p>
+
+  <figure>
+    <img src="../assets/glider-engraving.jpg" alt="Laser-engraved dragon on the balsa tail">
+    <figcaption>
+      <span class="fr">Figure 7 : L'empennage en balsa avec sa gravure laser en niveaux de gris.</span>
+      <span class="en">Figure 7: The balsa tail with its grayscale laser engraving.</span>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/glider-top-view.jpg" alt="Top view of the finished glider">
+    <figcaption>
+      <span class="fr">Figure 8 : Le planeur fini vu de dessus, lors du contrôle du centrage : aile effilée entoilée d'Oracover, tige de carbone longitudinale, cockpit profilé à l'avant.</span>
+      <span class="en">Figure 8: The finished glider seen from above during the balance check: tapered Oracover-covered wing, longitudinal carbon rod, streamlined cockpit at the front.</span>
+    </figcaption>
+  </figure>
+
   <h2><span class="fr">5. Électronique embarquée et commande de gouverne</span><span class="en">5. On-board electronics and control linkage</span></h2>
   <p>
     <span class="fr">
@@ -270,16 +319,16 @@
   <figure>
     <img src="../assets/glider-electronics.jpg" alt="Arduino MKR stack with soldered servo wiring">
     <figcaption>
-      <span class="fr">Figure 5 : L'électronique embarquée assemblée : pile Arduino MKR WiFi 1010 + IMU + proto shield, câbles du servomoteur soudés.</span>
-      <span class="en">Figure 5: The assembled on-board electronics: Arduino MKR WiFi 1010 + IMU + proto shield stack, with the servo wires soldered on.</span>
+      <span class="fr">Figure 9 : L'électronique embarquée assemblée : pile Arduino MKR WiFi 1010 + IMU + proto shield, câbles du servomoteur soudés.</span>
+      <span class="en">Figure 9: The assembled on-board electronics: Arduino MKR WiFi 1010 + IMU + proto shield stack, with the servo wires soldered on.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/glider-tail-spring.jpg" alt="Torsion spring of the pull-string linkage on the tail">
     <figcaption>
-      <span class="fr">Figure 6 : Le ressort de torsion du système pull-string sur la gouverne. C'est cette élasticité qui laissait la gouverne osciller en vol et a motivé le passage au pull-pull.</span>
-      <span class="en">Figure 6: The pull-string system's torsion spring on the control surface. This elasticity let the surface oscillate in flight and motivated the switch to the pull-pull linkage.</span>
+      <span class="fr">Figure 10 : Le ressort de torsion du système pull-string sur la gouverne. C'est cette élasticité qui laissait la gouverne osciller en vol et a motivé le passage au pull-pull.</span>
+      <span class="en">Figure 10: The pull-string system's torsion spring on the control surface. This elasticity let the surface oscillate in flight and motivated the switch to the pull-pull linkage.</span>
     </figcaption>
   </figure>
 
@@ -396,26 +445,34 @@
   </p>
 
   <figure>
+    <img src="../assets/glider-flight-test-enac.jpg" alt="Flight test in the ENAC drone aviary">
+    <figcaption>
+      <span class="fr">Figure 11 : Essais en vol dans la volière drone de l'ENAC : le planeur en l'air au-dessus de la zone de test de 10 m.</span>
+      <span class="en">Figure 11: Flight tests in ENAC's drone aviary: the glider airborne over the 10 m test area.</span>
+    </figcaption>
+  </figure>
+
+  <figure>
     <img src="../assets/glider-flight-phase.png" alt="Automatic flight phase detection on a launch recording">
     <figcaption>
-      <span class="fr">Figure 7 : Détection automatique de la phase de vol sur un lancer : le pic de vitesse du lancer et celui de la réception bornent la zone verte, qui coïncide avec une vitesse verticale typique d'un vol plané.</span>
-      <span class="en">Figure 7: Automatic flight-phase detection on one launch: the speed peaks at launch and landing bound the green zone, which coincides with a vertical speed typical of gliding flight.</span>
+      <span class="fr">Figure 12 : Détection automatique de la phase de vol sur un lancer : le pic de vitesse du lancer et celui de la réception bornent la zone verte, qui coïncide avec une vitesse verticale typique d'un vol plané.</span>
+      <span class="en">Figure 12: Automatic flight-phase detection on one launch: the speed peaks at launch and landing bound the green zone, which coincides with a vertical speed typical of gliding flight.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/glider-trajectories.png" alt="2D trajectories without and with autopilot">
     <figcaption>
-      <span class="fr">Figure 8 : Trajectoires 2D projetées dans le plan de mouvement : en vol libre (à gauche), des cloches balistiques typiques d'une phugoïde non amortie ; avec pilote automatique (à droite), des trajectoires nettement plus plates et linéaires.</span>
-      <span class="en">Figure 8: 2D trajectories projected onto the plane of motion: in free flight (left), ballistic bell shapes typical of an undamped phugoid; with the autopilot (right), markedly flatter and more linear trajectories.</span>
+      <span class="fr">Figure 13 : Trajectoires 2D projetées dans le plan de mouvement : en vol libre (à gauche), des cloches balistiques typiques d'une phugoïde non amortie ; avec pilote automatique (à droite), des trajectoires nettement plus plates et linéaires.</span>
+      <span class="en">Figure 13: 2D trajectories projected onto the plane of motion: in free flight (left), ballistic bell shapes typical of an undamped phugoid; with the autopilot (right), markedly flatter and more linear trajectories.</span>
     </figcaption>
   </figure>
 
   <figure>
     <img src="../assets/glider-speeds.png" alt="Speed evolution during flights">
     <figcaption>
-      <span class="fr">Figure 9 : Évolution des vitesses pendant les phases de vol. Sans PA, la vitesse plonge parfois près du décrochage (environ 14 km/h) puis remonte en piqué ; avec PA, la décroissance est douce et la vitesse reste dans la plage optimale du profil.</span>
-      <span class="en">Figure 9: Speed evolution during the flight phases. Without the autopilot, the speed sometimes drops close to stall (about 14 km/h) then recovers in a dive; with it, the decay is gentle and the speed stays in the airfoil's optimal range.</span>
+      <span class="fr">Figure 14 : Évolution des vitesses pendant les phases de vol. Sans PA, la vitesse plonge parfois près du décrochage (environ 14 km/h) puis remonte en piqué ; avec PA, la décroissance est douce et la vitesse reste dans la plage optimale du profil.</span>
+      <span class="en">Figure 14: Speed evolution during the flight phases. Without the autopilot, the speed sometimes drops close to stall (about 14 km/h) then recovers in a dive; with it, the decay is gentle and the speed stays in the airfoil's optimal range.</span>
     </figcaption>
   </figure>
 
@@ -435,6 +492,14 @@
       built on uncertain parameters) is validated by the data.
     </span>
   </p>
+
+  <figure>
+    <img src="../assets/glider-outdoor-launch.jpg" alt="Outdoor launch of the glider">
+    <figcaption>
+      <span class="fr">Figure 15 : Lancer en extérieur : grâce au pilote automatique, le planeur dépasse les 10 mètres de vol stable hors de la volière.</span>
+      <span class="en">Figure 15: Outdoor launch: thanks to the autopilot, the glider exceeds 10 metres of stable flight outside the aviary.</span>
+    </figcaption>
+  </figure>
 
   <h2><span class="fr">8. Bilan</span><span class="en">8. Takeaways</span></h2>
   <p>
