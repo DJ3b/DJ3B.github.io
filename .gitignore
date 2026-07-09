@@ -1,0 +1,10 @@
+# Raw figure extractions from the glider report/slides (source material,
+# not referenced by the site — the published figures are the glider-* assets)
+assets/image*.*
+
+# Project source documents kept locally, not published on the site
+/RAPPORT - Planeur basse vitesse.pdf
+/planneur pres.pptx
+
+# Local preview / dev tooling
+.claude/

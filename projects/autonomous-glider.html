@@ -9,6 +9,7 @@
 </head>
 <body data-lang="fr">
 
+
 <nav>
   <a class="brand" href="../index.html">Said AFRITE</a>
   <div class="links">
@@ -19,7 +20,10 @@
   </div>
 </nav>
 
-<div class="article">
+<div class="article glider-page">
+
+  <img class="margin-blueprint" src="../assets/planneur_vue_haut.svg" alt="" aria-hidden="true">
+
   <a class="back-link" href="../index.html#portfolio">
     <span class="fr">← Retour aux projets</span><span class="en">← Back to projects</span>
   </a>
@@ -45,22 +49,45 @@
   <p>
     <span class="fr">
       Le cahier des charges imposait une envergure d'au moins 1 mètre (les tiges de carbone
-      structurelles ne pouvaient pas être coupées), le choix d'une mission parmi plusieurs,
-      et l'intégration d'un pilote automatique sur un axe (le tangage). Nous avons choisi
-      d'optimiser le <strong>vol à vitesse minimale</strong> : les essais avaient lieu dans
-      la volière drone de l'ENAC, longue d'environ 10 mètres, où un vol lent et stable est
-      la configuration la plus pertinente. Ce choix se paie en finesse, en taux de chute et
-      en stabilité, et il pilote toute la conception : minimiser la charge alaire et
-      maximiser la portance (surface alaire et C<sub>z max</sub>).
+      structurelles ne pouvaient pas être coupées), le choix d'une mission parmi plusieurs
+      (finesse max, vitesse max, etc.), et l'intégration d'un pilote automatique sur un axe
+      (le tangage). Nous avons choisi d'optimiser le <strong>vol à vitesse minimale</strong> :
+      les essais avaient lieu dans la volière drone de l'ENAC, longue d'environ 10 mètres, où
+      un vol lent et stable est la configuration la plus pertinente, à la fois pour garantir
+      un vol maîtrisé dans un espace restreint et pour mieux observer le comportement en vol.
+      Ce choix se paie en finesse, en taux de chute et en stabilité, et il pilote toute la
+      conception : minimiser la charge alaire et maximiser la portance (surface alaire et
+      C<sub>z max</sub>).
     </span>
     <span class="en">
       The specification required a wingspan of at least 1 metre (the structural carbon rods
-      could not be cut), a mission chosen among several options, and a single-axis autopilot
-      (pitch). We chose to optimize <strong>minimum-speed flight</strong>: the tests took
-      place in ENAC's drone aviary, about 10 metres long, where slow, stable flight is the
-      most relevant configuration. This choice costs glide ratio, sink rate and stability,
-      and it drives the whole design: minimize wing loading and maximize lift (wing area
-      and C<sub>z max</sub>).
+      could not be cut), a mission chosen among several options (max glide ratio, max speed,
+      etc.), and a single-axis autopilot (pitch). We chose to optimize
+      <strong>minimum-speed flight</strong>: the tests took place in ENAC's drone aviary,
+      about 10 metres long, where slow, stable flight is the most relevant configuration,
+      both to guarantee controlled flight in a confined space and to better observe the
+      behaviour in flight. This choice costs glide ratio, sink rate and stability, and it
+      drives the whole design: minimize wing loading and maximize lift (wing area and
+      C<sub>z max</sub>).
+    </span>
+  </p>
+  <p>
+    <span class="fr">
+      La méthodologie suivie est progressive : un fichier Excel développé pour le projet
+      centralise tous les paramètres clés (géométrie des surfaces portantes, centrage, foyer
+      global, surface alaire), XFLR5 sert à analyser le comportement aérodynamique et à
+      affiner les choix, la CAO est réalisée sous Onshape, et les pièces sont fabriquées en
+      prototypage rapide : découpe laser pour le balsa, impression 3D pour les pièces
+      complexes. Cette chaîne courte a permis d'itérer rapidement entre les deux campagnes
+      d'essais en vol.
+    </span>
+    <span class="en">
+      The methodology is progressive: a spreadsheet developed for the project centralizes
+      all the key parameters (lifting surface geometry, balance, global neutral point, wing
+      area), XFLR5 is used to analyse the aerodynamic behaviour and refine the choices, the
+      CAD is done in Onshape, and the parts are produced by rapid prototyping: laser cutting
+      for the balsa, 3D printing for the complex parts. This short loop made it possible to
+      iterate quickly between the two flight-test campaigns.
     </span>
   </p>
 
@@ -68,312 +95,742 @@
   <p>
     <span class="fr">
       Avec une corde de 80 à 200 mm et une vitesse cible de 10 à 25 km/h, le planeur vole
-      entre Re = 2·10⁴ et 9·10⁴. Dans ce régime, la couche limite reste laminaire longtemps,
-      se sépare précocement et forme des bulles de séparation laminaire : moins de portance,
-      beaucoup plus de traînée, un vol difficile à contrôler. Après un état de l'art des
-      familles de profils adaptées (Selig, Drela, Eppler), nous avons comparé sous XFLR5 /
-      XFOIL les polaires de cinq profils (CH10sm, davissm, K3311, SD7032, SD7037) sur
-      quatre critères : C<sub>z max</sub> élevé, décrochage progressif à forte incidence,
-      moment de tangage stable, et traînée minimale près de C<sub>z max</sub>.
+      entre Re = 2·10⁴ et 9·10⁴ :
     </span>
     <span class="en">
       With a chord of 80 to 200 mm and a target speed of 10 to 25 km/h, the glider flies
-      between Re = 2·10⁴ and 9·10⁴. In this regime the boundary layer stays laminar for a
-      long time, separates early and forms laminar separation bubbles: less lift, much more
-      drag, and flight that is hard to control. After a state-of-the-art review of the
-      airfoil families suited to this regime (Selig, Drela, Eppler), we compared the polars
-      of five airfoils (CH10sm, davissm, K3311, SD7032, SD7037) in XFLR5 / XFOIL against
-      four criteria: high C<sub>z max</sub>, progressive stall at high incidence, stable
-      pitching moment, and minimal drag near C<sub>z max</sub>.
+      between Re = 2·10⁴ and 9·10⁴:
     </span>
   </p>
-  <figure>
-    <img src="../assets/glider-polars.png" alt="XFOIL polars and lift curves of the five candidate airfoils">
+  <div class="math-block">Re = ρ V c / μ,&nbsp;&nbsp; ρ = 1,225 kg/m³,&nbsp; μ = 1,8·10⁻⁵ Pa·s</div>
+  <p>
+    <span class="fr">
+      Dans ce régime, la couche limite reste laminaire longtemps, devient instable et
+      sensible à la rugosité de surface, se sépare précocement puis redevient turbulente en
+      formant une <strong>bulle de séparation laminaire</strong> : moins de portance,
+      beaucoup plus de traînée, un risque de décrochage accru et un vol globalement plus
+      difficile à contrôler.
+    </span>
+    <span class="en">
+      In this regime the boundary layer stays laminar for a long time, becomes unstable and
+      sensitive to surface roughness, separates early and then transitions back to
+      turbulent, forming a <strong>laminar separation bubble</strong>: less lift, much more
+      drag, a higher stall risk and flight that is generally harder to control.
+    </span>
+  </p>
+  <figure style="max-width: 560px; margin: 1.6rem auto;">
+    <img src="../assets/glider-laminar-bubble.jpg" alt="Flow visualization of a laminar separation bubble over an airfoil" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 2 : Polaires (Cl en fonction de Cd) et courbes de portance (Cl en fonction de l'incidence) des cinq profils candidats, calculées sous XFOIL à Re = 30 000, 40 000, 60 000 et 100 000.</span>
-      <span class="en">Figure 2: Polars (Cl vs Cd) and lift curves (Cl vs incidence) of the five candidate airfoils, computed in XFOIL at Re = 30,000, 40,000, 60,000 and 100,000.</span>
+      <span class="fr">Figure 2 : Visualisation d'écoulement sur un profil à bas Reynolds : la couche limite laminaire se sépare et enroule des tourbillons au-dessus de l'extrados, le phénomène qui domine notre plage de vol.</span>
+      <span class="en">Figure 2: Flow visualization over a low-Reynolds airfoil: the laminar boundary layer separates and rolls up vortices over the upper surface, the phenomenon that dominates our flight envelope.</span>
+    </figcaption>
+  </figure>
+  <p>
+    <span class="fr">
+      Un état de l'art des profils adaptés, appuyé sur la base de données UIUC Low-Speed
+      Airfoil Tests (Selig et al.), distingue trois familles : les profils
+      <strong>Selig</strong> (robustes, polyvalents, courbure modérée), les profils
+      <strong>Drela</strong> (séries AG, SD et CH, optimisés sous XFOIL pour le régime
+      laminaire, la série CH visant les Reynolds extrêmement faibles de 20 000 à 60 000) et
+      les profils <strong>Eppler</strong> (design classique, faciles à construire,
+      performants au-dessus de Re = 60 000). Cinq profils candidats ont été comparés sous
+      XFLR5 / XFOIL à Re = 30 000, 40 000, 60 000 et 100 000 :
+    </span>
+    <span class="en">
+      A state-of-the-art review of suitable airfoils, based on the UIUC Low-Speed Airfoil
+      Tests database (Selig et al.), distinguishes three families: <strong>Selig</strong>
+      airfoils (robust, versatile, moderate camber), <strong>Drela</strong> airfoils (AG, SD
+      and CH series, optimized with XFOIL for laminar behaviour, the CH series targeting
+      extremely low Reynolds numbers of 20,000 to 60,000) and <strong>Eppler</strong>
+      airfoils (classical design, easy to build, performing above Re = 60,000). Five
+      candidate airfoils were compared in XFLR5 / XFOIL at Re = 30,000, 40,000, 60,000 and
+      100,000:
+    </span>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><span class="fr">Profil</span><span class="en">Airfoil</span></th>
+        <th><span class="fr">Épaisseur</span><span class="en">Thickness</span></th>
+        <th><span class="fr">Cambrure</span><span class="en">Camber</span></th>
+        <th><span class="fr">Famille</span><span class="en">Family</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>CH10sm</td><td>12,84 %</td><td>10,20 %</td><td>Drela CH</td></tr>
+      <tr><td>davissm</td><td>5,87 %</td><td>5,91 %</td><td><span class="fr">Autre</span><span class="en">Other</span></td></tr>
+      <tr><td>K3311</td><td>11,00 %</td><td>3,25 %</td><td><span class="fr">Autre</span><span class="en">Other</span></td></tr>
+      <tr><td>SD7032</td><td>9,96 %</td><td>3,66 %</td><td>Selig-Drela</td></tr>
+      <tr><td>SD7037</td><td>9,20 %</td><td>3,02 %</td><td>Selig-Drela</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    <span class="fr">
+      Quatre critères guident la sélection : un C<sub>z max</sub> élevé (maximiser la
+      portance), un décrochage progressif atteint à forte incidence (réduire le risque de
+      décrochage), un coefficient de moment stable en incidence (comportement en tangage
+      homogène, correction plus simple), et une traînée minimale au voisinage de
+      C<sub>z max</sub>.
+    </span>
+    <span class="en">
+      Four criteria drive the selection: a high C<sub>z max</sub> (maximize lift), a
+      progressive stall reached at high incidence (reduce the stall risk), a moment
+      coefficient that is stable across incidence (homogeneous pitch behaviour, simpler
+      correction), and minimal drag in the vicinity of C<sub>z max</sub>.
+    </span>
+  </p>
+
+  <figure>
+    <img src="../assets/glider-polars.png" alt="XFOIL polars and lift curves of the five candidate airfoils" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 3 : Polaires (Cl en fonction de Cd) et courbes de portance (Cl en fonction de l'incidence) des cinq profils candidats, calculées sous XFOIL à Re = 30 000, 40 000, 60 000 et 100 000.</span>
+      <span class="en">Figure 3: Polars (Cl vs Cd) and lift curves (Cl vs incidence) of the five candidate airfoils, computed in XFOIL at Re = 30,000, 40,000, 60,000 and 100,000.</span>
     </figcaption>
   </figure>
 
   <p>
     <span class="fr">
-      Le <strong>CH10sm</strong> (série Drela CH, conçue pour les très bas Reynolds) l'a
-      emporté : C<sub>z max</sub> d'environ 1,6, décrochage progressif (courbe arrondie au
-      sommet, l'assurance de voler lentement sans perdre brusquement la portance), et un
-      coefficient de moment remarquablement plat entre 2° et 15°, donc un centre de poussée
-      fixe et un vol prévisible même en rafale. Le davissm avait une traînée plus faible et
-      un C<sub>z</sub> comparable, mais son décrochage instable et précoce l'a disqualifié :
-      dans notre contexte, la douceur du décrochage vaut plus que la traînée. La
-      contrepartie du CH10sm est un fort moment piqueur (C<sub>m</sub> ≈ -0,20), visible
-      sur la Figure 3, qui exige un bras de levier de queue et un empennage bien
-      dimensionnés.
+      Le <strong>CH10sm</strong> l'a emporté : C<sub>z max</sub> d'environ 1,6, décrochage
+      progressif (courbe arrondie au sommet, l'assurance de voler lentement sans perdre
+      brusquement la portance), et un coefficient de moment remarquablement plat entre 2° et
+      15°, donc un centre de poussée fixe et un vol prévisible même en rafale. Le davissm
+      avait une traînée plus faible et un C<sub>z</sub> comparable, mais son décrochage
+      instable et précoce l'a disqualifié : dans notre contexte, la douceur du décrochage
+      vaut plus que la traînée. La contrepartie du CH10sm est un fort moment piqueur
+      (C<sub>m</sub> ≈ -0,20), conséquence directe de sa forte cambrure, qui exige un bras
+      de levier de queue et un empennage bien dimensionnés.
     </span>
     <span class="en">
-      The <strong>CH10sm</strong> (Drela CH series, designed for very low Reynolds) won:
-      C<sub>z max</sub> of about 1.6, progressive stall (rounded lift-curve top, the
-      guarantee of flying slowly without suddenly losing lift), and a remarkably flat
-      moment coefficient between 2° and 15°, hence a fixed centre of pressure and
-      predictable flight even in gusts. The davissm airfoil had lower drag and a comparable
-      C<sub>z</sub>, but its unstable, early stall disqualified it: in our context, stall
-      gentleness is worth more than drag. The CH10sm's trade-off is a strong nose-down
-      moment (C<sub>m</sub> ≈ -0.20), visible in Figure 3, which demands a properly sized
-      tail lever arm and stabilizer.
+      The <strong>CH10sm</strong> won: C<sub>z max</sub> of about 1.6, progressive stall
+      (rounded lift-curve top, the guarantee of flying slowly without suddenly losing lift),
+      and a remarkably flat moment coefficient between 2° and 15°, hence a fixed centre of
+      pressure and predictable flight even in gusts. The davissm airfoil had lower drag and
+      a comparable C<sub>z</sub>, but its unstable, early stall disqualified it: in our
+      context, stall gentleness is worth more than drag. The CH10sm's trade-off is a strong
+      nose-down moment (C<sub>m</sub> ≈ -0.20), a direct consequence of its high camber,
+      which demands a properly sized tail lever arm and stabilizer.
     </span>
   </p>
 
   <figure>
-    <img src="../assets/glider-cm-curve.png" alt="Moment coefficient versus incidence for the candidate airfoils">
+    <img src="../assets/glider-cm-curve.png" alt="Moment coefficient versus incidence for the candidate airfoils" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 3 : Coefficient de moment en fonction de l'incidence. La courbe du CH10sm (rouge) est la plus basse (fort moment piqueur) mais remarquablement plate et insensible au Reynolds : le comportement en tangage reste identique à toutes les vitesses de vol.</span>
-      <span class="en">Figure 3: Moment coefficient versus incidence. The CH10sm curve (red) is the lowest (strong nose-down moment) but remarkably flat and insensitive to Reynolds number: the pitch behaviour stays identical at every flight speed.</span>
+      <span class="fr">Figure 4 : Coefficient de moment en fonction de l'incidence. La courbe du CH10sm (rouge) est la plus basse (fort moment piqueur) mais remarquablement plate et insensible au Reynolds : le comportement en tangage reste identique à toutes les vitesses de vol.</span>
+      <span class="en">Figure 4: Moment coefficient versus incidence. The CH10sm curve (red) is the lowest (strong nose-down moment) but remarkably flat and insensitive to Reynolds number: the pitch behaviour stays identical at every flight speed.</span>
+    </figcaption>
+  </figure>
+
+  <h2><span class="fr">3. Dimensionnement et géométrie</span><span class="en">3. Sizing and geometry</span></h2>
+  <p>
+    <span class="fr">
+      Le CH10sm atteint son C<sub>z max</sub> de 1,6 à 18° d'incidence, mais le
+      C<sub>z</sub> y est instable : l'incidence cible est fixée à 16°, correspondant à
+      C<sub>z</sub> = 1,4. Pour une vitesse de croisière visée de 5 m/s, la surface portante
+      nécessaire découle de l'équilibre portance-poids :
+    </span>
+    <span class="en">
+      The CH10sm reaches its C<sub>z max</sub> of 1.6 at 18° incidence, but C<sub>z</sub>
+      is unstable there: the target incidence is set at 16°, corresponding to
+      C<sub>z</sub> = 1.4. For a 5 m/s target cruise speed, the required lifting surface
+      follows from the lift-weight balance:
+    </span>
+  </p>
+  <div class="math-block">S = 2·m·g / (ρ·v²·C<sub>z</sub>) = 0,156 m²</div>
+  <p>
+    <span class="fr">
+      Le calage de l'aile a été poussé à 6° (contre 4° usuels) pour réduire l'assiette et la
+      traînée du fuselage en vol lent ; il se matérialise par un trou carré incliné de 6°
+      dans toutes les nervures, avec une réserve mécanique de -3° dans la pièce d'attache
+      principale si l'incidence s'avérait excessive. L'aile est en deux parties : une aile
+      interne de 180 mm de corde et 310 mm de demi-envergure, où la tige de carbone passe à
+      25 % de la corde (le centre aérodynamique, pour annuler la torsion induite par le
+      moment de tangage), et une aile externe effilée jusqu'à 140 mm au saumon (effilement
+      0,778) avec une flèche de 5° et un dièdre de 1,06° seulement. 140 mm est la corde
+      minimale acceptable : en dessous, l'épaisseur du profil se rapproche de la section de
+      la tige et il ne reste plus les 3 mm de balsa nécessaires autour du trou pour que la
+      nervure ne se fissure pas. Cet effilement rapproche la répartition de portance de la
+      distribution elliptique optimale : l'aile travaille de manière homogène sur toute son
+      envergure.
+    </span>
+    <span class="en">
+      The wing setting angle was pushed to 6° (versus the usual 4°) to lower the fuselage
+      attitude and its drag in slow flight; it materializes as a square hole tilted by 6° in
+      every rib, with a mechanical fallback of -3° in the main attachment part in case the
+      incidence proved excessive. The wing is built in two parts: an inner wing with a
+      180 mm chord and 310 mm half-span, where the carbon rod passes at 25% chord (the
+      aerodynamic centre, cancelling the torsion induced by the pitching moment), and an
+      outer wing tapering to 140 mm at the tip (taper ratio 0.778) with 5° sweep and only
+      1.06° dihedral. 140 mm is the minimum acceptable chord: below it, the airfoil
+      thickness approaches the rod's cross-section and the 3 mm of balsa needed around the
+      hole to keep the rib from cracking are no longer there. This taper brings the lift
+      distribution close to the optimal elliptical one: the wing works homogeneously across
+      its whole span.
+    </span>
+  </p>
+
+  <figure>
+    <img src="../assets/glider-three-views.svg" alt="Three-view technical drawing of the glider" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 5 : Plan trois vues du planeur : vue de dessus avec l'aile effilée et le bras de levier de l'empennage, vue de côté avec le calage de l'aile, vue de face avec le dièdre des winglets.</span>
+      <span class="en">Figure 5: Three-view drawing of the glider: top view with the tapered wing and the tail lever arm, side view with the wing setting angle, front view with the winglet dihedral.</span>
     </figcaption>
   </figure>
 
   <p>
     <span class="fr">
-      Les choix de dimensionnement découlent de cette sélection. Incidence ciblée de 16°
-      (C<sub>z</sub> = 1,4, en retrait du C<sub>z max</sub> instable à 18°) et surface
-      portante de 0,156 m² pour une vitesse cible de 5 m/s. Le calage de l'aile a été
-      poussé à 6° (contre 4° usuels) pour réduire l'assiette et la traînée du fuselage en
-      vol lent, avec une réserve mécanique de -3° dans la pièce d'attache si l'incidence
-      s'avérait excessive. L'aile est en deux parties : corde de 180 mm au centre, où la
-      tige de carbone passe à 25 % de la corde (le centre aérodynamique, pour annuler la
-      torsion induite par le moment de tangage), et effilement à 140 mm au saumon
-      (effilement 0,778), la corde minimale acceptable avant que la tige ne fragilise les
-      nervures de balsa. Ce compromis rapproche la répartition de portance de la
-      distribution elliptique optimale. Un fichier Excel développé pour le projet
-      centralisait tous ces paramètres : foyer global, cordes aérodynamiques moyennes,
-      position des nervures.
+      L'ensemble est vérifié sous XFLR5 : le modèle complet (aile, empennage, fuselage)
+      confirme les performances attendues au point de vol cible, et donne la position du
+      foyer global qui servira au centrage.
     </span>
     <span class="en">
-      The sizing decisions follow from that selection. Target incidence of 16°
-      (C<sub>z</sub> = 1.4, backing off from the unstable C<sub>z max</sub> at 18°) and a
-      0.156 m² lifting surface for a 5 m/s target speed. The wing setting angle was pushed
-      to 6° (versus the usual 4°) to lower the fuselage attitude and its drag in slow
-      flight, with a mechanical fallback of -3° in the attachment part in case the
-      incidence proved excessive. The wing is built in two parts: a 180 mm root chord,
-      where the carbon rod passes at 25% chord (the aerodynamic centre, cancelling the
-      torsion induced by the pitching moment), tapering to 140 mm at the tip (taper ratio
-      0.778), the minimum acceptable chord before the rod weakens the balsa ribs. This
-      compromise brings the lift distribution close to the optimal elliptical one. A
-      spreadsheet developed for the project centralized all these parameters: global
-      neutral point, mean aerodynamic chords, rib positions.
+      Everything is checked in XFLR5: the complete model (wing, tail, fuselage) confirms
+      the expected performance at the target flight point, and gives the position of the
+      global neutral point used for balancing.
     </span>
   </p>
 
   <figure>
-    <img src="../assets/glider-xflr5-flow.png" alt="XFLR5 flow visualization around the glider">
+    <img src="../assets/glider-xflr5-analysis.png" alt="XFLR5 flow visualization around the glider with performance data" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 4 : Visualisation XFLR5 de l'écoulement autour des surfaces portantes du planeur.</span>
-      <span class="en">Figure 4: XFLR5 visualization of the airflow around the glider's lifting surfaces.</span>
-    </figcaption>
-  </figure>
-
-  <h2><span class="fr">3. Stabilité : winglets et empennage en V</span><span class="en">3. Stability: winglets and V-tail</span></h2>
-  <p>
-    <span class="fr">
-      La tige de carbone rectiligne interdit tout dièdre d'aile (1,06° seulement), et les
-      analyses de stabilité dynamique XFLR5 le confirment : le mode spiral est instable. En
-      cas d'inclinaison, le planeur tend à accentuer son virage au lieu de revenir à plat.
-      Deux remèdes ont été étudiés. Des <strong>winglets inclinés à 35°</strong> augmentent
-      le dièdre effectif et ralentissent la divergence sans la supprimer. Le passage d'un
-      empennage vertical classique à un <strong>empennage en V</strong> introduit du dièdre
-      effectif à l'arrière : le temps de doublement du mode spiral passe de 15 s à 40 s et
-      l'amortissement du mode phugoïde de 0,33 à 0,43. En vol, les deux configurations se
-      sont montrées satisfaisantes.
-    </span>
-    <span class="en">
-      The straight carbon rod forbids any wing dihedral (only 1.06°), and XFLR5 dynamic
-      stability analyses confirm the consequence: the spiral mode is unstable. When banked,
-      the glider tends to tighten its turn instead of returning to level. Two remedies were
-      studied. <strong>Winglets tilted at 35°</strong> increase the effective dihedral and
-      slow the divergence without removing it. Switching from a classical vertical tail to
-      a <strong>V-tail</strong> introduces effective dihedral at the rear: the spiral-mode
-      doubling time goes from 15 s to 40 s and the phugoid damping ratio from 0.33 to 0.43.
-      In flight, both configurations proved satisfactory.
-    </span>
-  </p>
-
-  <h2><span class="fr">4. Structure et fabrication</span><span class="en">4. Structure and manufacturing</span></h2>
-  <p>
-    <span class="fr">
-      La structure combine des nervures de balsa de 2,5 mm découpées au laser (140 kg/m³,
-      bien plus léger que le PLA imprimé), un entoilage thermorétractable Oracover, deux
-      tiges de carbone creuses de 10 × 10 × 1000 mm et des pièces imprimées en 3D (PLA Aero,
-      Bambulab A1) conçues sous Onshape. Un fichier Excel de dimensionnement développé pour
-      le projet calculait le foyer global, les cordes aérodynamiques moyennes et le nombre
-      de nervures. La pièce centrale, qui reprend tous les efforts de torsion entre les
-      deux tiges, a cassé au serrage : l'analyse structurelle (CATIA V5) a montré une
-      traction dans un angle défavorable au sens d'impression 3D. Elle a été réimprimée en
-      PETG dans un sens d'impression adapté. Le cockpit loge l'électronique, la batterie et
-      le servomoteur, et son dimensionnement a été guidé par le centrage : le bras de levier
-      de l'empennage impose un centre de gravité légèrement avant.
-    </span>
-    <span class="en">
-      The structure combines 2.5 mm laser-cut balsa ribs (140 kg/m³, far lighter than
-      printed PLA), a heat-shrink Oracover covering film, two hollow 10 × 10 × 1000 mm
-      carbon rods and 3D-printed parts (PLA Aero, Bambulab A1) designed in Onshape. A
-      sizing spreadsheet developed for the project computed the global neutral point, mean
-      aerodynamic chords and rib count. The central part, which carries all the torsional
-      loads between the two rods, cracked during tightening: structural analysis (CATIA V5)
-      showed tension in a corner unfavourable to the 3D print orientation. It was reprinted
-      in PETG with a proper print orientation. The cockpit houses the electronics, battery
-      and servo, and its sizing was driven by balance: the tail's lever arm forces a
-      slightly forward centre of gravity.
-    </span>
-  </p>
-
-  <figure>
-    <img src="../assets/glider-wing-structure.png" alt="CAD render of the balsa wing structure">
-    <figcaption>
-      <span class="fr">Figure 5 : La structure de l'aile en CAO : nervures et lisses de balsa sur les deux demi-ailes, avec l'effilement et la flèche de l'aile externe. Des « pièces guides » imprimées en 3D ont servi à aligner les nervures aux bonnes distances pendant l'assemblage.</span>
-      <span class="en">Figure 5: The wing structure in CAD: balsa ribs and stringers over the two wing halves, showing the outer wing's taper and sweep. 3D-printed guide pieces were used to align the ribs at the correct spacing during assembly.</span>
+      <span class="fr">Figure 6 : Analyse XFLR5 du planeur complet à V = 5 m/s et 15° d'incidence : lignes de courant autour des surfaces portantes, C<sub>L</sub>/C<sub>D</sub> ≈ 10,6 et charge alaire de 1,4 kg/m² pour 262 g.</span>
+      <span class="en">Figure 6: XFLR5 analysis of the complete glider at V = 5 m/s and 15° incidence: streamlines around the lifting surfaces, C<sub>L</sub>/C<sub>D</sub> ≈ 10.6 and a 1.4 kg/m² wing loading at 262 g.</span>
     </figcaption>
   </figure>
 
   <figure>
-    <img src="../assets/glider-cockpit-cad.png" alt="Longitudinal CAD section of the cockpit">
+    <img src="../assets/xflr5_vue_face.png" alt="Vue de face du modèle XFLR5 du planeur" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 6 : Coupe longitudinale du cockpit en CAO : la pile Arduino s'insère au-dessus de la batterie, le tout dans une coque imprimée en PLA Aero profilée pour réduire la traînée.</span>
-      <span class="en">Figure 6: Longitudinal CAD section of the cockpit: the Arduino stack sits above the battery, all inside a PLA Aero printed shell profiled to reduce drag.</span>
+      <span class="fr">Figure 7 : Vue de face du modèle XFLR5 montrant la géométrie du plan de l'aile et des surfaces de stabilité.</span>
+      <span class="en">Figure 7: Front view of the XFLR5 model showing the wing planform geometry and stability surfaces.</span>
+    </figcaption>
+  </figure>
+
+  <h2><span class="fr">4. Stabilité : winglets, empennage et centrage</span><span class="en">4. Stability: winglets, tail and balance</span></h2>
+  <p>
+    <span class="fr">
+      La tige de carbone rectiligne interdit tout dièdre d'aile significatif (1,06°
+      seulement), et les analyses de stabilité dynamique XFLR5 le confirment : le
+      <strong>mode spiral est instable</strong>. En cas d'inclinaison, le planeur tend à
+      accentuer son virage au lieu de revenir à plat. Premier remède étudié : des
+      <strong>winglets inclinés à 35°</strong>, qui agissent sur trois paramètres à la fois :
+      augmentation du dièdre effectif, optimisation de l'effilement et gain de surface
+      portante. Les analyses XFLR5 montrent que le mode spiral reste instable, mais que la
+      divergence en roulis est nettement ralentie : le dièdre effectif va dans la bonne
+      direction.
+    </span>
+    <span class="en">
+      The straight carbon rod forbids any significant wing dihedral (only 1.06°), and XFLR5
+      dynamic stability analyses confirm the consequence: the <strong>spiral mode is
+      unstable</strong>. When banked, the glider tends to tighten its turn instead of
+      returning to level. First remedy studied: <strong>winglets tilted at 35°</strong>,
+      which act on three parameters at once: increased effective dihedral, improved taper
+      and extra lifting surface. The XFLR5 analyses show the spiral mode remains unstable,
+      but the roll divergence is markedly slowed: the effective dihedral goes in the right
+      direction.
+    </span>
+  </p>
+
+  <figure style="max-width: 760px; margin: 1.6rem auto;">
+    <img src="../assets/winglets.png" alt="Winglets inclinés du planeur" style="max-height: 460px; object-fit: contain;" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 8 : Les « shark winglets » inclinés à 35°, ajoutés pour augmenter le dièdre effectif et ralentir la divergence spirale.</span>
+      <span class="en">Figure 8: The 35°-tilted "shark winglets", added to increase the effective dihedral and slow the spiral divergence.</span>
     </figcaption>
   </figure>
 
   <p>
     <span class="fr">
-      Une fois les pièces découpées et imprimées, l'assemblage a suivi : nervures enfilées
-      sur la tige de carbone, entoilage Oracover thermocollé au fer (les lisses assurant
-      une mise sous tension uniforme du film, garantissant une surface sans pli), et
-      vérification systématique du centrage avant chaque vol. La découpeuse laser a aussi
-      permis une touche personnelle : un dragon gravé en niveaux de gris sur l'empennage.
+      Le second levier est l'empennage, dimensionné par une analyse comparative XFLR5 entre
+      deux configurations découpées dans du balsa de 5 mm. La configuration classique
+      (stabilisateur horizontal + dérive verticale) présente un temps de doublement du mode
+      spiral de 15 s et un amortissement de phugoïde de 0,33. Le passage à un
+      <strong>empennage en V</strong> introduit du dièdre effectif à l'arrière du centre de
+      gravité sans modifier la structure de l'aile : le temps de doublement passe à 40 s et
+      l'amortissement de phugoïde à 0,43, une plateforme nettement plus stable pour le vol
+      lent. En vol, les deux configurations se sont montrées satisfaisantes, la dérive
+      verticale conservant même un léger avantage en lacet sur 10 mètres.
     </span>
     <span class="en">
-      Once the parts were cut and printed, assembly followed: ribs threaded onto the
-      carbon rod, Oracover film heat-shrunk with an iron (the stringers ensuring uniform
-      film tension for a wrinkle-free surface), and a systematic balance check before every
-      flight. The laser cutter also allowed a personal touch: a dragon engraved in
-      grayscale on the tail.
+      The second lever is the tail, sized through a comparative XFLR5 analysis between two
+      configurations cut from 5 mm balsa. The classical configuration (horizontal stabilizer
+      + vertical fin) has a spiral-mode doubling time of 15 s and a phugoid damping ratio of
+      0.33. Switching to a <strong>V-tail</strong> introduces effective dihedral behind the
+      centre of gravity without touching the wing structure: the doubling time rises to 40 s
+      and the phugoid damping to 0.43, a markedly more stable platform for slow flight. In
+      flight, both configurations proved satisfactory, the vertical fin even keeping a slight
+      edge in yaw over 10 metres.
     </span>
   </p>
 
   <figure>
-    <img src="../assets/glider-engraving.jpg" alt="Laser-engraved dragon on the balsa tail">
+    <img src="../assets/glider-tail-classic-cad.jpg" alt="CAD of the classic tail configuration with 3D-printed attachment" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 7 : L'empennage en balsa avec sa gravure laser en niveaux de gris.</span>
-      <span class="en">Figure 7: The balsa tail with its grayscale laser engraving.</span>
+      <span class="fr">Figure 9 : La configuration d'empennage classique en CAO : stabilisateur horizontal et dérive verticale en balsa de 5 mm, reliés à la tige de carbone par des pièces d'attache imprimées en 3D.</span>
+      <span class="en">Figure 9: The classic tail configuration in CAD: 5 mm balsa horizontal stabilizer and vertical fin, linked to the carbon rod by 3D-printed attachment parts.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="fr">
+      Ce grand empennage, choisi pour garder de l'autorité de gouverne à basse vitesse, a un
+      coût : son bras de levier tire le centre de gravité vers l'arrière. L'analyse de masses
+      sans cockpit révèle un centrage beaucoup trop arrière, incompatible avec la stabilité.
+      Obtenir le centrage légèrement avant indispensable devient alors un objectif de
+      conception du fuselage lui-même.
+    </span>
+    <span class="en">
+      This large tail, chosen to keep control authority at low speed, has a cost: its lever
+      arm pulls the centre of gravity rearward. The mass analysis without the cockpit
+      reveals a balance far too aft, incompatible with stability. Achieving the essential
+      slightly-forward balance then becomes a design objective for the fuselage itself.
+    </span>
+  </p>
+
+  <h2><span class="fr">5. Fuselage : deux itérations de cockpit</span><span class="en">5. Fuselage: two cockpit iterations</span></h2>
+  <p>
+    <span class="fr">
+      Pour dimensionner le fuselage au plus juste, les modèles CAO des équipements réels
+      (cartes Arduino assemblées, batterie 3,7 V 250 mAh, servomoteur 5 g) ont été reproduits
+      sous Onshape. <strong>Première itération</strong> : installer le servomoteur dans
+      l'aile pour économiser la masse du cockpit, dont la demi-hauteur descend à 118 mm.
+      Mais cette architecture fixe la distance entre le servomoteur et l'empennage : elle
+      interdit le centrage manuel du planeur par translation de l'aile sur la tige, et il
+      manque toujours de la masse à l'avant ; un logement pour une bille d'acier avait même
+      été prévu en dernier recours.
+    </span>
+    <span class="en">
+      To size the fuselage tightly, CAD models of the real equipment (assembled Arduino
+      boards, 3.7 V 250 mAh battery, 5 g servo) were reproduced in Onshape.
+      <strong>First iteration</strong>: install the servo inside the wing to save cockpit
+      mass, bringing the cockpit half-height down to 118 mm. But this architecture fixes the
+      distance between the servo and the tail: it forbids balancing the glider manually by
+      sliding the wing along the rod, and mass is still missing at the nose; a housing for
+      a steel ball was even planned as a last resort.
+    </span>
+  </p>
+
+  <figure>
+    <img src="../assets/glider-servo-wing-cad.jpg" alt="CAD view of the servo installed inside the wing structure" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 10 : Première itération en CAO : le servomoteur logé entre deux nervures de l'aile, avec sa pièce de maintien imprimée en 3D serrée sur la tige de carbone.</span>
+      <span class="en">Figure 10: First iteration in CAD: the servo housed between two wing ribs, with its 3D-printed mount clamped on the carbon rod.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="fr">
+      <strong>Seconde itération</strong> : ramener le servomoteur à l'avant, dans le cockpit.
+      La coque grandit (mi-hauteur de 143 mm, 37 g à vide) mais la masse ajoutée à l'avant
+      sert directement le centrage, et surtout la distance servo-empennage devient constante
+      quelle que soit la position de l'aile : le planeur peut être centré en faisant glisser
+      l'aile, et des méthodes de commande éprouvées de l'aéromodélisme deviennent possibles
+      (pull-string et pull-pull, détaillées en section 7). Seule concession : les cordes à
+      piano de 1 m sont trop courtes pour rejoindre l'empennage, remplacées par du fil de
+      nylon de 0,4 mm.
+    </span>
+    <span class="en">
+      <strong>Second iteration</strong>: bring the servo back to the front, inside the
+      cockpit. The shell grows (143 mm half-height, 37 g empty) but the mass added at the
+      nose directly serves the balance, and above all the servo-to-tail distance becomes
+      constant regardless of the wing position: the glider can be balanced by sliding the
+      wing, and proven model-aircraft control schemes become possible (pull-string and
+      pull-pull, detailed in section 7). Only concession: 1 m piano wires are too short to
+      reach the tail, replaced by 0.4 mm nylon line.
+    </span>
+  </p>
+
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-cockpit-v2-section.jpg" alt="Longitudinal CAD section of the final cockpit" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 11 : Coupe longitudinale du cockpit final : servomoteur à l'avant, pile Arduino au-dessus de la batterie, logement de bille d'acier en réserve.</span>
+        <span class="en">Figure 11: Longitudinal section of the final cockpit: servo at the front, Arduino stack above the battery, steel-ball housing in reserve.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-cockpit-v2-cad.jpg" alt="3D CAD view of the final cockpit with double servo horn" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 12 : Vue 3D du cockpit final : le palonnier double du servomoteur est centré pour recevoir les deux fils du système pull-pull.</span>
+        <span class="en">Figure 12: 3D view of the final cockpit: the servo's double horn is centred to receive the two lines of the pull-pull system.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <figure style="max-width: 560px; margin: 1.6rem auto;">
+    <img src="../assets/glider-cockpit-photo.jpg" alt="The printed cockpit shell with servo, battery and wiring" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 13 : Le cockpit imprimé en PLA Aero avec le servomoteur, la batterie et le câblage en place.</span>
+      <span class="en">Figure 13: The PLA Aero printed cockpit with the servo, battery and wiring in place.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="fr">
+      La première version a volé lors du premier essai ; son logement électronique ne
+      prenait toutefois pas en compte l'épaisseur du proto shield, ce qui a empêché
+      d'embarquer l'enregistreur de données au vol n°1. Le cockpit final corrige ce point
+      pour la seconde campagne.
+    </span>
+    <span class="en">
+      The first version flew during the first test; its electronics bay, however, did not
+      account for the proto shield's thickness, which prevented the data logger from being
+      carried on flight #1. The final cockpit fixes this for the second campaign.
+    </span>
+  </p>
+
+  <h2><span class="fr">6. Structure et fabrication</span><span class="en">6. Structure and manufacturing</span></h2>
+  <p>
+    <span class="fr">
+      Le matériel imposé : deux tiges de carbone creuses de 10 × 10 × 1000 mm (paroi de
+      1 mm), deux planches de balsa de 2,5 mm et une de 5 mm, un rouleau d'entoilage
+      thermorétractable Oracover et 1 kg de filament PLA Aero pour une Bambulab A1. Pour
+      l'aile, deux options : tout imprimer en PLA Aero (simple, mais 440 à 1170 kg/m³ selon
+      la température d'impression) ou construire à l'ancienne, nervures et lisses en balsa
+      (140 kg/m³, trois fois plus léger, mais plus fragile). La contrainte de charge alaire
+      tranche pour le balsa découpé au laser, entoilé d'Oracover ; l'empennage est découpé
+      dans le balsa de 5 mm, et les pièces complexes (cockpit, attaches, guides) sont
+      imprimées en 3D.
+    </span>
+    <span class="en">
+      The imposed material: two hollow 10 × 10 × 1000 mm carbon rods (1 mm wall), two 2.5 mm
+      balsa boards and one 5 mm board, a roll of Oracover heat-shrink covering film and 1 kg
+      of PLA Aero filament for a Bambulab A1. For the wing, two options: print everything in
+      PLA Aero (simple, but 440 to 1170 kg/m³ depending on print temperature) or build the
+      traditional way, balsa ribs and stringers (140 kg/m³, three times lighter, but more
+      fragile). The wing-loading constraint settles it: laser-cut balsa covered with
+      Oracover; the tail is cut from the 5 mm balsa, and the complex parts (cockpit,
+      attachments, guides) are 3D-printed.
+    </span>
+  </p>
+  <p>
+    <span class="fr">
+      La découpeuse laser n'acceptant que 70 cm, les planches ont été recoupées et
+      l'agencement des pièces optimisé sur les fichiers de découpe : nervures en doublons
+      pour absorber les casses d'assemblage, et nervures critiques reportées sur la planche
+      de 5 mm pour un gain structurel à masse négligeable.
+    </span>
+    <span class="en">
+      Since the laser cutter only accepts 70 cm, the boards were re-cut and the part layout
+      optimized on the cutting files: duplicate ribs to absorb assembly breakage, and
+      critical ribs moved to the 5 mm board for a structural gain at negligible mass.
+    </span>
+  </p>
+
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-laser-cut-parts.jpg" alt="Laser-cut balsa ribs sorted on the table" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 14 : Les nervures découpées au laser, triées par position (A1 à A15, B, C), prêtes pour l'assemblage.</span>
+        <span class="en">Figure 14: The laser-cut ribs, sorted by position (A1 to A15, B, C), ready for assembly.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-ribs-threading.jpg" alt="Ribs threaded onto the carbon rod with 3D-printed guides" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 15 : Nervures enfilées sur la tige de carbone : les « pièces guides » blanches imprimées en 3D imposent l'espacement et l'alignement.</span>
+        <span class="en">Figure 15: Ribs threaded onto the carbon rod: the white 3D-printed guide pieces enforce the spacing and alignment.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-ribs-gluing.jpg" alt="Two teammates gluing the stringers onto the wing skeleton" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 16 : Collage des lisses sur le squelette : une étape longue où chaque nervure doit rester d'équerre.</span>
+        <span class="en">Figure 16: Gluing the stringers onto the skeleton: a long step where every rib must stay square.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-assembly-cao.jpg" alt="Assembly desk with the Onshape CAD model open next to the wing" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 17 : L'assemblage se fait CAO ouverte : le modèle Onshape sert de référence permanente pour les positions de nervures.</span>
+        <span class="en">Figure 17: Assembly happens with the CAD open: the Onshape model is the permanent reference for rib positions.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/glider-wing-structure.png" alt="CAD render of the balsa wing structure" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 18 : La structure cible en CAO : nervures et lisses de balsa sur les deux demi-ailes, avec l'effilement et la flèche de l'aile externe.</span>
+      <span class="en">Figure 18: The target structure in CAD: balsa ribs and stringers over the two wing halves, showing the outer wing's taper and sweep.</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    <span class="fr">
+      Une casse est venue valider l'intérêt de l'analyse structurelle : la pièce centrale,
+      qui maintient les deux tiges perpendiculaires et reprend tous les efforts de torsion
+      du planeur, s'est fissurée au serrage de ses vis M3. L'analyse sous CATIA V5 montre
+      une compression dans un angle (zone blanchie observée sur la pièce) et une traction
+      dans l'angle opposé, précisément dans un plan défavorable au sens d'impression 3D,
+      là où la pièce a rompu. Elle a été réimprimée en PETG, plus tenace, dans une
+      orientation d'impression adaptée aux efforts.
+    </span>
+    <span class="en">
+      One failure validated the value of structural analysis: the central part, which holds
+      the two rods perpendicular and carries all the glider's torsional loads, cracked when
+      its M3 screws were tightened. The CATIA V5 analysis shows compression in one corner
+      (a whitened zone observed on the part) and tension in the opposite corner, precisely
+      in a plane unfavourable to the 3D print orientation, where the part failed. It was
+      reprinted in PETG, tougher, with a print orientation matched to the loads.
+    </span>
+  </p>
+
+  <p>
+    <span class="fr">
+      Vient ensuite l'entoilage, thermocollé au fer à repasser. Les lisses y révèlent leur
+      seconde fonction : réparties sur toute l'envergure, elles offrent les points d'ancrage
+      qui assurent une mise sous tension uniforme du film, garantissant une surface sans pli
+      et la courbure aérodynamique voulue. Leçon apprise en passant : ne pas oublier de
+      retirer le film protecteur transparent de l'Oracover, qui l'empêche de coller à la
+      chaleur.
+    </span>
+    <span class="en">
+      Then comes the covering, heat-bonded with a clothes iron. The stringers reveal their
+      second function here: spread across the whole span, they provide the anchor points
+      that ensure uniform film tension, guaranteeing a wrinkle-free surface and the intended
+      aerodynamic curvature. Lesson learned along the way: do not forget to remove the
+      Oracover's transparent backing film, which prevents it from bonding under heat.
+    </span>
+  </p>
+
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-skeleton-oracover.jpg" alt="The finished wing skeleton laid on the red Oracover roll" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 19 : Le squelette complet posé sur le rouleau d'Oracover rouge, prêt pour l'entoilage ; le nez imprimé en 3D attend au premier plan.</span>
+        <span class="en">Figure 19: The complete skeleton laid on the red Oracover roll, ready for covering; the 3D-printed nose waits in the foreground.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-wing-covering.jpg" alt="The wing half-covered with red Oracover film" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 20 : L'aile à mi-entoilage : à gauche le film tendu et thermocollé, à droite le squelette encore nu.</span>
+        <span class="en">Figure 20: The wing half-covered: tensioned, heat-bonded film on the left, bare skeleton still exposed on the right.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-oracover-iron.jpg" alt="Heat-shrinking the Oracover film with an iron" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 21 : Thermocollage de l'Oracover au fer : travail à six mains pour tendre le film sans pli sur l'aile externe.</span>
+        <span class="en">Figure 21: Heat-bonding the Oracover with an iron: a six-hands job to tension the film wrinkle-free over the outer wing.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-laser-engraving.jpg" alt="The laser cutter engraving a grayscale dragon on the balsa tail" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 22 : La touche personnelle : la découpeuse laser grave un dragon en niveaux de gris sur les pièces d'empennage avant leur découpe.</span>
+        <span class="en">Figure 22: The personal touch: the laser cutter engraves a grayscale dragon on the tail parts before cutting them out.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="../assets/glider-dragon-tail.jpg" alt="Laser-engraved dragon on the balsa tail" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 23 : L'empennage en balsa avec sa gravure laser en niveaux de gris.</span>
+      <span class="en">Figure 23: The balsa tail with its grayscale laser engraving.</span>
     </figcaption>
   </figure>
 
   <figure>
-    <img src="../assets/glider-top-view.jpg" alt="Top view of the finished glider">
+    <img src="../assets/glider-top-view.jpg" alt="Top view of the finished glider" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 8 : Le planeur fini vu de dessus, lors du contrôle du centrage : aile effilée entoilée d'Oracover, tige de carbone longitudinale, cockpit profilé à l'avant.</span>
-      <span class="en">Figure 8: The finished glider seen from above during the balance check: tapered Oracover-covered wing, longitudinal carbon rod, streamlined cockpit at the front.</span>
+      <span class="fr">Figure 24 : Le planeur fini vu de dessus, lors du contrôle systématique du centrage effectué avant chaque vol : aile effilée entoilée d'Oracover, tige de carbone longitudinale, cockpit profilé à l'avant.</span>
+      <span class="en">Figure 24: The finished glider seen from above, during the systematic balance check performed before every flight: tapered Oracover-covered wing, longitudinal carbon rod, streamlined cockpit at the front.</span>
     </figcaption>
   </figure>
 
-  <h2><span class="fr">5. Électronique embarquée et commande de gouverne</span><span class="en">5. On-board electronics and control linkage</span></h2>
+  <h2><span class="fr">7. Électronique embarquée et commande de gouverne</span><span class="en">7. On-board electronics and control linkage</span></h2>
   <p>
     <span class="fr">
       Le système embarqué repose sur un Arduino MKR WiFi 1010, un shield MKR IMU
-      (accéléromètre et gyroscope) et un proto shield pour les soudures, pilotant un
-      servomoteur de 5 g relié à l'empennage horizontal par fil de nylon. Deux liaisons ont
-      été testées en vol. Le <strong>pull-string</strong> (un fil contre un ressort de
-      torsion) est léger et simple, mais la gouverne oscillait en vol malgré un ressort
-      très tendu. Le <strong>pull-pull</strong> (deux fils montés en opposition sur un
-      palonnier double) l'a remplacé : aucune zone morte au neutre, jeu mécanique éliminé,
-      oscillations supprimées, et l'élasticité du nylon amortit naturellement les chocs sur
-      la gouverne. Un enregistreur de données embarqué capture accélérations et vitesses
-      angulaires à 50 Hz ; le planeur génère ensuite son propre point d'accès WiFi et les
-      données se téléchargent en CSV ou JSON via une petite interface web.
+      (accéléromètre et gyroscope) et un MKR SD proto shield, pilotant un servomoteur
+      Protonik Digital 7341 NG-D de 5 g relié à l'empennage horizontal par fil de nylon de
+      0,4 mm. Le proto shield sert de support de câblage : les fils du servomoteur y sont
+      soudés sur trois broches (VCC, GND et la sortie A2 qui génère le signal de commande),
+      ce qui évite toute modification directe des cartes Arduino et IMU (la promotion ne
+      disposait que de deux exemplaires, partagés entre les groupes).
     </span>
     <span class="en">
       The on-board system is built around an Arduino MKR WiFi 1010, an MKR IMU shield
-      (accelerometer and gyroscope) and a proto shield for the soldered connections,
-      driving a 5 g servo linked to the horizontal tail with nylon line. Two linkages were
-      flight-tested. The <strong>pull-string</strong> (one line against a torsion spring)
-      is light and simple, but the control surface oscillated in flight despite a tight
-      spring. The <strong>pull-pull</strong> (two lines mounted in opposition on a double
-      servo horn) replaced it: no dead zone around neutral, mechanical play eliminated,
-      oscillations gone, and the nylon's slight elasticity naturally damps shocks on the
-      surface. An on-board data logger captures accelerations and angular rates at 50 Hz;
-      the glider then spawns its own WiFi access point and the data is downloaded as CSV or
-      JSON through a small web interface.
+      (accelerometer and gyroscope) and an MKR SD proto shield, driving a 5 g Protonik
+      Digital 7341 NG-D servo linked to the horizontal tail with 0.4 mm nylon line. The
+      proto shield serves as the wiring platform: the servo wires are soldered onto three
+      pins (VCC, GND and the A2 output that generates the command signal), avoiding any
+      direct modification of the Arduino and IMU boards (the class only had two of them,
+      shared between the groups).
     </span>
   </p>
+
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-arduino-exploded.jpg" alt="Exploded CAD view of the Arduino MKR stack" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 25 : Vue éclatée CAO de la pile embarquée : Arduino MKR WiFi 1010 entre le shield IMU et le proto shield, modélisée pour dimensionner le cockpit.</span>
+        <span class="en">Figure 25: Exploded CAD view of the on-board stack: Arduino MKR WiFi 1010 between the IMU shield and the proto shield, modelled to size the cockpit.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-electronics.jpg" alt="Arduino MKR stack with soldered servo wiring" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 26 : La pile réelle assemblée, câbles du servomoteur soudés sur le proto shield (VCC, GND, A2).</span>
+        <span class="en">Figure 26: The real assembled stack, servo wires soldered onto the proto shield (VCC, GND, A2).</span>
+      </figcaption>
+    </figure>
+  </div>
+
   <p>
     <span class="fr">
-      Côté intégration, le proto shield sert de support de câblage : les fils du
-      servomoteur y sont soudés sur trois broches (VCC, GND et la sortie A2 qui génère le
-      signal de commande), ce qui évite toute modification directe des cartes Arduino et
-      IMU, partagées avec les autres groupes.
+      Deux liaisons servo-gouverne ont été testées en vol. Le <strong>pull-string</strong>
+      (un fil de traction contre un ressort de torsion logé dans la gouverne) est léger et
+      simple à installer, mais s'est révélé mauvais en vol : malgré un ressort très tendu, la
+      gouverne ne faisait qu'osciller. Le <strong>pull-pull</strong> l'a remplacé pour la
+      seconde campagne : deux fils montés en opposition sur un palonnier de servo double,
+      chaque extrémité reliée à un côté du guignol de gouverne. Quand un fil tire, l'autre
+      se détend de manière synchrone. Résultat : aucune zone morte au neutre, jeu mécanique
+      éliminé en tendant fermement les fils sans surcharger le servo, oscillations
+      totalement supprimées, et la légère élasticité du nylon agit comme un amortisseur
+      naturel qui protège les pignons du servo des chocs sur la gouverne au sol.
     </span>
     <span class="en">
-      On the integration side, the proto shield serves as the wiring platform: the servo
-      wires are soldered onto three pins (VCC, GND and the A2 output that generates the
-      command signal), avoiding any direct modification of the Arduino and IMU boards,
-      which were shared with the other groups.
+      Two servo-to-surface linkages were flight-tested. The <strong>pull-string</strong>
+      (one traction line against a torsion spring housed in the control surface) is light
+      and simple to install, but proved poor in flight: despite a very tight spring, the
+      surface just kept oscillating. The <strong>pull-pull</strong> replaced it for the
+      second campaign: two lines mounted in opposition on a double servo horn, each end tied
+      to one side of the control horn. When one line pulls, the other releases
+      synchronously. Result: no dead zone around neutral, mechanical play eliminated by
+      firmly tensioning the lines without overloading the servo, oscillations completely
+      gone, and the nylon's slight elasticity acts as a natural damper protecting the servo
+      gears from ground knocks on the surface.
     </span>
   </p>
 
-  <figure>
-    <img src="../assets/glider-electronics.jpg" alt="Arduino MKR stack with soldered servo wiring">
-    <figcaption>
-      <span class="fr">Figure 9 : L'électronique embarquée assemblée : pile Arduino MKR WiFi 1010 + IMU + proto shield, câbles du servomoteur soudés.</span>
-      <span class="en">Figure 9: The assembled on-board electronics: Arduino MKR WiFi 1010 + IMU + proto shield stack, with the servo wires soldered on.</span>
-    </figcaption>
-  </figure>
+  <div class="figure-row">
+    <figure>
+      <img src="../assets/glider-tail-cad.jpg" alt="CAD of the one-piece horizontal tail with its attachment and control horn" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 27 : L'empennage horizontal monobloc en CAO, avec sa pièce d'attache serrée sur la tige et le guignol de gouverne (en bleu) qui reçoit les fils.</span>
+        <span class="en">Figure 27: The one-piece horizontal tail in CAD, with its attachment clamped on the rod and the control horn (in blue) that receives the lines.</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/glider-servo-horn-cad.jpg" alt="CAD of the 5 g servo with its double horn" loading="lazy">
+      <figcaption>
+        <span class="fr">Figure 28 : Le servomoteur 5 g et son palonnier double en CAO : les deux fils du pull-pull s'attachent aux extrémités opposées.</span>
+        <span class="en">Figure 28: The 5 g servo and its double horn in CAD: the two pull-pull lines attach at opposite ends.</span>
+      </figcaption>
+    </figure>
+  </div>
 
-  <figure>
-    <img src="../assets/glider-tail-spring.jpg" alt="Torsion spring of the pull-string linkage on the tail">
-    <figcaption>
-      <span class="fr">Figure 10 : Le ressort de torsion du système pull-string sur la gouverne. C'est cette élasticité qui laissait la gouverne osciller en vol et a motivé le passage au pull-pull.</span>
-      <span class="en">Figure 10: The pull-string system's torsion spring on the control surface. This elasticity let the surface oscillate in flight and motivated the switch to the pull-pull linkage.</span>
-    </figcaption>
-  </figure>
+  <p>
+    <span class="fr">
+      Un enregistreur de données embarqué complète le système : il capture accélérations et
+      vitesses angulaires à 50 Hz pendant 10 secondes (500 échantillons en mémoire flash) ;
+      le planeur génère ensuite son propre point d'accès WiFi et les données se téléchargent
+      en CSV ou JSON via une petite interface web à l'adresse 192.168.4.1. Un script Python
+      à base de filtre de Kalman étendu a tenté de reconstruire la trajectoire 3D à partir
+      de ces données : les échelles obtenues étaient aberrantes (des centaines de mètres pour
+      un déplacement de quelques centimètres). Conclusion utile pour la suite : l'IMU seule
+      excelle pour l'attitude et les rotations, mais ne peut pas servir d'outil de
+      trajectographie sans capteur complémentaire.
+    </span>
+    <span class="en">
+      An on-board data logger completes the system: it captures accelerations and angular
+      rates at 50 Hz for 10 seconds (500 samples in flash memory); the glider then spawns
+      its own WiFi access point and the data is downloaded as CSV or JSON through a small
+      web interface at 192.168.4.1. A Python script based on an extended Kalman filter
+      attempted to reconstruct the 3D trajectory from this data: the resulting scales were
+      absurd (hundreds of metres for a few centimetres of motion). A useful conclusion for
+      what follows: the IMU alone excels at attitude and rotations, but cannot serve as a
+      trajectory-reconstruction tool without a complementary sensor.
+    </span>
+  </p>
 
-  <h2><span class="fr">6. Le pilote automatique : pourquoi un PID sans modèle</span><span class="en">6. The autopilot: why a model-free PID</span></h2>
+  <h2><span class="fr">8. Le pilote automatique : pourquoi un PID sans modèle</span><span class="en">8. The autopilot: why a model-free PID</span></h2>
+  <p>
+    <span class="fr">
+      Le rôle du pilote automatique est d'assurer une stabilisation active en tangage :
+      maintenir une assiette constante correspondant à l'incidence de portance maximale,
+      compenser les perturbations (lancers à la main imprécis, léger décentrage, vibrations)
+      et empêcher les oscillations de phugoïde qui dégradent la finesse moyenne et mènent au
+      décrochage. Sur un vol de 10 m, on n'observe qu'environ une demi-période de cette
+      oscillation.
+    </span>
+    <span class="en">
+      The autopilot's role is active pitch stabilization: hold a constant attitude matching
+      the maximum-lift incidence, compensate for disturbances (imprecise hand launches,
+      slight off-balance, vibrations) and prevent the phugoid oscillations that degrade the
+      average glide ratio and lead to stall. Over a 10 m flight, only about half a period
+      of that oscillation is visible.
+    </span>
+  </p>
   <p>
     <span class="fr">
       L'approche théorique classique (représentation d'état, retour d'état calculé sur les
       dérivées de stabilité) suppose des coefficients aérodynamiques connus et un modèle
-      linéaire. À très bas Reynolds, ces coefficients sont instables et non linéaires
-      (décollements, bulles laminaires) : impossible de les estimer de façon fiable avec
-      XFLR5. Nous avons donc écarté la commande par retour d'état au profit d'un
-      <strong>correcteur PID sans modèle</strong>, dont les gains se règlent
+      linéarisé autour d'un point d'équilibre. À très bas Reynolds, ces coefficients sont
+      instables et non linéaires (décollements, bulles laminaires) : impossible de les
+      estimer de façon fiable avec XFLR5, et un contrôleur calculé sur un modèle faux
+      devient inopérant. Nous avons donc écarté la commande par retour d'état au profit d'un
+      <strong>correcteur PID sans modèle</strong> : il ne réagit qu'à l'erreur entre
+      l'assiette mesurée par l'IMU et la consigne, et ses gains se règlent
       expérimentalement, lancer après lancer.
     </span>
     <span class="en">
       The classical theoretical approach (state-space model, state feedback computed from
-      stability derivatives) assumes known aerodynamic coefficients and a linear model. At
-      very low Reynolds numbers these coefficients are unstable and nonlinear (separation,
-      laminar bubbles): they cannot be reliably estimated with XFLR5. We therefore set
-      aside conventional state feedback in favour of a <strong>model-free PID
-      controller</strong>, whose gains are tuned experimentally, launch after launch.
+      stability derivatives) assumes known aerodynamic coefficients and a model linearized
+      around an equilibrium point. At very low Reynolds numbers these coefficients are
+      unstable and nonlinear (separation, laminar bubbles): they cannot be reliably
+      estimated with XFLR5, and a controller computed on a wrong model becomes inoperative.
+      We therefore set aside conventional state feedback in favour of a <strong>model-free
+      PID controller</strong>: it only reacts to the error between the IMU-measured attitude
+      and the setpoint, and its gains are tuned experimentally, launch after launch.
     </span>
   </p>
   <div class="math-block">u(t) = K<sub>p</sub> ε(t) + K<sub>i</sub> ∫ ε(t) dt + K<sub>d</sub> dε(t)/dt,&nbsp;&nbsp; ε(t) = θ<sub>consigne</sub> - θ<sub>mesuré</sub></div>
   <p>
     <span class="fr">
-      L'asservissement tourne à 100 Hz sur l'Arduino : l'IMU fournit l'angle de tangage,
-      l'erreur par rapport à la consigne (vol à plat) alimente le PID, et une fonction de
-      mapping asymétrique convertit la sortie en angle servo dans les limites mécaniques de
-      la gouverne (neutre à 133°, bornes 80° et 180°), garantissant qu'aucune commande
-      destructive n'est jamais envoyée. Gains retenus : K<sub>p</sub> = 2,0 pour la
-      réactivité immédiate, K<sub>i</sub> = 0,2 pour trimmer automatiquement l'erreur
-      statique due au centrage, K<sub>d</sub> = 0,1 pour amortir les oscillations et
-      éviter le dépassement.
+      L'asservissement tourne à 100 Hz sur l'Arduino (T = 10 ms) : l'IMU fournit l'angle de
+      tangage, l'erreur par rapport à la consigne (<code>TARGET_PITCH = 0</code>, vol à
+      plat) alimente le PID, et une fonction de <strong>mapping asymétrique</strong>
+      convertit la sortie en angle servo dans les limites mécaniques de la gouverne : le
+      neutre est calé à 133°, les corrections à cabrer sont mappées entre 133° et 80°, les
+      corrections à piquer entre 133° et 180°. Cette transposition garantit qu'aucune
+      commande destructive pour la liaison pull-pull n'est jamais envoyée. Gains retenus :
+      K<sub>p</sub> = 2,0 pour la réactivité immédiate, K<sub>i</sub> = 0,2 pour trimmer
+      automatiquement l'erreur statique due au centrage ou au calage, K<sub>d</sub> = 0,1
+      pour amortir les oscillations et éviter le dépassement.
     </span>
     <span class="en">
-      The control loop runs at 100 Hz on the Arduino: the IMU provides the pitch angle,
-      the error against the setpoint (level flight) feeds the PID, and an asymmetric
-      mapping function converts the output into a servo angle within the control surface's
-      mechanical limits (neutral at 133°, bounds 80° and 180°), guaranteeing that no
-      destructive command is ever sent. Selected gains: K<sub>p</sub> = 2.0 for immediate
-      reactivity, K<sub>i</sub> = 0.2 to automatically trim the static error caused by the
-      balance, K<sub>d</sub> = 0.1 to damp oscillations and avoid overshoot.
+      The control loop runs at 100 Hz on the Arduino (T = 10 ms): the IMU provides the
+      pitch angle, the error against the setpoint (<code>TARGET_PITCH = 0</code>, level
+      flight) feeds the PID, and an <strong>asymmetric mapping</strong> function converts
+      the output into a servo angle within the control surface's mechanical limits: neutral
+      is set at 133°, nose-up corrections are mapped between 133° and 80°, nose-down
+      corrections between 133° and 180°. This transposition guarantees that no command
+      destructive to the pull-pull linkage is ever sent. Selected gains:
+      K<sub>p</sub> = 2.0 for immediate reactivity, K<sub>i</sub> = 0.2 to automatically
+      trim the static error caused by balance or setting angle, K<sub>d</sub> = 0.1 to damp
+      oscillations and avoid overshoot.
     </span>
   </p>
+  <figure>
+    <img src="../assets/glider-pid-tuning.jpg" alt="PID tuning illustration for the glider autopilot" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 29 : Illustration du réglage du correcteur PID utilisé pour stabiliser le tangage du planeur.</span>
+      <span class="en">Figure 29: Illustration of the PID tuning used to stabilize the glider's pitch.</span>
+    </figcaption>
+  </figure>
+
   <p>
     <span class="fr">
       Le réglage s'est fait lancer après lancer, en s'appuyant sur l'effet classique de
@@ -420,27 +877,83 @@
     </tbody>
   </table>
 
-  <h2><span class="fr">7. Essais en vol et résultats</span><span class="en">7. Flight tests and results</span></h2>
+  <h2><span class="fr">9. Essais en vol et résultats</span><span class="en">9. Flight tests and results</span></h2>
+
+  <h3><span class="fr">Vol n°1 - 10 décembre 2025 : le retour d'expérience</span><span class="en">Flight #1 - 10 December 2025: lessons learned</span></h3>
   <p>
     <span class="fr">
-      Deux campagnes d'essais ont eu lieu dans la volière drone de l'ENAC. Le premier vol
-      (décembre 2025) a surtout livré des leçons structurelles : renforcement du bord
-      d'attaque, refonte des fixations, et passage au pull-pull. Lors du second (janvier
-      2026), des caméras infrarouges ont enregistré la position du planeur en vol, ce qui a
-      permis une <strong>analyse comparative quantitative</strong> entre vols libres (NPA)
-      et vols sous pilote automatique (PA). Un script Python isole automatiquement les
-      phases de vol dans les enregistrements par détection de pics
-      (<code>scipy.signal.find_peaks</code>) sur la vitesse absolue.
+      Première campagne dans la volière drone de l'ENAC (10 × 10 m, hauteur suffisante pour
+      des lancers à la main), sans électronique embarquée : nous avons appris sur place que
+      le proto shield devait coiffer les broches de l'Arduino pour les protéger, et le
+      premier cockpit ne prévoyait pas cette épaisseur. La séance a surtout été un
+      crash-test structurel : rupture du pas de vis du fuselage sous les chocs répétés des
+      rattrapages, casse d'une pièce d'attache après une chute verticale de 20 cm sur
+      l'empennage, rupture de la lisse du bord d'attaque sur un câble tendu de la volière,
+      et casse de la fixation avant d'un winglet lors d'une collision, sans dégât sur le
+      winglet lui-même.
     </span>
     <span class="en">
-      Two test campaigns took place in ENAC's drone aviary. The first flight (December
-      2025) mostly delivered structural lessons: leading-edge reinforcement, redesigned
-      fixtures, and the switch to the pull-pull linkage. During the second (January 2026),
-      infrared cameras recorded the glider's position in flight, enabling a
-      <strong>quantitative comparative analysis</strong> between free flights (no
-      autopilot) and autopilot-assisted flights. A Python script automatically isolates the
-      flight phases in the recordings by peak detection
-      (<code>scipy.signal.find_peaks</code>) on the absolute speed.
+      First campaign in ENAC's drone aviary (10 × 10 m, enough height for hand launches),
+      without on-board electronics: we learned on site that the proto shield had to cap the
+      Arduino's pins to protect them, and the first cockpit did not allow for that
+      thickness. The session was above all a structural crash-test: the fuselage's screw
+      thread failed under repeated catch impacts, an attachment part broke after a 20 cm
+      vertical drop onto the tail, the leading-edge stringer snapped on one of the aviary's
+      tensioned cables, and a winglet's front fixture broke in a collision, with no damage
+      to the winglet itself.
+    </span>
+  </p>
+  <p>
+    <span class="fr">
+      Les leçons aérodynamiques valaient autant que les casses : la surface de gouverne
+      s'est révélée trop grande (un trim d'environ 15° à cabrer faisait cabrer le planeur
+      malgré un centrage très avant) ; sans empennage horizontal le planeur n'est pas stable
+      en tangage (l'effet piqueur ou cabreur s'amplifie doucement) ; sur 10 mètres, aucune
+      différence mesurable entre les vols avec et sans winglets ; et les bords d'attaque
+      des empennages, laissés bruts, méritaient d'être arrondis. D'où la liste de travail
+      d'inter-campagne : refonte du fuselage pour intégrer toute l'électronique et déplacer
+      le servomoteur, passage au pull-pull, ponçage des bords d'attaque, renforcement du
+      bord d'attaque de l'aile, test du pilote automatique au sol et vérification
+      systématique du centrage après intégration de l'électronique.
+    </span>
+    <span class="en">
+      The aerodynamic lessons were worth as much as the breakage: the control surface
+      proved too large (a roughly 15° nose-up trim pitched the glider up despite a very
+      forward balance); without the horizontal tail the glider is not pitch-stable (the
+      nose-up or nose-down tendency slowly amplifies); over 10 metres, no measurable
+      difference between flights with and without winglets; and the tails' leading edges,
+      left raw, deserved rounding. Hence the inter-campaign work list: fuselage redesign to
+      integrate all the electronics and move the servo, switch to the pull-pull linkage,
+      sanding of the leading edges, reinforcement of the wing's leading edge, ground
+      testing of the autopilot and systematic balance checks after integrating the
+      electronics.
+    </span>
+  </p>
+
+  <h3><span class="fr">Vol n°2 - 14 janvier 2026 : le pilote automatique en conditions réelles</span><span class="en">Flight #2 - 14 January 2026: the autopilot in real conditions</span></h3>
+  <p>
+    <span class="fr">
+      Même volière, mais avec un moyen d'essai supplémentaire : des caméras infrarouges
+      enregistrant la position du planeur en vol, qui permettent une <strong>analyse
+      comparative quantitative</strong> entre vols libres (NPA) et vols sous pilote
+      automatique (PA). Un seul incident structurel : la pièce du cockpit recevant la barre
+      de fixation s'est fissurée (encore un sens d'impression 3D défavorable), mais la vis
+      et les frottements ont maintenu l'ensemble en place jusqu'à la fin des essais. Côté
+      analyse, un script Python isole automatiquement les phases de vol dans les
+      enregistrements par détection de pics (<code>scipy.signal.find_peaks</code>) sur la
+      vitesse absolue : le lancer et la réception génèrent chacun un pic net qui borne la
+      phase de vol plané.
+    </span>
+    <span class="en">
+      Same aviary, but with an additional test asset: infrared cameras recording the
+      glider's position in flight, enabling a <strong>quantitative comparative
+      analysis</strong> between free flights (no autopilot) and autopilot-assisted flights.
+      A single structural incident: the cockpit part receiving the fixing bar cracked (yet
+      another unfavourable 3D print orientation), but the screw and friction held everything
+      in place until the end of the tests. On the analysis side, a Python script
+      automatically isolates the flight phases in the recordings through peak detection
+      (<code>scipy.signal.find_peaks</code>) on the absolute speed: launch and landing each
+      generate a clean peak that bounds the gliding phase.
     </span>
   </p>
 
@@ -450,49 +963,62 @@
       Your browser does not support the video tag.
     </video>
     <figcaption>
-      <span class="fr">Figure 11 : Essais en vol dans la volière drone de l'ENAC : le planeur en l'air au-dessus de la zone de test de 10 m.</span>
-      <span class="en">Figure 11: Flight tests in ENAC's drone aviary: the glider airborne over the 10 m test area.</span>
+      <span class="fr">Figure 30 : Essais en vol dans la volière drone de l'ENAC : le planeur en l'air au-dessus de la zone de test de 10 m.</span>
+      <span class="en">Figure 30: Flight tests in ENAC's drone aviary: the glider airborne over the 10 m test area.</span>
     </figcaption>
   </figure>
 
   <figure>
-    <img src="../assets/glider-flight-phase.png" alt="Automatic flight phase detection on a launch recording">
+    <img src="../assets/glider-flight-phase.png" alt="Automatic flight phase detection on a launch recording" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 12 : Détection automatique de la phase de vol sur un lancer : le pic de vitesse du lancer et celui de la réception bornent la zone verte, qui coïncide avec une vitesse verticale typique d'un vol plané.</span>
-      <span class="en">Figure 12: Automatic flight-phase detection on one launch: the speed peaks at launch and landing bound the green zone, which coincides with a vertical speed typical of gliding flight.</span>
+      <span class="fr">Figure 31 : Détection automatique de la phase de vol sur un lancer : le pic de vitesse du lancer et celui de la réception bornent la zone verte, qui coïncide avec une vitesse verticale typique d'un vol plané.</span>
+      <span class="en">Figure 31: Automatic flight-phase detection on one launch: the speed peaks at launch and landing bound the green zone, which coincides with a vertical speed typical of gliding flight.</span>
     </figcaption>
   </figure>
 
   <figure>
-    <img src="../assets/glider-trajectories.png" alt="2D trajectories without and with autopilot">
+    <img src="../assets/glider-trajectories.png" alt="2D trajectories without and with autopilot" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 13 : Trajectoires 2D projetées dans le plan de mouvement : en vol libre (à gauche), des cloches balistiques typiques d'une phugoïde non amortie ; avec pilote automatique (à droite), des trajectoires nettement plus plates et linéaires.</span>
-      <span class="en">Figure 13: 2D trajectories projected onto the plane of motion: in free flight (left), ballistic bell shapes typical of an undamped phugoid; with the autopilot (right), markedly flatter and more linear trajectories.</span>
+      <span class="fr">Figure 32 : Trajectoires 2D projetées dans le plan de mouvement : en vol libre (à gauche), des cloches balistiques typiques d'une phugoïde non amortie ; avec pilote automatique (à droite), des trajectoires nettement plus plates et linéaires.</span>
+      <span class="en">Figure 32: 2D trajectories projected onto the plane of motion: in free flight (left), ballistic bell shapes typical of an undamped phugoid; with the autopilot (right), markedly flatter and more linear trajectories.</span>
     </figcaption>
   </figure>
 
   <figure>
-    <img src="../assets/glider-speeds.png" alt="Speed evolution during flights">
+    <img src="../assets/glider-trajectories-3d.gif" alt="Animated 3D reconstruction of two recorded flights" loading="lazy">
     <figcaption>
-      <span class="fr">Figure 14 : Évolution des vitesses pendant les phases de vol. Sans PA, la vitesse plonge parfois près du décrochage (environ 14 km/h) puis remonte en piqué ; avec PA, la décroissance est douce et la vitesse reste dans la plage optimale du profil.</span>
-      <span class="en">Figure 14: Speed evolution during the flight phases. Without the autopilot, the speed sometimes drops close to stall (about 14 km/h) then recovers in a dive; with it, the decay is gentle and the speed stays in the airfoil's optimal range.</span>
+      <span class="fr">Figure 33 : Animation des trajectoires reconstruites depuis les caméras infrarouges pour deux lancers : position 3D (à gauche) et projections dans le plan de mouvement (à droite).</span>
+      <span class="en">Figure 33: Animation of the trajectories reconstructed from the infrared cameras for two launches: 3D position (left) and projections onto the plane of motion (right).</span>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/glider-speeds.png" alt="Speed evolution during flights" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 34 : Évolution des vitesses pendant les phases de vol. Sans PA, la vitesse plonge parfois près du décrochage (environ 14 km/h) puis remonte en piqué ; avec PA, la décroissance est douce et la vitesse reste dans la plage optimale du profil, retardant l'atterrissage.</span>
+      <span class="en">Figure 34: Speed evolution during the flight phases. Without the autopilot, the speed sometimes drops close to stall (about 14 km/h) then recovers in a dive; with it, the decay is gentle and the speed stays in the airfoil's optimal range, delaying the landing.</span>
     </figcaption>
   </figure>
 
   <p>
     <span class="fr">
       Le pilote automatique s'est montré efficace dès le lancer, avec des corrections
-      nettes et visibles en vol. Il lisse la trajectoire en cloche du vol libre, maintient
-      l'assiette constante, et a permis au planeur de voler sur plus de 10 mètres en
-      extérieur. La stratégie pragmatique (un PID réglé expérimentalement plutôt qu'une
-      synthèse théorique sur des paramètres incertains) est validée par les données.
+      nettes et visibles en vol : il empêche le nez de monter excessivement à la phase de
+      lancement, soutient le planeur en phase de plané, lisse la trajectoire en cloche du
+      vol libre et évite la conversion brutale d'énergie cinétique en énergie potentielle
+      qui menait au décrochage. Testé ensuite en extérieur, le planeur a dépassé les
+      10 mètres de vol stable. La stratégie pragmatique (un PID réglé expérimentalement
+      plutôt qu'une synthèse théorique sur des paramètres incertains) est validée par les
+      données.
     </span>
     <span class="en">
       The autopilot proved effective from the moment of launch, with clear, visible
-      corrections in flight. It smooths out the free flight's bell-shaped trajectory, holds
-      a constant attitude, and allowed the glider to fly more than 10 metres outdoors. The
-      pragmatic strategy (an experimentally tuned PID rather than a theoretical synthesis
-      built on uncertain parameters) is validated by the data.
+      corrections in flight: it keeps the nose from rising excessively during the launch
+      phase, supports the glider during the glide, smooths out the free flight's
+      bell-shaped trajectory and prevents the brutal kinetic-to-potential energy conversion
+      that led to stall. Tested outdoors afterwards, the glider exceeded 10 metres of
+      stable flight. The pragmatic strategy (an experimentally tuned PID rather than a
+      theoretical synthesis built on uncertain parameters) is validated by the data.
     </span>
   </p>
 
@@ -502,32 +1028,55 @@
       Your browser does not support the video tag.
     </video>
     <figcaption>
-      <span class="fr">Figure 15 : Lancer en extérieur : grâce au pilote automatique, le planeur dépasse les 10 mètres de vol stable hors de la volière.</span>
-      <span class="en">Figure 15: Outdoor launch: thanks to the autopilot, the glider exceeds 10 metres of stable flight outside the aviary.</span>
+      <span class="fr">Figure 35 : Lancer en extérieur : grâce au pilote automatique, le planeur dépasse les 10 mètres de vol stable hors de la volière.</span>
+      <span class="en">Figure 35: Outdoor launch: thanks to the autopilot, the glider exceeds 10 metres of stable flight outside the aviary.</span>
     </figcaption>
   </figure>
 
-  <h2><span class="fr">8. Bilan</span><span class="en">8. Takeaways</span></h2>
+  <h2><span class="fr">10. Bilan</span><span class="en">10. Takeaways</span></h2>
   <p>
     <span class="fr">
       Ce projet couvre la chaîne complète de l'ingénierie aéronautique à petite échelle :
-      état de l'art, dimensionnement théorique, simulation (XFLR5), CAO, prototypage rapide
-      (découpe laser, impression 3D), électronique embarquée, loi de commande et validation
-      expérimentale par deux campagnes d'essais en vol. Chaque casse structurelle et chaque
-      instabilité ont conduit à une itération de conception documentée. Parmi les
-      perspectives : un tube de Pitot ou un positionnement externe pour affiner la loi de
-      commande, l'IMU seule ayant montré ses limites pour la trajectographie précise.
+      état de l'art, dimensionnement théorique, simulation (XFLR5), CAO (Onshape, CATIA V5),
+      prototypage rapide (découpe laser, impression 3D), électronique embarquée, loi de
+      commande et validation expérimentale par deux campagnes d'essais en vol. Chaque casse
+      structurelle et chaque instabilité ont conduit à une itération de conception
+      documentée : sens d'impression des pièces chargées, refonte du cockpit, passage au
+      pull-pull, ponçage des bords d'attaque. Parmi les perspectives : un tube de Pitot ou
+      un système de positionnement externe pour affiner la loi de commande (l'IMU seule
+      ayant montré ses limites pour la trajectographie), dans les limites d'un projet de
+      trois mois. Projet encadré par M. Chauvat (IPSA) ; essais réalisés dans la volière
+      drone de l'ENAC.
     </span>
     <span class="en">
       This project covers the complete small-scale aeronautical engineering chain:
-      state-of-the-art review, theoretical sizing, simulation (XFLR5), CAD, rapid
-      prototyping (laser cutting, 3D printing), embedded electronics, control law and
-      experimental validation through two flight-test campaigns. Every structural failure
-      and every instability led to a documented design iteration. Among the perspectives: a
-      Pitot tube or external positioning to refine the control law, since the IMU alone
-      showed its limits for precise trajectory reconstruction.
+      state-of-the-art review, theoretical sizing, simulation (XFLR5), CAD (Onshape, CATIA
+      V5), rapid prototyping (laser cutting, 3D printing), embedded electronics, control
+      law and experimental validation through two flight-test campaigns. Every structural
+      failure and every instability led to a documented design iteration: print orientation
+      of loaded parts, cockpit redesign, switch to the pull-pull linkage, sanding of the
+      leading edges. Among the perspectives: a Pitot tube or an external positioning system
+      to refine the control law (the IMU alone having shown its limits for trajectory
+      reconstruction), within the limits of a three-month project. Project supervised by
+      Mr Chauvat (IPSA); tests carried out in ENAC's drone aviary.
     </span>
   </p>
+
+  <figure>
+    <img src="../assets/glider-final-rear.jpg" alt="The finished glider seen from behind, dragon-engraved tail in the foreground" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 36 : Le planeur final, empennage gravé au premier plan : 1 m d'envergure, 262 g, et un pilote automatique qui tient l'assiette.</span>
+      <span class="en">Figure 36: The final glider, engraved tail in the foreground: 1 m wingspan, 262 g, and an autopilot that holds the attitude.</span>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="../assets/glider-drawing-plate.svg" alt="Technical drawing plate of the glider with detail views" loading="lazy">
+    <figcaption>
+      <span class="fr">Figure 37 : Planche technique de synthèse : trois vues, vue isométrique et détails des sous-ensembles (empennage, pile Arduino, servomoteur et palonnier double) à leurs échelles respectives.</span>
+      <span class="en">Figure 37: Summary drawing plate: three views, isometric view and detail views of the subassemblies (tail, Arduino stack, servo and double horn) at their respective scales.</span>
+    </figcaption>
+  </figure>
 
   <a class="back-link" href="../index.html#portfolio">
     <span class="fr">← Retour aux projets</span><span class="en">← Back to projects</span>

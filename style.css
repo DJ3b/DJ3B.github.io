@@ -278,6 +278,20 @@ footer {
 
 .article figure { margin: 1.6rem 0; }
 
+.article .figure-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+  margin: 1.6rem 0;
+}
+
+.article .figure-row figure { margin: 0; }
+
+@media (max-width: 640px) {
+  .article .figure-row { grid-template-columns: 1fr; }
+}
+
 .article figure img {
   width: 100%;
   border-radius: 8px;
@@ -327,3 +341,21 @@ footer {
 }
 
 .back-link:hover { text-decoration: underline; }
+
+.glider-page { position: relative; }
+
+.glider-page .margin-blueprint {
+  position: absolute;
+  top: 14rem;                 /* Sits cleanly next to your introduction text */
+  right: calc(100% + 2.5rem); /* Pushes it perfectly into the left margin gap */
+  width: 240px;               /* Size of your glider wireframe graphic */
+  height: auto;
+  opacity: 0.15;              /* Matches your subtle, low-contrast theme style */
+  pointer-events: none;       /* Prevents accidental clicking or blocking text */
+}
+
+/* The margin blueprint only fits when the viewport is wider than the
+   article column plus twice the graphic; hide it otherwise. */
+@media (max-width: 1420px) {
+  .glider-page .margin-blueprint { display: none; }
+}
